@@ -1,0 +1,3782 @@
+$ ./scripts/destroy.sh
+
+==> terraform destroy (floci)
+random_id.suffix: Refreshing state... [id=wIgJ]
+random_password.db: Refreshing state... [id=none]
+data.archive_file.fn["notifier"]: Reading...
+data.archive_file.fn["api"]: Reading...
+data.archive_file.fn["marker"]: Reading...
+data.archive_file.fn["notifier"]: Read complete after 0s [id=35a22ab914ff13438d366a045d347744c1dabd52]
+data.archive_file.fn["api"]: Read complete after 0s [id=3cbd64e850bd794eb6d814db31c1bf3e6f4e7680]
+data.archive_file.fn["marker"]: Read complete after 0s [id=c1fdd94504ddf947c86ff3adc55574ce2cec8579]
+aws_route53_zone.main[0]: Refreshing state... [id=Z0ZKY2Z0GPQ3F1G]
+aws_sns_topic.alarms: Refreshing state... [id=arn:aws:sns:us-east-1:000000000000:exams-floci-alarms]
+data.aws_iam_policy_document.lambda_assume: Reading...
+data.aws_caller_identity.current: Reading...
+aws_cloudwatch_log_group.fn["marker"]: Refreshing state... [id=/aws/lambda/exams-floci-marker]
+aws_cloudwatch_log_group.fn["notifier"]: Refreshing state... [id=/aws/lambda/exams-floci-notifier]
+aws_cloudwatch_log_group.fn["api"]: Refreshing state... [id=/aws/lambda/exams-floci-api]
+aws_eip.nat[1]: Refreshing state... [id=eipalloc-8d04dba68e6b96b74]
+aws_eip.nat[0]: Refreshing state... [id=eipalloc-e7028529fce05a3fb]
+aws_cloudwatch_log_group.api: Refreshing state... [id=/aws/apigateway/exams-floci-api]
+data.aws_iam_policy_document.lambda_assume: Read complete after 0s [id=2690255455]
+data.aws_iam_policy_document.backup_assume: Reading...
+data.aws_iam_policy_document.backup_assume: Read complete after 0s [id=1497918837]
+aws_vpc.main: Refreshing state... [id=vpc-8005c811]
+aws_s3_bucket.frontend: Refreshing state... [id=exams-floci-frontend-c08809]
+data.aws_caller_identity.current: Read complete after 1s [id=000000000000]
+aws_kms_key.data: Refreshing state... [id=f627f8c9-6d6a-42b6-811f-af95084b9b81]
+aws_s3_bucket.logs: Refreshing state... [id=exams-floci-logs-c08809]
+aws_apigatewayv2_api.main: Refreshing state... [id=3e525490a7]
+aws_ses_email_identity.sender: Refreshing state... [id=no-reply@exams.example-university.edu]
+aws_cognito_user_pool.main: Refreshing state... [id=us-east-1_31634362b]
+aws_s3_bucket.submissions: Refreshing state... [id=exams-floci-submissions-c08809]
+aws_iam_role.fn["marker"]: Refreshing state... [id=exams-floci-marker-role]
+aws_iam_role.fn["notifier"]: Refreshing state... [id=exams-floci-notifier-role]
+aws_iam_role.fn["api"]: Refreshing state... [id=exams-floci-api-role]
+aws_sns_topic_subscription.ops_email: Refreshing state... [id=arn:aws:sns:us-east-1:000000000000:exams-floci-alarms:1059b707-8843-4581-ad9a-88843142a230]
+aws_route53_record.api_direct[0]: Refreshing state... [id=Z0ZKY2Z0GPQ3F1G_api.exams.example-university.edu_CNAME]
+aws_kms_alias.data: Refreshing state... [id=alias/exams-floci-data]
+aws_dynamodb_table.submissions: Refreshing state... [id=exams-floci-submissions]
+aws_apigatewayv2_stage.default: Refreshing state... [id=$default]
+aws_dynamodb_table.attempts: Refreshing state... [id=exams-floci-attempts]
+aws_secretsmanager_secret.db: Refreshing state... [id=arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-CPXBV6]
+aws_sqs_queue.dlq["marking"]: Refreshing state... [id=http://floci:4566/000000000000/exams-floci-marking-dlq]
+aws_sqs_queue.dlq["notify"]: Refreshing state... [id=http://floci:4566/000000000000/exams-floci-notify-dlq]
+aws_iam_role_policy_attachment.vpc_access["api"]: Refreshing state... [id=exams-floci-api-role-20261115082905336700000002]
+aws_sqs_queue.dlq["uploads"]: Refreshing state... [id=http://floci:4566/000000000000/exams-floci-uploads-dlq]
+aws_iam_role_policy_attachment.vpc_access["marker"]: Refreshing state... [id=exams-floci-marker-role-20261115082905447900000003]
+aws_iam_role_policy_attachment.vpc_access["notifier"]: Refreshing state... [id=exams-floci-notifier-role-20261115082905548400000004]
+aws_cognito_user_pool_client.web: Refreshing state... [id=0494a73cdd7a493c982b551049]
+aws_cognito_user_group.roles["admins"]: Refreshing state... [id=us-east-1_31634362b/admins]
+aws_cognito_user_group.roles["tutors"]: Refreshing state... [id=us-east-1_31634362b/tutors]
+aws_cognito_user_group.roles["students"]: Refreshing state... [id=us-east-1_31634362b/students]
+aws_s3_bucket_server_side_encryption_configuration.frontend: Refreshing state... [id=exams-floci-frontend-c08809]
+aws_s3_object.frontend["index.html"]: Refreshing state... [id=index.html]
+aws_wafv2_web_acl.edge[0]: Refreshing state... [id=8efd20f2-e4ec-45e4-87ed-6161a93be8e3]
+aws_secretsmanager_secret_version.db: Refreshing state... [id=arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-CPXBV6|terraform-2026111508291692190000000a]
+aws_route_table.public: Refreshing state... [id=rtb-b9c4472e]
+aws_security_group.lambda: Refreshing state... [id=sg-be588e612dc8fd566]
+aws_route_table.data: Refreshing state... [id=rtb-93919396]
+aws_route_table.app[0]: Refreshing state... [id=rtb-aacaf812]
+aws_subnet.data[1]: Refreshing state... [id=subnet-eb6f21e6]
+aws_subnet.data[0]: Refreshing state... [id=subnet-f6a2ec04]
+aws_route_table.app[1]: Refreshing state... [id=rtb-368481bc]
+aws_subnet.app[1]: Refreshing state... [id=subnet-16d82426]
+aws_subnet.app[0]: Refreshing state... [id=subnet-942b9ef5]
+aws_internet_gateway.main: Refreshing state... [id=igw-749c8d48]
+aws_subnet.public[0]: Refreshing state... [id=subnet-67aa09f6]
+aws_subnet.public[1]: Refreshing state... [id=subnet-1017c8f7]
+aws_sqs_queue.main["marking"]: Refreshing state... [id=http://floci:4566/000000000000/exams-floci-marking]
+aws_s3_bucket_lifecycle_configuration.logs: Refreshing state... [id=exams-floci-logs-c08809]
+aws_sqs_queue.main["notify"]: Refreshing state... [id=http://floci:4566/000000000000/exams-floci-notify]
+aws_sqs_queue.uploads: Refreshing state... [id=http://floci:4566/000000000000/exams-floci-uploads]
+aws_apigatewayv2_authorizer.cognito: Refreshing state... [id=d8bf6dfe]
+aws_security_group.db: Refreshing state... [id=sg-8cfc25df76dc74ff9]
+data.aws_iam_policy_document.submissions_bucket: Reading...
+aws_s3_bucket_cors_configuration.submissions: Refreshing state... [id=exams-floci-submissions-c08809]
+data.aws_iam_policy_document.submissions_bucket: Read complete after 0s [id=3297484603]
+aws_s3_bucket_versioning.submissions: Refreshing state... [id=exams-floci-submissions-c08809]
+aws_s3_bucket_lifecycle_configuration.submissions: Refreshing state... [id=exams-floci-submissions-c08809]
+aws_s3_bucket_public_access_block.all["frontend"]: Refreshing state... [id=exams-floci-frontend-c08809]
+aws_s3_bucket_public_access_block.all["logs"]: Refreshing state... [id=exams-floci-logs-c08809]
+aws_s3_bucket_public_access_block.all["submissions"]: Refreshing state... [id=exams-floci-submissions-c08809]
+aws_s3_bucket_server_side_encryption_configuration.submissions: Refreshing state... [id=exams-floci-submissions-c08809]
+aws_vpc_endpoint.dynamodb: Refreshing state... [id=vpce-9380a8d18d97e17b3]
+aws_vpc_endpoint.s3: Refreshing state... [id=vpce-7f04e876144190f37]
+aws_db_subnet_group.main: Refreshing state... [id=exams-floci-db-subnets]
+aws_route_table_association.data[1]: Refreshing state... [id=rtbassoc-05b667e8]
+aws_route_table_association.data[0]: Refreshing state... [id=rtbassoc-b914b13f]
+aws_route.public_internet: Refreshing state... [id=r-rtb-b9c4472e1080289494]
+aws_route_table_association.public[0]: Refreshing state... [id=rtbassoc-bdb875ba]
+aws_route_table_association.public[1]: Refreshing state... [id=rtbassoc-eeb69e7b]
+aws_nat_gateway.main[0]: Refreshing state... [id=nat-c59558919f54779b9]
+aws_route_table_association.app[1]: Refreshing state... [id=rtbassoc-177518fd]
+aws_route_table_association.app[0]: Refreshing state... [id=rtbassoc-a4ae12c2]
+aws_nat_gateway.main[1]: Refreshing state... [id=nat-de93b312b2cc73333]
+data.aws_iam_policy_document.uploads_queue: Reading...
+data.aws_iam_policy_document.uploads_queue: Read complete after 0s [id=215260859]
+aws_sqs_queue_policy.uploads: Refreshing state... [id=http://floci:4566/000000000000/exams-floci-uploads]
+aws_route.app_nat[1]: Refreshing state... [id=r-rtb-368481bc1080289494]
+aws_route.app_nat[0]: Refreshing state... [id=r-rtb-aacaf8121080289494]
+aws_s3_bucket_notification.submissions: Refreshing state... [id=exams-floci-submissions-c08809]
+aws_rds_cluster.main[0]: Refreshing state... [id=exams-floci-aurora]
+aws_rds_cluster_instance.main[0]: Refreshing state... [id=exams-floci-aurora-a]
+aws_cloudwatch_metric_alarm.aurora_cpu[0]: Refreshing state... [id=exams-floci-aurora-cpu]
+aws_rds_cluster_instance.main[1]: Refreshing state... [id=exams-floci-aurora-b]
+data.aws_iam_policy_document.fn["api"]: Reading...
+data.aws_iam_policy_document.fn["marker"]: Reading...
+data.aws_iam_policy_document.fn["notifier"]: Reading...
+data.aws_iam_policy_document.fn["notifier"]: Read complete after 0s [id=2899554607]
+data.aws_iam_policy_document.fn["api"]: Read complete after 0s [id=2086976649]
+data.aws_iam_policy_document.fn["marker"]: Read complete after 0s [id=1072042136]
+aws_iam_role_policy.fn["notifier"]: Refreshing state... [id=exams-floci-notifier-role:exams-floci-notifier-policy]
+aws_iam_role_policy.fn["marker"]: Refreshing state... [id=exams-floci-marker-role:exams-floci-marker-policy]
+aws_iam_role_policy.fn["api"]: Refreshing state... [id=exams-floci-api-role:exams-floci-api-policy]
+aws_lambda_function.fn["marker"]: Refreshing state... [id=exams-floci-marker]
+aws_lambda_function.fn["api"]: Refreshing state... [id=exams-floci-api]
+aws_lambda_function.fn["notifier"]: Refreshing state... [id=exams-floci-notifier]
+aws_lambda_alias.api_live: Refreshing state... [id=arn:aws:lambda:us-east-1:000000000000:function:exams-floci-api:live]
+aws_lambda_event_source_mapping.notifier_notify: Refreshing state... [id=9cc55959-4d28-4c5e-966c-ba5190794613]
+aws_lambda_event_source_mapping.marker: Refreshing state... [id=a4640f1f-3443-43d8-8148-e5b8de43bec4]
+aws_cloudwatch_metric_alarm.alarms["lambda-throttles"]: Refreshing state... [id=exams-floci-lambda-throttles]
+aws_cloudwatch_metric_alarm.alarms["api-latency-p95"]: Refreshing state... [id=exams-floci-api-latency-p95]
+aws_cloudwatch_metric_alarm.alarms["marking-backlog-age"]: Refreshing state... [id=exams-floci-marking-backlog-age]
+aws_cloudwatch_metric_alarm.alarms["marking-dlq"]: Refreshing state... [id=exams-floci-marking-dlq]
+aws_cloudwatch_metric_alarm.alarms["api-5xx"]: Refreshing state... [id=exams-floci-api-5xx]
+aws_lambda_event_source_mapping.notifier_uploads: Refreshing state... [id=d9648ec6-4df6-48c9-852f-cb39364434e7]
+aws_lambda_permission.apigw: Refreshing state... [id=AllowHttpApiInvoke]
+aws_apigatewayv2_integration.api: Refreshing state... [id=6b408d16]
+aws_cloudwatch_metric_alarm.alarms["uploads-dlq"]: Refreshing state... [id=exams-floci-uploads-dlq]
+aws_apigatewayv2_route.routes["GET /exams/{examId}"]: Refreshing state... [id=153c5c33]
+aws_apigatewayv2_route.routes["POST /attempts/{attemptId}/submit"]: Refreshing state... [id=1d92a9c3]
+aws_apigatewayv2_route.routes["POST /exams/{examId}/results/release"]: Refreshing state... [id=ac53b789]
+aws_apigatewayv2_route.routes["POST /exams/{examId}/attempts"]: Refreshing state... [id=c7071350]
+aws_apigatewayv2_route.routes["GET /courses/{courseId}/submissions"]: Refreshing state... [id=74f8007a]
+aws_apigatewayv2_route.routes["PUT /attempts/{attemptId}/answers"]: Refreshing state... [id=c958380c]
+aws_apigatewayv2_route.routes["GET /health"]: Refreshing state... [id=1ba6df4f]
+aws_apigatewayv2_route.routes["POST /uploads"]: Refreshing state... [id=5cacadd3]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_apigatewayv2_api.main will be destroyed
+  - resource "aws_apigatewayv2_api" "main" {
+      - api_endpoint                 = "https://3e525490a7.execute-api.us-east-1.amazonaws.com" -> null
+      - api_key_selection_expression = "$request.header.x-api-key" -> null
+      - arn                          = "arn:aws:apigateway:us-east-1::/apis/3e525490a7" -> null
+      - description                  = "Online exams and submissions API" -> null
+      - disable_execute_api_endpoint = false -> null
+      - execution_arn                = "arn:aws:execute-api:us-east-1::3e525490a7" -> null
+      - id                           = "3e525490a7" -> null
+      - name                         = "exams-floci-api" -> null
+      - protocol_type                = "HTTP" -> null
+      - route_selection_expression   = "$request.method $request.path" -> null
+      - tags                         = {} -> null
+      - tags_all                     = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+        # (2 unchanged attributes hidden)
+
+      - cors_configuration {
+          - allow_credentials = false -> null
+          - allow_headers     = [
+              - "authorization",
+              - "content-type",
+            ] -> null
+          - allow_methods     = [
+              - "GET",
+              - "OPTIONS",
+              - "POST",
+              - "PUT",
+            ] -> null
+          - allow_origins     = [
+              - "*",
+            ] -> null
+          - expose_headers    = [] -> null
+          - max_age           = 3600 -> null
+        }
+    }
+
+  # aws_apigatewayv2_authorizer.cognito will be destroyed
+  - resource "aws_apigatewayv2_authorizer" "cognito" {
+      - api_id                            = "3e525490a7" -> null
+      - authorizer_result_ttl_in_seconds  = 0 -> null
+      - authorizer_type                   = "JWT" -> null
+      - enable_simple_responses           = false -> null
+      - id                                = "d8bf6dfe" -> null
+      - identity_sources                  = [
+          - "$request.header.Authorization",
+        ] -> null
+      - name                              = "cognito-jwt" -> null
+        # (3 unchanged attributes hidden)
+
+      - jwt_configuration {
+          - audience = [
+              - "0494a73cdd7a493c982b551049",
+            ] -> null
+          - issuer   = "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_31634362b" -> null
+        }
+    }
+
+  # aws_apigatewayv2_integration.api will be destroyed
+  - resource "aws_apigatewayv2_integration" "api" {
+      - api_id                                    = "3e525490a7" -> null
+      - connection_type                           = "INTERNET" -> null
+      - id                                        = "6b408d16" -> null
+      - integration_type                          = "AWS_PROXY" -> null
+      - integration_uri                           = "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:000000000000:function:exams-floci-api/invocations" -> null
+      - payload_format_version                    = "2.0" -> null
+      - request_parameters                        = {} -> null
+      - request_templates                         = {} -> null
+      - timeout_milliseconds                      = 10000 -> null
+        # (9 unchanged attributes hidden)
+    }
+
+  # aws_apigatewayv2_route.routes["GET /courses/{courseId}/submissions"] will be destroyed
+  - resource "aws_apigatewayv2_route" "routes" {
+      - api_id                              = "3e525490a7" -> null
+      - api_key_required                    = false -> null
+      - authorization_scopes                = [] -> null
+      - authorization_type                  = "NONE" -> null
+      - id                                  = "74f8007a" -> null
+      - request_models                      = {} -> null
+      - route_key                           = "GET /courses/{courseId}/submissions" -> null
+      - target                              = "integrations/6b408d16" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_apigatewayv2_route.routes["GET /exams/{examId}"] will be destroyed
+  - resource "aws_apigatewayv2_route" "routes" {
+      - api_id                              = "3e525490a7" -> null
+      - api_key_required                    = false -> null
+      - authorization_scopes                = [] -> null
+      - authorization_type                  = "NONE" -> null
+      - id                                  = "153c5c33" -> null
+      - request_models                      = {} -> null
+      - route_key                           = "GET /exams/{examId}" -> null
+      - target                              = "integrations/6b408d16" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_apigatewayv2_route.routes["GET /health"] will be destroyed
+  - resource "aws_apigatewayv2_route" "routes" {
+      - api_id                              = "3e525490a7" -> null
+      - api_key_required                    = false -> null
+      - authorization_scopes                = [] -> null
+      - authorization_type                  = "NONE" -> null
+      - id                                  = "1ba6df4f" -> null
+      - request_models                      = {} -> null
+      - route_key                           = "GET /health" -> null
+      - target                              = "integrations/6b408d16" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_apigatewayv2_route.routes["POST /attempts/{attemptId}/submit"] will be destroyed
+  - resource "aws_apigatewayv2_route" "routes" {
+      - api_id                              = "3e525490a7" -> null
+      - api_key_required                    = false -> null
+      - authorization_scopes                = [] -> null
+      - authorization_type                  = "NONE" -> null
+      - id                                  = "1d92a9c3" -> null
+      - request_models                      = {} -> null
+      - route_key                           = "POST /attempts/{attemptId}/submit" -> null
+      - target                              = "integrations/6b408d16" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_apigatewayv2_route.routes["POST /exams/{examId}/attempts"] will be destroyed
+  - resource "aws_apigatewayv2_route" "routes" {
+      - api_id                              = "3e525490a7" -> null
+      - api_key_required                    = false -> null
+      - authorization_scopes                = [] -> null
+      - authorization_type                  = "NONE" -> null
+      - id                                  = "c7071350" -> null
+      - request_models                      = {} -> null
+      - route_key                           = "POST /exams/{examId}/attempts" -> null
+      - target                              = "integrations/6b408d16" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_apigatewayv2_route.routes["POST /exams/{examId}/results/release"] will be destroyed
+  - resource "aws_apigatewayv2_route" "routes" {
+      - api_id                              = "3e525490a7" -> null
+      - api_key_required                    = false -> null
+      - authorization_scopes                = [] -> null
+      - authorization_type                  = "NONE" -> null
+      - id                                  = "ac53b789" -> null
+      - request_models                      = {} -> null
+      - route_key                           = "POST /exams/{examId}/results/release" -> null
+      - target                              = "integrations/6b408d16" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_apigatewayv2_route.routes["POST /uploads"] will be destroyed
+  - resource "aws_apigatewayv2_route" "routes" {
+      - api_id                              = "3e525490a7" -> null
+      - api_key_required                    = false -> null
+      - authorization_scopes                = [] -> null
+      - authorization_type                  = "NONE" -> null
+      - id                                  = "5cacadd3" -> null
+      - request_models                      = {} -> null
+      - route_key                           = "POST /uploads" -> null
+      - target                              = "integrations/6b408d16" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_apigatewayv2_route.routes["PUT /attempts/{attemptId}/answers"] will be destroyed
+  - resource "aws_apigatewayv2_route" "routes" {
+      - api_id                              = "3e525490a7" -> null
+      - api_key_required                    = false -> null
+      - authorization_scopes                = [] -> null
+      - authorization_type                  = "NONE" -> null
+      - id                                  = "c958380c" -> null
+      - request_models                      = {} -> null
+      - route_key                           = "PUT /attempts/{attemptId}/answers" -> null
+      - target                              = "integrations/6b408d16" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_apigatewayv2_stage.default will be destroyed
+  - resource "aws_apigatewayv2_stage" "default" {
+      - api_id                = "3e525490a7" -> null
+      - arn                   = "arn:aws:apigateway:us-east-1::/apis/3e525490a7/stages/$default" -> null
+      - auto_deploy           = true -> null
+      - execution_arn         = "arn:aws:execute-api:us-east-1::3e525490a7/$default" -> null
+      - id                    = "$default" -> null
+      - invoke_url            = "https://3e525490a7.execute-api.us-east-1.amazonaws.com/" -> null
+      - name                  = "$default" -> null
+      - stage_variables       = {} -> null
+      - tags                  = {} -> null
+      - tags_all              = {} -> null
+        # (3 unchanged attributes hidden)
+    }
+
+  # aws_cloudwatch_log_group.api will be destroyed
+  - resource "aws_cloudwatch_log_group" "api" {
+      - arn               = "arn:aws:logs:us-east-1:000000000000:log-group:/aws/apigateway/exams-floci-api" -> null
+      - id                = "/aws/apigateway/exams-floci-api" -> null
+      - name              = "/aws/apigateway/exams-floci-api" -> null
+      - retention_in_days = 90 -> null
+      - skip_destroy      = false -> null
+      - tags              = {} -> null
+      - tags_all          = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+        # (3 unchanged attributes hidden)
+    }
+
+  # aws_cloudwatch_log_group.fn["api"] will be destroyed
+  - resource "aws_cloudwatch_log_group" "fn" {
+      - arn               = "arn:aws:logs:us-east-1:000000000000:log-group:/aws/lambda/exams-floci-api" -> null
+      - id                = "/aws/lambda/exams-floci-api" -> null
+      - name              = "/aws/lambda/exams-floci-api" -> null
+      - retention_in_days = 90 -> null
+      - skip_destroy      = false -> null
+      - tags              = {} -> null
+      - tags_all          = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+        # (3 unchanged attributes hidden)
+    }
+
+  # aws_cloudwatch_log_group.fn["marker"] will be destroyed
+  - resource "aws_cloudwatch_log_group" "fn" {
+      - arn               = "arn:aws:logs:us-east-1:000000000000:log-group:/aws/lambda/exams-floci-marker" -> null
+      - id                = "/aws/lambda/exams-floci-marker" -> null
+      - name              = "/aws/lambda/exams-floci-marker" -> null
+      - retention_in_days = 90 -> null
+      - skip_destroy      = false -> null
+      - tags              = {} -> null
+      - tags_all          = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+        # (3 unchanged attributes hidden)
+    }
+
+  # aws_cloudwatch_log_group.fn["notifier"] will be destroyed
+  - resource "aws_cloudwatch_log_group" "fn" {
+      - arn               = "arn:aws:logs:us-east-1:000000000000:log-group:/aws/lambda/exams-floci-notifier" -> null
+      - id                = "/aws/lambda/exams-floci-notifier" -> null
+      - name              = "/aws/lambda/exams-floci-notifier" -> null
+      - retention_in_days = 90 -> null
+      - skip_destroy      = false -> null
+      - tags              = {} -> null
+      - tags_all          = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+        # (3 unchanged attributes hidden)
+    }
+
+  # aws_cloudwatch_metric_alarm.alarms["api-5xx"] will be destroyed
+  - resource "aws_cloudwatch_metric_alarm" "alarms" {
+      - actions_enabled                       = true -> null
+      - alarm_actions                         = [
+          - "arn:aws:sns:us-east-1:000000000000:exams-floci-alarms",
+        ] -> null
+      - alarm_description                     = "API returning server errors during an exam" -> null
+      - alarm_name                            = "exams-floci-api-5xx" -> null
+      - arn                                   = "arn:aws:cloudwatch:us-east-1:000000000000:alarm:exams-floci-api-5xx" -> null
+      - comparison_operator                   = "GreaterThanOrEqualToThreshold" -> null
+      - datapoints_to_alarm                   = 2 -> null
+      - dimensions                            = {
+          - "ApiId" = "3e525490a7"
+        } -> null
+      - evaluation_periods                    = 2 -> null
+      - id                                    = "exams-floci-api-5xx" -> null
+      - insufficient_data_actions             = [] -> null
+      - metric_name                           = "5xx" -> null
+      - namespace                             = "AWS/ApiGateway" -> null
+      - ok_actions                            = [
+          - "arn:aws:sns:us-east-1:000000000000:exams-floci-alarms",
+        ] -> null
+      - period                                = 60 -> null
+      - statistic                             = "Sum" -> null
+      - tags                                  = {} -> null
+      - tags_all                              = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - threshold                             = 25 -> null
+      - treat_missing_data                    = "notBreaching" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_cloudwatch_metric_alarm.alarms["api-latency-p95"] will be destroyed
+  - resource "aws_cloudwatch_metric_alarm" "alarms" {
+      - actions_enabled                       = true -> null
+      - alarm_actions                         = [
+          - "arn:aws:sns:us-east-1:000000000000:exams-floci-alarms",
+        ] -> null
+      - alarm_description                     = "Autosave slower than 1.5 s at p95" -> null
+      - alarm_name                            = "exams-floci-api-latency-p95" -> null
+      - arn                                   = "arn:aws:cloudwatch:us-east-1:000000000000:alarm:exams-floci-api-latency-p95" -> null
+      - comparison_operator                   = "GreaterThanOrEqualToThreshold" -> null
+      - datapoints_to_alarm                   = 2 -> null
+      - dimensions                            = {
+          - "ApiId" = "3e525490a7"
+        } -> null
+      - evaluation_periods                    = 2 -> null
+      - id                                    = "exams-floci-api-latency-p95" -> null
+      - insufficient_data_actions             = [] -> null
+      - metric_name                           = "Latency" -> null
+      - namespace                             = "AWS/ApiGateway" -> null
+      - ok_actions                            = [
+          - "arn:aws:sns:us-east-1:000000000000:exams-floci-alarms",
+        ] -> null
+      - period                                = 60 -> null
+      - tags                                  = {} -> null
+      - tags_all                              = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - threshold                             = 1500 -> null
+      - treat_missing_data                    = "notBreaching" -> null
+        # (5 unchanged attributes hidden)
+    }
+
+  # aws_cloudwatch_metric_alarm.alarms["lambda-throttles"] will be destroyed
+  - resource "aws_cloudwatch_metric_alarm" "alarms" {
+      - actions_enabled                       = true -> null
+      - alarm_actions                         = [
+          - "arn:aws:sns:us-east-1:000000000000:exams-floci-alarms",
+        ] -> null
+      - alarm_description                     = "API Lambda hit its concurrency limit" -> null
+      - alarm_name                            = "exams-floci-lambda-throttles" -> null
+      - arn                                   = "arn:aws:cloudwatch:us-east-1:000000000000:alarm:exams-floci-lambda-throttles" -> null
+      - comparison_operator                   = "GreaterThanOrEqualToThreshold" -> null
+      - datapoints_to_alarm                   = 2 -> null
+      - dimensions                            = {
+          - "FunctionName" = "exams-floci-api"
+        } -> null
+      - evaluation_periods                    = 2 -> null
+      - id                                    = "exams-floci-lambda-throttles" -> null
+      - insufficient_data_actions             = [] -> null
+      - metric_name                           = "Throttles" -> null
+      - namespace                             = "AWS/Lambda" -> null
+      - ok_actions                            = [
+          - "arn:aws:sns:us-east-1:000000000000:exams-floci-alarms",
+        ] -> null
+      - period                                = 60 -> null
+      - statistic                             = "Sum" -> null
+      - tags                                  = {} -> null
+      - tags_all                              = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - threshold                             = 1 -> null
+      - treat_missing_data                    = "notBreaching" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_cloudwatch_metric_alarm.alarms["marking-backlog-age"] will be destroyed
+  - resource "aws_cloudwatch_metric_alarm" "alarms" {
+      - actions_enabled                       = true -> null
+      - alarm_actions                         = [
+          - "arn:aws:sns:us-east-1:000000000000:exams-floci-alarms",
+        ] -> null
+      - alarm_description                     = "Marking backlog older than 15 minutes" -> null
+      - alarm_name                            = "exams-floci-marking-backlog-age" -> null
+      - arn                                   = "arn:aws:cloudwatch:us-east-1:000000000000:alarm:exams-floci-marking-backlog-age" -> null
+      - comparison_operator                   = "GreaterThanOrEqualToThreshold" -> null
+      - datapoints_to_alarm                   = 2 -> null
+      - dimensions                            = {
+          - "QueueName" = "exams-floci-marking"
+        } -> null
+      - evaluation_periods                    = 2 -> null
+      - id                                    = "exams-floci-marking-backlog-age" -> null
+      - insufficient_data_actions             = [] -> null
+      - metric_name                           = "ApproximateAgeOfOldestMessage" -> null
+      - namespace                             = "AWS/SQS" -> null
+      - ok_actions                            = [
+          - "arn:aws:sns:us-east-1:000000000000:exams-floci-alarms",
+        ] -> null
+      - period                                = 300 -> null
+      - statistic                             = "Maximum" -> null
+      - tags                                  = {} -> null
+      - tags_all                              = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - threshold                             = 900 -> null
+      - treat_missing_data                    = "notBreaching" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_cloudwatch_metric_alarm.alarms["marking-dlq"] will be destroyed
+  - resource "aws_cloudwatch_metric_alarm" "alarms" {
+      - actions_enabled                       = true -> null
+      - alarm_actions                         = [
+          - "arn:aws:sns:us-east-1:000000000000:exams-floci-alarms",
+        ] -> null
+      - alarm_description                     = "Attempts that could not be auto-marked" -> null
+      - alarm_name                            = "exams-floci-marking-dlq" -> null
+      - arn                                   = "arn:aws:cloudwatch:us-east-1:000000000000:alarm:exams-floci-marking-dlq" -> null
+      - comparison_operator                   = "GreaterThanOrEqualToThreshold" -> null
+      - datapoints_to_alarm                   = 2 -> null
+      - dimensions                            = {
+          - "QueueName" = "exams-floci-marking-dlq"
+        } -> null
+      - evaluation_periods                    = 2 -> null
+      - id                                    = "exams-floci-marking-dlq" -> null
+      - insufficient_data_actions             = [] -> null
+      - metric_name                           = "ApproximateNumberOfMessagesVisible" -> null
+      - namespace                             = "AWS/SQS" -> null
+      - ok_actions                            = [
+          - "arn:aws:sns:us-east-1:000000000000:exams-floci-alarms",
+        ] -> null
+      - period                                = 300 -> null
+      - statistic                             = "Maximum" -> null
+      - tags                                  = {} -> null
+      - tags_all                              = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - threshold                             = 1 -> null
+      - treat_missing_data                    = "notBreaching" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_cloudwatch_metric_alarm.alarms["uploads-dlq"] will be destroyed
+  - resource "aws_cloudwatch_metric_alarm" "alarms" {
+      - actions_enabled                       = true -> null
+      - alarm_actions                         = [
+          - "arn:aws:sns:us-east-1:000000000000:exams-floci-alarms",
+        ] -> null
+      - alarm_description                     = "Upload notifications that failed" -> null
+      - alarm_name                            = "exams-floci-uploads-dlq" -> null
+      - arn                                   = "arn:aws:cloudwatch:us-east-1:000000000000:alarm:exams-floci-uploads-dlq" -> null
+      - comparison_operator                   = "GreaterThanOrEqualToThreshold" -> null
+      - datapoints_to_alarm                   = 2 -> null
+      - dimensions                            = {
+          - "QueueName" = "exams-floci-uploads-dlq"
+        } -> null
+      - evaluation_periods                    = 2 -> null
+      - id                                    = "exams-floci-uploads-dlq" -> null
+      - insufficient_data_actions             = [] -> null
+      - metric_name                           = "ApproximateNumberOfMessagesVisible" -> null
+      - namespace                             = "AWS/SQS" -> null
+      - ok_actions                            = [
+          - "arn:aws:sns:us-east-1:000000000000:exams-floci-alarms",
+        ] -> null
+      - period                                = 300 -> null
+      - statistic                             = "Maximum" -> null
+      - tags                                  = {} -> null
+      - tags_all                              = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - threshold                             = 1 -> null
+      - treat_missing_data                    = "notBreaching" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_cloudwatch_metric_alarm.aurora_cpu[0] will be destroyed
+  - resource "aws_cloudwatch_metric_alarm" "aurora_cpu" {
+      - actions_enabled                       = true -> null
+      - alarm_actions                         = [
+          - "arn:aws:sns:us-east-1:000000000000:exams-floci-alarms",
+        ] -> null
+      - alarm_name                            = "exams-floci-aurora-cpu" -> null
+      - arn                                   = "arn:aws:cloudwatch:us-east-1:000000000000:alarm:exams-floci-aurora-cpu" -> null
+      - comparison_operator                   = "GreaterThanOrEqualToThreshold" -> null
+      - datapoints_to_alarm                   = 5 -> null
+      - dimensions                            = {
+          - "DBClusterIdentifier" = "exams-floci-aurora"
+        } -> null
+      - evaluation_periods                    = 5 -> null
+      - id                                    = "exams-floci-aurora-cpu" -> null
+      - insufficient_data_actions             = [] -> null
+      - metric_name                           = "CPUUtilization" -> null
+      - namespace                             = "AWS/RDS" -> null
+      - ok_actions                            = [] -> null
+      - period                                = 60 -> null
+      - statistic                             = "Average" -> null
+      - tags                                  = {} -> null
+      - tags_all                              = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - threshold                             = 80 -> null
+      - treat_missing_data                    = "missing" -> null
+        # (5 unchanged attributes hidden)
+    }
+
+  # aws_cognito_user_group.roles["admins"] will be destroyed
+  - resource "aws_cognito_user_group" "roles" {
+      - description  = "Role-based access group: admins" -> null
+      - id           = "us-east-1_31634362b/admins" -> null
+      - name         = "admins" -> null
+      - precedence   = 0 -> null
+      - user_pool_id = "us-east-1_31634362b" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_cognito_user_group.roles["students"] will be destroyed
+  - resource "aws_cognito_user_group" "roles" {
+      - description  = "Role-based access group: students" -> null
+      - id           = "us-east-1_31634362b/students" -> null
+      - name         = "students" -> null
+      - precedence   = 0 -> null
+      - user_pool_id = "us-east-1_31634362b" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_cognito_user_group.roles["tutors"] will be destroyed
+  - resource "aws_cognito_user_group" "roles" {
+      - description  = "Role-based access group: tutors" -> null
+      - id           = "us-east-1_31634362b/tutors" -> null
+      - name         = "tutors" -> null
+      - precedence   = 0 -> null
+      - user_pool_id = "us-east-1_31634362b" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_cognito_user_pool.main will be destroyed
+  - resource "aws_cognito_user_pool" "main" {
+      - alias_attributes           = [] -> null
+      - arn                        = "arn:aws:cognito-idp:us-east-1:000000000000:userpool/us-east-1_31634362b" -> null
+      - auto_verified_attributes   = [
+          - "email",
+        ] -> null
+      - creation_date              = "2026-11-15T08:35:16Z" -> null
+      - deletion_protection        = "INACTIVE" -> null
+      - endpoint                   = "cognito-idp.us-east-1.amazonaws.com/us-east-1_31634362b" -> null
+      - estimated_number_of_users  = 0 -> null
+      - id                         = "us-east-1_31634362b" -> null
+      - last_modified_date         = "2026-11-15T08:47:57Z" -> null
+      - mfa_configuration          = "OFF" -> null
+      - name                       = "exams-floci-users" -> null
+      - tags                       = {} -> null
+      - tags_all                   = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - user_pool_tier             = "ESSENTIALS" -> null
+      - username_attributes        = [
+          - "email",
+        ] -> null
+        # (6 unchanged attributes hidden)
+
+      - account_recovery_setting {
+          - recovery_mechanism {
+              - name     = "verified_email" -> null
+              - priority = 1 -> null
+            }
+        }
+
+      - admin_create_user_config {
+          - allow_admin_create_user_only = true -> null
+        }
+
+      - device_configuration {
+          - challenge_required_on_new_device      = false -> null
+          - device_only_remembered_on_user_prompt = false -> null
+        }
+
+      - email_configuration {
+          - email_sending_account  = "COGNITO_DEFAULT" -> null
+            # (4 unchanged attributes hidden)
+        }
+
+      - password_policy {
+          - minimum_length                   = 12 -> null
+          - password_history_size            = 0 -> null
+          - require_lowercase                = true -> null
+          - require_numbers                  = true -> null
+          - require_symbols                  = false -> null
+          - require_uppercase                = true -> null
+          - temporary_password_validity_days = 3 -> null
+        }
+
+      - sms_configuration {}
+
+      - user_pool_add_ons {
+            # (1 unchanged attribute hidden)
+        }
+
+      - username_configuration {
+          - case_sensitive = false -> null
+        }
+
+      - verification_message_template {
+            # (6 unchanged attributes hidden)
+        }
+    }
+
+  # aws_cognito_user_pool_client.web will be destroyed
+  - resource "aws_cognito_user_pool_client" "web" {
+      - access_token_validity                = 4 -> null
+      - allowed_oauth_flows                  = [] -> null
+      - allowed_oauth_flows_user_pool_client = false -> null
+      - allowed_oauth_scopes                 = [] -> null
+      - callback_urls                        = [] -> null
+      - enable_token_revocation              = true -> null
+      - explicit_auth_flows                  = [
+          - "ALLOW_REFRESH_TOKEN_AUTH",
+          - "ALLOW_USER_PASSWORD_AUTH",
+          - "ALLOW_USER_SRP_AUTH",
+        ] -> null
+      - generate_secret                      = false -> null
+      - id                                   = "0494a73cdd7a493c982b551049" -> null
+      - id_token_validity                    = 4 -> null
+      - logout_urls                          = [] -> null
+      - name                                 = "exams-floci-web" -> null
+      - prevent_user_existence_errors        = "ENABLED" -> null
+      - read_attributes                      = [] -> null
+      - refresh_token_validity               = 1 -> null
+      - supported_identity_providers         = [
+          - "COGNITO",
+        ] -> null
+      - user_pool_id                         = "us-east-1_31634362b" -> null
+      - write_attributes                     = [] -> null
+        # (2 unchanged attributes hidden)
+
+      - token_validity_units {
+          - access_token  = "hours" -> null
+          - id_token      = "hours" -> null
+          - refresh_token = "days" -> null
+        }
+    }
+
+  # aws_db_subnet_group.main will be destroyed
+  - resource "aws_db_subnet_group" "main" {
+      - arn                     = "arn:aws:rds:us-east-1:000000000000:subgrp:exams-floci-db-subnets" -> null
+      - description             = "Managed by Terraform" -> null
+      - id                      = "exams-floci-db-subnets" -> null
+      - name                    = "exams-floci-db-subnets" -> null
+      - subnet_ids              = [
+          - "subnet-eb6f21e6",
+          - "subnet-f6a2ec04",
+        ] -> null
+      - supported_network_types = [] -> null
+      - tags                    = {} -> null
+      - tags_all                = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - vpc_id                  = "vpc-8005c811" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_dynamodb_table.attempts will be destroyed
+  - resource "aws_dynamodb_table" "attempts" {
+      - arn                         = "arn:aws:dynamodb:us-east-1:000000000000:table/exams-floci-attempts" -> null
+      - billing_mode                = "PAY_PER_REQUEST" -> null
+      - deletion_protection_enabled = false -> null
+      - hash_key                    = "attemptId" -> null
+      - id                          = "exams-floci-attempts" -> null
+      - name                        = "exams-floci-attempts" -> null
+      - range_key                   = "questionId" -> null
+      - read_capacity               = 0 -> null
+      - stream_enabled              = false -> null
+      - table_class                 = "STANDARD" -> null
+      - tags                        = {} -> null
+      - tags_all                    = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - write_capacity              = 0 -> null
+        # (3 unchanged attributes hidden)
+
+      - attribute {
+          - name = "attemptId" -> null
+          - type = "S" -> null
+        }
+      - attribute {
+          - name = "questionId" -> null
+          - type = "S" -> null
+        }
+
+      - point_in_time_recovery {
+          - enabled                 = true -> null
+          - recovery_period_in_days = 35 -> null
+        }
+
+      - server_side_encryption {
+          - enabled     = true -> null
+          - kms_key_arn = "arn:aws:kms:us-east-1:000000000000:key/aws-managed-dynamodb" -> null
+        }
+
+      - ttl {
+          - enabled        = false -> null
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+  # aws_dynamodb_table.submissions will be destroyed
+  - resource "aws_dynamodb_table" "submissions" {
+      - arn                         = "arn:aws:dynamodb:us-east-1:000000000000:table/exams-floci-submissions" -> null
+      - billing_mode                = "PAY_PER_REQUEST" -> null
+      - deletion_protection_enabled = false -> null
+      - hash_key                    = "submissionId" -> null
+      - id                          = "exams-floci-submissions" -> null
+      - name                        = "exams-floci-submissions" -> null
+      - read_capacity               = 0 -> null
+      - stream_enabled              = false -> null
+      - table_class                 = "STANDARD" -> null
+      - tags                        = {} -> null
+      - tags_all                    = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - write_capacity              = 0 -> null
+        # (3 unchanged attributes hidden)
+
+      - attribute {
+          - name = "courseId" -> null
+          - type = "S" -> null
+        }
+      - attribute {
+          - name = "submissionId" -> null
+          - type = "S" -> null
+        }
+
+      - global_secondary_index {
+          - hash_key           = "courseId" -> null
+          - name               = "byCourse" -> null
+          - non_key_attributes = [] -> null
+          - projection_type    = "ALL" -> null
+          - read_capacity      = 0 -> null
+          - write_capacity     = 0 -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - point_in_time_recovery {
+          - enabled                 = true -> null
+          - recovery_period_in_days = 35 -> null
+        }
+
+      - server_side_encryption {
+          - enabled     = true -> null
+          - kms_key_arn = "arn:aws:kms:us-east-1:000000000000:key/aws-managed-dynamodb" -> null
+        }
+
+      - ttl {
+          - enabled        = false -> null
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+  # aws_eip.nat[0] will be destroyed
+  - resource "aws_eip" "nat" {
+      - allocation_id            = "eipalloc-e7028529fce05a3fb" -> null
+      - arn                      = "arn:aws:ec2:us-east-1::elastic-ip/eipalloc-e7028529fce05a3fb" -> null
+      - domain                   = "vpc" -> null
+      - id                       = "eipalloc-e7028529fce05a3fb" -> null
+      - public_dns               = "ec2-54-101-29-117.compute-1.amazonaws.com" -> null
+      - public_ip                = "54.101.29.117" -> null
+      - tags                     = {
+          - "Name" = "exams-floci-nat-eip-0"
+        } -> null
+      - tags_all                 = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Name"        = "exams-floci-nat-eip-0"
+          - "Project"     = "exams"
+        } -> null
+      - vpc                      = true -> null
+        # (10 unchanged attributes hidden)
+    }
+
+  # aws_eip.nat[1] will be destroyed
+  - resource "aws_eip" "nat" {
+      - allocation_id            = "eipalloc-8d04dba68e6b96b74" -> null
+      - arn                      = "arn:aws:ec2:us-east-1::elastic-ip/eipalloc-8d04dba68e6b96b74" -> null
+      - domain                   = "vpc" -> null
+      - id                       = "eipalloc-8d04dba68e6b96b74" -> null
+      - public_dns               = "ec2-54-217-176-136.compute-1.amazonaws.com" -> null
+      - public_ip                = "54.217.176.136" -> null
+      - tags                     = {
+          - "Name" = "exams-floci-nat-eip-1"
+        } -> null
+      - tags_all                 = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Name"        = "exams-floci-nat-eip-1"
+          - "Project"     = "exams"
+        } -> null
+      - vpc                      = true -> null
+        # (10 unchanged attributes hidden)
+    }
+
+  # aws_iam_role.fn["api"] will be destroyed
+  - resource "aws_iam_role" "fn" {
+      - arn                   = "arn:aws:iam::000000000000:role/exams-floci-api-role" -> null
+      - assume_role_policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "sts:AssumeRole"
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "lambda.amazonaws.com"
+                        }
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - create_date           = "2026-11-15T08:29:04Z" -> null
+      - force_detach_policies = false -> null
+      - id                    = "exams-floci-api-role" -> null
+      - managed_policy_arns   = [
+          - "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
+        ] -> null
+      - max_session_duration  = 3600 -> null
+      - name                  = "exams-floci-api-role" -> null
+      - path                  = "/" -> null
+      - tags                  = {} -> null
+      - tags_all              = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - unique_id             = "AROAL2NQXF1QEJX8YJKQ" -> null
+        # (3 unchanged attributes hidden)
+
+      - inline_policy {
+          - name   = "exams-floci-api-policy" -> null
+          - policy = jsonencode(
+                {
+                  - Statement = [
+                      - {
+                          - Action   = [
+                              - "rds-data:ExecuteStatement",
+                              - "rds-data:BatchExecuteStatement",
+                            ]
+                          - Effect   = "Allow"
+                          - Resource = "arn:aws:rds:us-east-1:000000000000:cluster:exams-floci-aurora"
+                        },
+                      - {
+                          - Action   = "secretsmanager:GetSecretValue"
+                          - Effect   = "Allow"
+                          - Resource = "arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-CPXBV6"
+                        },
+                      - {
+                          - Action   = [
+                              - "kms:GenerateDataKey",
+                              - "kms:Decrypt",
+                            ]
+                          - Effect   = "Allow"
+                          - Resource = "arn:aws:kms:us-east-1:000000000000:key/f627f8c9-6d6a-42b6-811f-af95084b9b81"
+                        },
+                      - {
+                          - Action   = [
+                              - "dynamodb:UpdateItem",
+                              - "dynamodb:Query",
+                              - "dynamodb:PutItem",
+                              - "dynamodb:GetItem",
+                            ]
+                          - Effect   = "Allow"
+                          - Resource = "arn:aws:dynamodb:us-east-1:000000000000:table/exams-floci-attempts"
+                        },
+                      - {
+                          - Action   = "dynamodb:Query"
+                          - Effect   = "Allow"
+                          - Resource = [
+                              - "arn:aws:dynamodb:us-east-1:000000000000:table/exams-floci-submissions/index/*",
+                              - "arn:aws:dynamodb:us-east-1:000000000000:table/exams-floci-submissions",
+                            ]
+                        },
+                      - {
+                          - Action   = "s3:PutObject"
+                          - Effect   = "Allow"
+                          - Resource = "arn:aws:s3:::exams-floci-submissions-c08809/submissions/*"
+                        },
+                      - {
+                          - Action   = "sqs:SendMessage"
+                          - Effect   = "Allow"
+                          - Resource = [
+                              - "arn:aws:sqs:us-east-1:000000000000:exams-floci-notify",
+                              - "arn:aws:sqs:us-east-1:000000000000:exams-floci-marking",
+                            ]
+                        },
+                    ]
+                  - Version   = "2012-10-17"
+                }
+            ) -> null
+        }
+    }
+
+  # aws_iam_role.fn["marker"] will be destroyed
+  - resource "aws_iam_role" "fn" {
+      - arn                   = "arn:aws:iam::000000000000:role/exams-floci-marker-role" -> null
+      - assume_role_policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "sts:AssumeRole"
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "lambda.amazonaws.com"
+                        }
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - create_date           = "2026-11-15T08:29:03Z" -> null
+      - force_detach_policies = false -> null
+      - id                    = "exams-floci-marker-role" -> null
+      - managed_policy_arns   = [
+          - "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
+        ] -> null
+      - max_session_duration  = 3600 -> null
+      - name                  = "exams-floci-marker-role" -> null
+      - path                  = "/" -> null
+      - tags                  = {} -> null
+      - tags_all              = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - unique_id             = "AROAB60X84OMMZMHFEW0" -> null
+        # (3 unchanged attributes hidden)
+
+      - inline_policy {
+          - name   = "exams-floci-marker-policy" -> null
+          - policy = jsonencode(
+                {
+                  - Statement = [
+                      - {
+                          - Action   = [
+                              - "rds-data:ExecuteStatement",
+                              - "rds-data:BatchExecuteStatement",
+                            ]
+                          - Effect   = "Allow"
+                          - Resource = "arn:aws:rds:us-east-1:000000000000:cluster:exams-floci-aurora"
+                        },
+                      - {
+                          - Action   = "secretsmanager:GetSecretValue"
+                          - Effect   = "Allow"
+                          - Resource = "arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-CPXBV6"
+                        },
+                      - {
+                          - Action   = [
+                              - "kms:GenerateDataKey",
+                              - "kms:Decrypt",
+                            ]
+                          - Effect   = "Allow"
+                          - Resource = "arn:aws:kms:us-east-1:000000000000:key/f627f8c9-6d6a-42b6-811f-af95084b9b81"
+                        },
+                      - {
+                          - Action   = "dynamodb:Query"
+                          - Effect   = "Allow"
+                          - Resource = "arn:aws:dynamodb:us-east-1:000000000000:table/exams-floci-attempts"
+                        },
+                      - {
+                          - Action   = [
+                              - "sqs:ReceiveMessage",
+                              - "sqs:GetQueueAttributes",
+                              - "sqs:DeleteMessage",
+                            ]
+                          - Effect   = "Allow"
+                          - Resource = "arn:aws:sqs:us-east-1:000000000000:exams-floci-marking"
+                        },
+                    ]
+                  - Version   = "2012-10-17"
+                }
+            ) -> null
+        }
+    }
+
+  # aws_iam_role.fn["notifier"] will be destroyed
+  - resource "aws_iam_role" "fn" {
+      - arn                   = "arn:aws:iam::000000000000:role/exams-floci-notifier-role" -> null
+      - assume_role_policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "sts:AssumeRole"
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "lambda.amazonaws.com"
+                        }
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - create_date           = "2026-11-15T08:29:04Z" -> null
+      - force_detach_policies = false -> null
+      - id                    = "exams-floci-notifier-role" -> null
+      - managed_policy_arns   = [
+          - "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
+        ] -> null
+      - max_session_duration  = 3600 -> null
+      - name                  = "exams-floci-notifier-role" -> null
+      - path                  = "/" -> null
+      - tags                  = {} -> null
+      - tags_all              = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - unique_id             = "AROAKL5DJO4UM8A5IHSF" -> null
+        # (3 unchanged attributes hidden)
+
+      - inline_policy {
+          - name   = "exams-floci-notifier-policy" -> null
+          - policy = jsonencode(
+                {
+                  - Statement = [
+                      - {
+                          - Action   = [
+                              - "rds-data:ExecuteStatement",
+                              - "rds-data:BatchExecuteStatement",
+                            ]
+                          - Effect   = "Allow"
+                          - Resource = "arn:aws:rds:us-east-1:000000000000:cluster:exams-floci-aurora"
+                        },
+                      - {
+                          - Action   = "secretsmanager:GetSecretValue"
+                          - Effect   = "Allow"
+                          - Resource = "arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-CPXBV6"
+                        },
+                      - {
+                          - Action   = [
+                              - "kms:GenerateDataKey",
+                              - "kms:Decrypt",
+                            ]
+                          - Effect   = "Allow"
+                          - Resource = "arn:aws:kms:us-east-1:000000000000:key/f627f8c9-6d6a-42b6-811f-af95084b9b81"
+                        },
+                      - {
+                          - Action   = "dynamodb:PutItem"
+                          - Effect   = "Allow"
+                          - Resource = "arn:aws:dynamodb:us-east-1:000000000000:table/exams-floci-submissions"
+                        },
+                      - {
+                          - Action   = [
+                              - "s3:GetObjectAttributes",
+                              - "s3:GetObject",
+                            ]
+                          - Effect   = "Allow"
+                          - Resource = "arn:aws:s3:::exams-floci-submissions-c08809/submissions/*"
+                        },
+                      - {
+                          - Action   = [
+                              - "sqs:ReceiveMessage",
+                              - "sqs:GetQueueAttributes",
+                              - "sqs:DeleteMessage",
+                            ]
+                          - Effect   = "Allow"
+                          - Resource = [
+                              - "arn:aws:sqs:us-east-1:000000000000:exams-floci-uploads",
+                              - "arn:aws:sqs:us-east-1:000000000000:exams-floci-notify",
+                            ]
+                        },
+                      - {
+                          - Action   = "ses:SendEmail"
+                          - Effect   = "Allow"
+                          - Resource = "*"
+                        },
+                    ]
+                  - Version   = "2012-10-17"
+                }
+            ) -> null
+        }
+    }
+
+  # aws_iam_role_policy.fn["api"] will be destroyed
+  - resource "aws_iam_role_policy" "fn" {
+      - id          = "exams-floci-api-role:exams-floci-api-policy" -> null
+      - name        = "exams-floci-api-policy" -> null
+      - policy      = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action   = [
+                          - "rds-data:ExecuteStatement",
+                          - "rds-data:BatchExecuteStatement",
+                        ]
+                      - Effect   = "Allow"
+                      - Resource = "arn:aws:rds:us-east-1:000000000000:cluster:exams-floci-aurora"
+                    },
+                  - {
+                      - Action   = "secretsmanager:GetSecretValue"
+                      - Effect   = "Allow"
+                      - Resource = "arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-CPXBV6"
+                    },
+                  - {
+                      - Action   = [
+                          - "kms:GenerateDataKey",
+                          - "kms:Decrypt",
+                        ]
+                      - Effect   = "Allow"
+                      - Resource = "arn:aws:kms:us-east-1:000000000000:key/f627f8c9-6d6a-42b6-811f-af95084b9b81"
+                    },
+                  - {
+                      - Action   = [
+                          - "dynamodb:UpdateItem",
+                          - "dynamodb:Query",
+                          - "dynamodb:PutItem",
+                          - "dynamodb:GetItem",
+                        ]
+                      - Effect   = "Allow"
+                      - Resource = "arn:aws:dynamodb:us-east-1:000000000000:table/exams-floci-attempts"
+                    },
+                  - {
+                      - Action   = "dynamodb:Query"
+                      - Effect   = "Allow"
+                      - Resource = [
+                          - "arn:aws:dynamodb:us-east-1:000000000000:table/exams-floci-submissions/index/*",
+                          - "arn:aws:dynamodb:us-east-1:000000000000:table/exams-floci-submissions",
+                        ]
+                    },
+                  - {
+                      - Action   = "s3:PutObject"
+                      - Effect   = "Allow"
+                      - Resource = "arn:aws:s3:::exams-floci-submissions-c08809/submissions/*"
+                    },
+                  - {
+                      - Action   = "sqs:SendMessage"
+                      - Effect   = "Allow"
+                      - Resource = [
+                          - "arn:aws:sqs:us-east-1:000000000000:exams-floci-notify",
+                          - "arn:aws:sqs:us-east-1:000000000000:exams-floci-marking",
+                        ]
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - role        = "exams-floci-api-role" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_iam_role_policy.fn["marker"] will be destroyed
+  - resource "aws_iam_role_policy" "fn" {
+      - id          = "exams-floci-marker-role:exams-floci-marker-policy" -> null
+      - name        = "exams-floci-marker-policy" -> null
+      - policy      = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action   = [
+                          - "rds-data:ExecuteStatement",
+                          - "rds-data:BatchExecuteStatement",
+                        ]
+                      - Effect   = "Allow"
+                      - Resource = "arn:aws:rds:us-east-1:000000000000:cluster:exams-floci-aurora"
+                    },
+                  - {
+                      - Action   = "secretsmanager:GetSecretValue"
+                      - Effect   = "Allow"
+                      - Resource = "arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-CPXBV6"
+                    },
+                  - {
+                      - Action   = [
+                          - "kms:GenerateDataKey",
+                          - "kms:Decrypt",
+                        ]
+                      - Effect   = "Allow"
+                      - Resource = "arn:aws:kms:us-east-1:000000000000:key/f627f8c9-6d6a-42b6-811f-af95084b9b81"
+                    },
+                  - {
+                      - Action   = "dynamodb:Query"
+                      - Effect   = "Allow"
+                      - Resource = "arn:aws:dynamodb:us-east-1:000000000000:table/exams-floci-attempts"
+                    },
+                  - {
+                      - Action   = [
+                          - "sqs:ReceiveMessage",
+                          - "sqs:GetQueueAttributes",
+                          - "sqs:DeleteMessage",
+                        ]
+                      - Effect   = "Allow"
+                      - Resource = "arn:aws:sqs:us-east-1:000000000000:exams-floci-marking"
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - role        = "exams-floci-marker-role" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_iam_role_policy.fn["notifier"] will be destroyed
+  - resource "aws_iam_role_policy" "fn" {
+      - id          = "exams-floci-notifier-role:exams-floci-notifier-policy" -> null
+      - name        = "exams-floci-notifier-policy" -> null
+      - policy      = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action   = [
+                          - "rds-data:ExecuteStatement",
+                          - "rds-data:BatchExecuteStatement",
+                        ]
+                      - Effect   = "Allow"
+                      - Resource = "arn:aws:rds:us-east-1:000000000000:cluster:exams-floci-aurora"
+                    },
+                  - {
+                      - Action   = "secretsmanager:GetSecretValue"
+                      - Effect   = "Allow"
+                      - Resource = "arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-CPXBV6"
+                    },
+                  - {
+                      - Action   = [
+                          - "kms:GenerateDataKey",
+                          - "kms:Decrypt",
+                        ]
+                      - Effect   = "Allow"
+                      - Resource = "arn:aws:kms:us-east-1:000000000000:key/f627f8c9-6d6a-42b6-811f-af95084b9b81"
+                    },
+                  - {
+                      - Action   = "dynamodb:PutItem"
+                      - Effect   = "Allow"
+                      - Resource = "arn:aws:dynamodb:us-east-1:000000000000:table/exams-floci-submissions"
+                    },
+                  - {
+                      - Action   = [
+                          - "s3:GetObjectAttributes",
+                          - "s3:GetObject",
+                        ]
+                      - Effect   = "Allow"
+                      - Resource = "arn:aws:s3:::exams-floci-submissions-c08809/submissions/*"
+                    },
+                  - {
+                      - Action   = [
+                          - "sqs:ReceiveMessage",
+                          - "sqs:GetQueueAttributes",
+                          - "sqs:DeleteMessage",
+                        ]
+                      - Effect   = "Allow"
+                      - Resource = [
+                          - "arn:aws:sqs:us-east-1:000000000000:exams-floci-uploads",
+                          - "arn:aws:sqs:us-east-1:000000000000:exams-floci-notify",
+                        ]
+                    },
+                  - {
+                      - Action   = "ses:SendEmail"
+                      - Effect   = "Allow"
+                      - Resource = "*"
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - role        = "exams-floci-notifier-role" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_iam_role_policy_attachment.vpc_access["api"] will be destroyed
+  - resource "aws_iam_role_policy_attachment" "vpc_access" {
+      - id         = "exams-floci-api-role-20261115082905336700000002" -> null
+      - policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole" -> null
+      - role       = "exams-floci-api-role" -> null
+    }
+
+  # aws_iam_role_policy_attachment.vpc_access["marker"] will be destroyed
+  - resource "aws_iam_role_policy_attachment" "vpc_access" {
+      - id         = "exams-floci-marker-role-20261115082905447900000003" -> null
+      - policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole" -> null
+      - role       = "exams-floci-marker-role" -> null
+    }
+
+  # aws_iam_role_policy_attachment.vpc_access["notifier"] will be destroyed
+  - resource "aws_iam_role_policy_attachment" "vpc_access" {
+      - id         = "exams-floci-notifier-role-20261115082905548400000004" -> null
+      - policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole" -> null
+      - role       = "exams-floci-notifier-role" -> null
+    }
+
+  # aws_internet_gateway.main will be destroyed
+  - resource "aws_internet_gateway" "main" {
+      - arn      = "arn:aws:ec2:us-east-1:000000000000:internet-gateway/igw-749c8d48" -> null
+      - id       = "igw-749c8d48" -> null
+      - owner_id = "000000000000" -> null
+      - tags     = {
+          - "Name" = "exams-floci-igw"
+        } -> null
+      - tags_all = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Name"        = "exams-floci-igw"
+          - "Project"     = "exams"
+        } -> null
+      - vpc_id   = "vpc-8005c811" -> null
+    }
+
+  # aws_kms_alias.data will be destroyed
+  - resource "aws_kms_alias" "data" {
+      - arn            = "arn:aws:kms:us-east-1:000000000000:alias/exams-floci-data" -> null
+      - id             = "alias/exams-floci-data" -> null
+      - name           = "alias/exams-floci-data" -> null
+      - target_key_arn = "arn:aws:kms:us-east-1:000000000000:key/f627f8c9-6d6a-42b6-811f-af95084b9b81" -> null
+      - target_key_id  = "f627f8c9-6d6a-42b6-811f-af95084b9b81" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_kms_key.data will be destroyed
+  - resource "aws_kms_key" "data" {
+      - arn                                = "arn:aws:kms:us-east-1:000000000000:key/f627f8c9-6d6a-42b6-811f-af95084b9b81" -> null
+      - bypass_policy_lockout_safety_check = false -> null
+      - customer_master_key_spec           = "SYMMETRIC_DEFAULT" -> null
+      - deletion_window_in_days            = 30 -> null
+      - description                        = "exams-floci data key (RDS, DynamoDB, S3, SQS, Secrets, logs)" -> null
+      - enable_key_rotation                = true -> null
+      - id                                 = "f627f8c9-6d6a-42b6-811f-af95084b9b81" -> null
+      - is_enabled                         = true -> null
+      - key_id                             = "f627f8c9-6d6a-42b6-811f-af95084b9b81" -> null
+      - key_usage                          = "ENCRYPT_DECRYPT" -> null
+      - multi_region                       = false -> null
+      - policy                             = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "kms:*"
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - AWS = "arn:aws:iam::000000000000:root"
+                        }
+                      - Resource  = "*"
+                      - Sid       = "Enable IAM User Permissions"
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - rotation_period_in_days            = 0 -> null
+      - tags                               = {} -> null
+      - tags_all                           = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+        # (2 unchanged attributes hidden)
+    }
+
+  # aws_lambda_alias.api_live will be destroyed
+  - resource "aws_lambda_alias" "api_live" {
+      - arn              = "arn:aws:lambda:us-east-1:000000000000:function:exams-floci-api:live" -> null
+      - function_name    = "exams-floci-api" -> null
+      - function_version = "2" -> null
+      - id               = "arn:aws:lambda:us-east-1:000000000000:function:exams-floci-api:live" -> null
+      - invoke_arn       = "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:000000000000:function:exams-floci-api:live/invocations" -> null
+      - name             = "live" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_lambda_event_source_mapping.marker will be destroyed
+  - resource "aws_lambda_event_source_mapping" "marker" {
+      - batch_size                         = 10 -> null
+      - bisect_batch_on_function_error     = false -> null
+      - enabled                            = true -> null
+      - event_source_arn                   = "arn:aws:sqs:us-east-1:000000000000:exams-floci-marking" -> null
+      - function_arn                       = "arn:aws:lambda:us-east-1:000000000000:function:exams-floci-marker" -> null
+      - function_name                      = "arn:aws:lambda:us-east-1:000000000000:function:exams-floci-marker" -> null
+      - function_response_types            = [
+          - "ReportBatchItemFailures",
+        ] -> null
+      - id                                 = "a4640f1f-3443-43d8-8148-e5b8de43bec4" -> null
+      - last_modified                      = "2026-11-15T08:48:33Z" -> null
+      - maximum_batching_window_in_seconds = 0 -> null
+      - maximum_record_age_in_seconds      = 0 -> null
+      - maximum_retry_attempts             = 0 -> null
+      - parallelization_factor             = 0 -> null
+      - queues                             = [] -> null
+      - state                              = "Enabled" -> null
+      - tags                               = {} -> null
+      - tags_all                           = {} -> null
+      - topics                             = [] -> null
+      - tumbling_window_in_seconds         = 0 -> null
+      - uuid                               = "a4640f1f-3443-43d8-8148-e5b8de43bec4" -> null
+        # (6 unchanged attributes hidden)
+    }
+
+  # aws_lambda_event_source_mapping.notifier_notify will be destroyed
+  - resource "aws_lambda_event_source_mapping" "notifier_notify" {
+      - batch_size                         = 10 -> null
+      - bisect_batch_on_function_error     = false -> null
+      - enabled                            = true -> null
+      - event_source_arn                   = "arn:aws:sqs:us-east-1:000000000000:exams-floci-notify" -> null
+      - function_arn                       = "arn:aws:lambda:us-east-1:000000000000:function:exams-floci-notifier" -> null
+      - function_name                      = "arn:aws:lambda:us-east-1:000000000000:function:exams-floci-notifier" -> null
+      - function_response_types            = [
+          - "ReportBatchItemFailures",
+        ] -> null
+      - id                                 = "9cc55959-4d28-4c5e-966c-ba5190794613" -> null
+      - last_modified                      = "2026-11-15T08:36:53Z" -> null
+      - maximum_batching_window_in_seconds = 0 -> null
+      - maximum_record_age_in_seconds      = 0 -> null
+      - maximum_retry_attempts             = 0 -> null
+      - parallelization_factor             = 0 -> null
+      - queues                             = [] -> null
+      - state                              = "Enabled" -> null
+      - tags                               = {} -> null
+      - tags_all                           = {} -> null
+      - topics                             = [] -> null
+      - tumbling_window_in_seconds         = 0 -> null
+      - uuid                               = "9cc55959-4d28-4c5e-966c-ba5190794613" -> null
+        # (6 unchanged attributes hidden)
+    }
+
+  # aws_lambda_event_source_mapping.notifier_uploads will be destroyed
+  - resource "aws_lambda_event_source_mapping" "notifier_uploads" {
+      - batch_size                         = 10 -> null
+      - bisect_batch_on_function_error     = false -> null
+      - enabled                            = true -> null
+      - event_source_arn                   = "arn:aws:sqs:us-east-1:000000000000:exams-floci-uploads" -> null
+      - function_arn                       = "arn:aws:lambda:us-east-1:000000000000:function:exams-floci-notifier" -> null
+      - function_name                      = "arn:aws:lambda:us-east-1:000000000000:function:exams-floci-notifier" -> null
+      - function_response_types            = [
+          - "ReportBatchItemFailures",
+        ] -> null
+      - id                                 = "d9648ec6-4df6-48c9-852f-cb39364434e7" -> null
+      - last_modified                      = "2026-11-15T08:36:53Z" -> null
+      - maximum_batching_window_in_seconds = 0 -> null
+      - maximum_record_age_in_seconds      = 0 -> null
+      - maximum_retry_attempts             = 0 -> null
+      - parallelization_factor             = 0 -> null
+      - queues                             = [] -> null
+      - state                              = "Enabled" -> null
+      - tags                               = {} -> null
+      - tags_all                           = {} -> null
+      - topics                             = [] -> null
+      - tumbling_window_in_seconds         = 0 -> null
+      - uuid                               = "d9648ec6-4df6-48c9-852f-cb39364434e7" -> null
+        # (6 unchanged attributes hidden)
+    }
+
+  # aws_lambda_function.fn["api"] will be destroyed
+  - resource "aws_lambda_function" "fn" {
+      - architectures                  = [
+          - "arm64",
+        ] -> null
+      - arn                            = "arn:aws:lambda:us-east-1:000000000000:function:exams-floci-api" -> null
+      - code_sha256                    = "gB3T2OWP33X6eDhKWHlueMUBfyosjENUXwvGlj8sAB0=" -> null
+      - filename                       = "./.build/api.zip" -> null
+      - function_name                  = "exams-floci-api" -> null
+      - handler                        = "index.handler" -> null
+      - id                             = "exams-floci-api" -> null
+      - invoke_arn                     = "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:000000000000:function:exams-floci-api/invocations" -> null
+      - last_modified                  = "2026-11-15T08:48:28.059+0000" -> null
+      - layers                         = [] -> null
+      - memory_size                    = 512 -> null
+      - package_type                   = "Zip" -> null
+      - publish                        = true -> null
+      - qualified_arn                  = "arn:aws:lambda:us-east-1:000000000000:function:exams-floci-api:2" -> null
+      - qualified_invoke_arn           = "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:000000000000:function:exams-floci-api:2/invocations" -> null
+      - reserved_concurrent_executions = -1 -> null
+      - role                           = "arn:aws:iam::000000000000:role/exams-floci-api-role" -> null
+      - runtime                        = "nodejs20.x" -> null
+      - skip_destroy                   = false -> null
+      - source_code_hash               = "gB3T2OWP33X6eDhKWHlueMUBfyosjENUXwvGlj8sAB0=" -> null
+      - source_code_size               = 6122 -> null
+      - tags                           = {} -> null
+      - tags_all                       = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - timeout                        = 10 -> null
+      - version                        = "2" -> null
+        # (6 unchanged attributes hidden)
+
+      - environment {
+          - variables = {
+              - "ATTEMPTS_TABLE"    = "exams-floci-attempts"
+              - "AWS_ENDPOINT_URL"  = "http://floci:4566"
+              - "DB_CLUSTER_ARN"    = "arn:aws:rds:us-east-1:000000000000:cluster:exams-floci-aurora"
+              - "DB_NAME"           = "exams"
+              - "DB_SECRET_ARN"     = "arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-CPXBV6"
+              - "MARKING_QUEUE_URL" = "http://floci:4566/000000000000/exams-floci-marking"
+              - "MAX_UPLOAD_BYTES"  = "52428800"
+              - "NOTIFY_QUEUE_URL"  = "http://floci:4566/000000000000/exams-floci-notify"
+              - "SENDER_EMAIL"      = "no-reply@exams.example-university.edu"
+              - "SUBMISSIONS_BKT"   = "exams-floci-submissions-c08809"
+              - "SUBMISSIONS_TABLE" = "exams-floci-submissions"
+            } -> null
+        }
+
+      - ephemeral_storage {
+          - size = 512 -> null
+        }
+
+      - tracing_config {
+          - mode = "Active" -> null
+        }
+    }
+
+  # aws_lambda_function.fn["marker"] will be destroyed
+  - resource "aws_lambda_function" "fn" {
+      - architectures                  = [
+          - "arm64",
+        ] -> null
+      - arn                            = "arn:aws:lambda:us-east-1:000000000000:function:exams-floci-marker" -> null
+      - code_sha256                    = "SvqnYQpktz7nwXZ4dme1AL5Dn9Vz+vzf7TPAFy5/bA0=" -> null
+      - filename                       = "./.build/marker.zip" -> null
+      - function_name                  = "exams-floci-marker" -> null
+      - handler                        = "index.handler" -> null
+      - id                             = "exams-floci-marker" -> null
+      - invoke_arn                     = "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:000000000000:function:exams-floci-marker/invocations" -> null
+      - last_modified                  = "2026-11-15T08:48:28.052+0000" -> null
+      - layers                         = [] -> null
+      - memory_size                    = 256 -> null
+      - package_type                   = "Zip" -> null
+      - publish                        = true -> null
+      - qualified_arn                  = "arn:aws:lambda:us-east-1:000000000000:function:exams-floci-marker:1" -> null
+      - qualified_invoke_arn           = "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:000000000000:function:exams-floci-marker:1/invocations" -> null
+      - reserved_concurrent_executions = -1 -> null
+      - role                           = "arn:aws:iam::000000000000:role/exams-floci-marker-role" -> null
+      - runtime                        = "nodejs20.x" -> null
+      - skip_destroy                   = false -> null
+      - source_code_hash               = "SvqnYQpktz7nwXZ4dme1AL5Dn9Vz+vzf7TPAFy5/bA0=" -> null
+      - source_code_size               = 1933 -> null
+      - tags                           = {} -> null
+      - tags_all                       = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - timeout                        = 60 -> null
+      - version                        = "1" -> null
+        # (6 unchanged attributes hidden)
+
+      - environment {
+          - variables = {
+              - "ATTEMPTS_TABLE"    = "exams-floci-attempts"
+              - "AWS_ENDPOINT_URL"  = "http://floci:4566"
+              - "DB_CLUSTER_ARN"    = "arn:aws:rds:us-east-1:000000000000:cluster:exams-floci-aurora"
+              - "DB_NAME"           = "exams"
+              - "DB_SECRET_ARN"     = "arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-CPXBV6"
+              - "MARKING_QUEUE_URL" = "http://floci:4566/000000000000/exams-floci-marking"
+              - "MAX_UPLOAD_BYTES"  = "52428800"
+              - "NOTIFY_QUEUE_URL"  = "http://floci:4566/000000000000/exams-floci-notify"
+              - "SENDER_EMAIL"      = "no-reply@exams.example-university.edu"
+              - "SUBMISSIONS_BKT"   = "exams-floci-submissions-c08809"
+              - "SUBMISSIONS_TABLE" = "exams-floci-submissions"
+            } -> null
+        }
+
+      - ephemeral_storage {
+          - size = 512 -> null
+        }
+
+      - tracing_config {
+          - mode = "Active" -> null
+        }
+    }
+
+  # aws_lambda_function.fn["notifier"] will be destroyed
+  - resource "aws_lambda_function" "fn" {
+      - architectures                  = [
+          - "arm64",
+        ] -> null
+      - arn                            = "arn:aws:lambda:us-east-1:000000000000:function:exams-floci-notifier" -> null
+      - code_sha256                    = "o/CpiOXNEDSqX94o8bbjDAEcTSkZ/84nrkE7uzrQpPs=" -> null
+      - filename                       = "./.build/notifier.zip" -> null
+      - function_name                  = "exams-floci-notifier" -> null
+      - handler                        = "index.handler" -> null
+      - id                             = "exams-floci-notifier" -> null
+      - invoke_arn                     = "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:000000000000:function:exams-floci-notifier/invocations" -> null
+      - last_modified                  = "2026-11-15T08:48:28.052+0000" -> null
+      - layers                         = [] -> null
+      - memory_size                    = 256 -> null
+      - package_type                   = "Zip" -> null
+      - publish                        = true -> null
+      - qualified_arn                  = "arn:aws:lambda:us-east-1:000000000000:function:exams-floci-notifier:1" -> null
+      - qualified_invoke_arn           = "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:000000000000:function:exams-floci-notifier:1/invocations" -> null
+      - reserved_concurrent_executions = -1 -> null
+      - role                           = "arn:aws:iam::000000000000:role/exams-floci-notifier-role" -> null
+      - runtime                        = "nodejs20.x" -> null
+      - skip_destroy                   = false -> null
+      - source_code_hash               = "o/CpiOXNEDSqX94o8bbjDAEcTSkZ/84nrkE7uzrQpPs=" -> null
+      - source_code_size               = 2368 -> null
+      - tags                           = {} -> null
+      - tags_all                       = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - timeout                        = 60 -> null
+      - version                        = "1" -> null
+        # (6 unchanged attributes hidden)
+
+      - environment {
+          - variables = {
+              - "ATTEMPTS_TABLE"    = "exams-floci-attempts"
+              - "AWS_ENDPOINT_URL"  = "http://floci:4566"
+              - "DB_CLUSTER_ARN"    = "arn:aws:rds:us-east-1:000000000000:cluster:exams-floci-aurora"
+              - "DB_NAME"           = "exams"
+              - "DB_SECRET_ARN"     = "arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-CPXBV6"
+              - "MARKING_QUEUE_URL" = "http://floci:4566/000000000000/exams-floci-marking"
+              - "MAX_UPLOAD_BYTES"  = "52428800"
+              - "NOTIFY_QUEUE_URL"  = "http://floci:4566/000000000000/exams-floci-notify"
+              - "SENDER_EMAIL"      = "no-reply@exams.example-university.edu"
+              - "SUBMISSIONS_BKT"   = "exams-floci-submissions-c08809"
+              - "SUBMISSIONS_TABLE" = "exams-floci-submissions"
+            } -> null
+        }
+
+      - ephemeral_storage {
+          - size = 512 -> null
+        }
+
+      - tracing_config {
+          - mode = "Active" -> null
+        }
+    }
+
+  # aws_lambda_permission.apigw will be destroyed
+  - resource "aws_lambda_permission" "apigw" {
+      - action              = "lambda:InvokeFunction" -> null
+      - function_name       = "exams-floci-api" -> null
+      - id                  = "AllowHttpApiInvoke" -> null
+      - principal           = "apigateway.amazonaws.com" -> null
+      - source_arn          = "arn:aws:execute-api:us-east-1::3e525490a7/*/*" -> null
+      - statement_id        = "AllowHttpApiInvoke" -> null
+        # (2 unchanged attributes hidden)
+    }
+
+  # aws_nat_gateway.main[0] will be destroyed
+  - resource "aws_nat_gateway" "main" {
+      - allocation_id                      = "eipalloc-e7028529fce05a3fb" -> null
+      - connectivity_type                  = "public" -> null
+      - id                                 = "nat-c59558919f54779b9" -> null
+      - secondary_allocation_ids           = [] -> null
+      - secondary_private_ip_address_count = 0 -> null
+      - secondary_private_ip_addresses     = [] -> null
+      - subnet_id                          = "subnet-67aa09f6" -> null
+      - tags                               = {
+          - "Name" = "exams-floci-nat-a"
+        } -> null
+      - tags_all                           = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Name"        = "exams-floci-nat-a"
+          - "Project"     = "exams"
+        } -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_nat_gateway.main[1] will be destroyed
+  - resource "aws_nat_gateway" "main" {
+      - allocation_id                      = "eipalloc-8d04dba68e6b96b74" -> null
+      - connectivity_type                  = "public" -> null
+      - id                                 = "nat-de93b312b2cc73333" -> null
+      - secondary_allocation_ids           = [] -> null
+      - secondary_private_ip_address_count = 0 -> null
+      - secondary_private_ip_addresses     = [] -> null
+      - subnet_id                          = "subnet-1017c8f7" -> null
+      - tags                               = {
+          - "Name" = "exams-floci-nat-b"
+        } -> null
+      - tags_all                           = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Name"        = "exams-floci-nat-b"
+          - "Project"     = "exams"
+        } -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_rds_cluster.main[0] will be destroyed
+  - resource "aws_rds_cluster" "main" {
+      - allocated_storage                     = 0 -> null
+      - arn                                   = "arn:aws:rds:us-east-1:000000000000:cluster:exams-floci-aurora" -> null
+      - availability_zones                    = [] -> null
+      - backtrack_window                      = 0 -> null
+      - backup_retention_period               = 0 -> null
+      - cluster_identifier                    = "exams-floci-aurora" -> null
+      - cluster_members                       = [] -> null
+      - cluster_resource_id                   = "cluster-39534C53DB0245AC924CF65B" -> null
+      - copy_tags_to_snapshot                 = false -> null
+      - database_name                         = "exams" -> null
+      - db_subnet_group_name                  = "exams-floci-db-subnets" -> null
+      - delete_automated_backups              = true -> null
+      - deletion_protection                   = false -> null
+      - enable_global_write_forwarding        = false -> null
+      - enable_http_endpoint                  = false -> null
+      - enable_local_write_forwarding         = false -> null
+      - enabled_cloudwatch_logs_exports       = [] -> null
+      - endpoint                              = "172.19.0.2" -> null
+      - engine                                = "postgres" -> null
+      - engine_version                        = "16.4" -> null
+      - engine_version_actual                 = "16.4" -> null
+      - iam_database_authentication_enabled   = true -> null
+      - iam_roles                             = [] -> null
+      - id                                    = "exams-floci-aurora" -> null
+      - iops                                  = 0 -> null
+      - master_password                       = (sensitive value) -> null
+      - master_password_wo                    = (write-only attribute) -> null
+      - master_user_secret                    = [] -> null
+      - master_username                       = (sensitive value) -> null
+      - monitoring_interval                   = 0 -> null
+      - performance_insights_enabled          = false -> null
+      - performance_insights_retention_period = 0 -> null
+      - port                                  = 7001 -> null
+      - preferred_backup_window               = "04:00-06:00" -> null
+      - preferred_maintenance_window          = "mon:00:00-mon:03:00" -> null
+      - reader_endpoint                       = "172.19.0.2" -> null
+      - skip_final_snapshot                   = true -> null
+      - storage_encrypted                     = false -> null
+      - tags                                  = {} -> null
+      - tags_all                              = {} -> null
+      - vpc_security_group_ids                = [
+          - "sg-00000000",
+        ] -> null
+        # (18 unchanged attributes hidden)
+    }
+
+  # aws_rds_cluster_instance.main[0] will be destroyed
+  - resource "aws_rds_cluster_instance" "main" {
+      - arn                                   = "arn:aws:rds:us-east-1:000000000000:db:exams-floci-aurora-a" -> null
+      - auto_minor_version_upgrade            = false -> null
+      - availability_zone                     = "us-east-1a" -> null
+      - cluster_identifier                    = "exams-floci-aurora" -> null
+      - copy_tags_to_snapshot                 = false -> null
+      - db_parameter_group_name               = "default.postgres16" -> null
+      - db_subnet_group_name                  = "exams-floci-db-subnets" -> null
+      - dbi_resource_id                       = "db-8E33CABFC17445FC90707AA3" -> null
+      - endpoint                              = "172.19.0.2" -> null
+      - engine                                = "postgres" -> null
+      - engine_version                        = "16.3" -> null
+      - engine_version_actual                 = "16.3" -> null
+      - force_destroy                         = false -> null
+      - id                                    = "exams-floci-aurora-a" -> null
+      - identifier                            = "exams-floci-aurora-a" -> null
+      - instance_class                        = "db.t4g.medium" -> null
+      - monitoring_interval                   = 0 -> null
+      - performance_insights_enabled          = false -> null
+      - performance_insights_retention_period = 0 -> null
+      - port                                  = 7003 -> null
+      - preferred_backup_window               = "04:00-06:00" -> null
+      - preferred_maintenance_window          = "mon:00:00-mon:03:00" -> null
+      - promotion_tier                        = 0 -> null
+      - publicly_accessible                   = false -> null
+      - storage_encrypted                     = false -> null
+      - tags                                  = {} -> null
+      - tags_all                              = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+        # (7 unchanged attributes hidden)
+    }
+
+  # aws_rds_cluster_instance.main[1] will be destroyed
+  - resource "aws_rds_cluster_instance" "main" {
+      - arn                                   = "arn:aws:rds:us-east-1:000000000000:db:exams-floci-aurora-b" -> null
+      - auto_minor_version_upgrade            = false -> null
+      - availability_zone                     = "us-east-1a" -> null
+      - cluster_identifier                    = "exams-floci-aurora" -> null
+      - copy_tags_to_snapshot                 = false -> null
+      - db_parameter_group_name               = "default.postgres16" -> null
+      - db_subnet_group_name                  = "exams-floci-db-subnets" -> null
+      - dbi_resource_id                       = "db-F3B7896109424C469CE72136" -> null
+      - endpoint                              = "172.19.0.2" -> null
+      - engine                                = "postgres" -> null
+      - engine_version                        = "16.3" -> null
+      - engine_version_actual                 = "16.3" -> null
+      - force_destroy                         = false -> null
+      - id                                    = "exams-floci-aurora-b" -> null
+      - identifier                            = "exams-floci-aurora-b" -> null
+      - instance_class                        = "db.t4g.medium" -> null
+      - monitoring_interval                   = 0 -> null
+      - performance_insights_enabled          = false -> null
+      - performance_insights_retention_period = 0 -> null
+      - port                                  = 7002 -> null
+      - preferred_backup_window               = "04:00-06:00" -> null
+      - preferred_maintenance_window          = "mon:00:00-mon:03:00" -> null
+      - promotion_tier                        = 0 -> null
+      - publicly_accessible                   = false -> null
+      - storage_encrypted                     = false -> null
+      - tags                                  = {} -> null
+      - tags_all                              = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+        # (7 unchanged attributes hidden)
+    }
+
+  # aws_route.app_nat[0] will be destroyed
+  - resource "aws_route" "app_nat" {
+      - destination_cidr_block      = "0.0.0.0/0" -> null
+      - id                          = "r-rtb-aacaf8121080289494" -> null
+      - nat_gateway_id              = "nat-c59558919f54779b9" -> null
+      - origin                      = "CreateRoute" -> null
+      - route_table_id              = "rtb-aacaf812" -> null
+      - state                       = "active" -> null
+        # (13 unchanged attributes hidden)
+    }
+
+  # aws_route.app_nat[1] will be destroyed
+  - resource "aws_route" "app_nat" {
+      - destination_cidr_block      = "0.0.0.0/0" -> null
+      - id                          = "r-rtb-368481bc1080289494" -> null
+      - nat_gateway_id              = "nat-de93b312b2cc73333" -> null
+      - origin                      = "CreateRoute" -> null
+      - route_table_id              = "rtb-368481bc" -> null
+      - state                       = "active" -> null
+        # (13 unchanged attributes hidden)
+    }
+
+  # aws_route.public_internet will be destroyed
+  - resource "aws_route" "public_internet" {
+      - destination_cidr_block      = "0.0.0.0/0" -> null
+      - gateway_id                  = "igw-749c8d48" -> null
+      - id                          = "r-rtb-b9c4472e1080289494" -> null
+      - origin                      = "CreateRoute" -> null
+      - route_table_id              = "rtb-b9c4472e" -> null
+      - state                       = "active" -> null
+        # (13 unchanged attributes hidden)
+    }
+
+  # aws_route53_record.api_direct[0] will be destroyed
+  - resource "aws_route53_record" "api_direct" {
+      - fqdn                             = "api.exams.example-university.edu" -> null
+      - id                               = "Z0ZKY2Z0GPQ3F1G_api.exams.example-university.edu_CNAME" -> null
+      - multivalue_answer_routing_policy = false -> null
+      - name                             = "api.exams.example-university.edu" -> null
+      - records                          = [
+          - "3e525490a7.execute-api.us-east-1.amazonaws.com",
+        ] -> null
+      - ttl                              = 60 -> null
+      - type                             = "CNAME" -> null
+      - zone_id                          = "Z0ZKY2Z0GPQ3F1G" -> null
+        # (2 unchanged attributes hidden)
+    }
+
+  # aws_route53_zone.main[0] will be destroyed
+  - resource "aws_route53_zone" "main" {
+      - arn                 = "arn:aws:route53:::hostedzone/Z0ZKY2Z0GPQ3F1G" -> null
+      - comment             = "Managed by Terraform" -> null
+      - force_destroy       = false -> null
+      - id                  = "Z0ZKY2Z0GPQ3F1G" -> null
+      - name                = "exams.example-university.edu" -> null
+      - name_servers        = [
+          - "ns-1.awsdns-01.org",
+          - "ns-2.awsdns-02.net",
+          - "ns-3.awsdns-03.com",
+          - "ns-4.awsdns-04.co.uk",
+        ] -> null
+      - primary_name_server = "ns-1.awsdns-01.org" -> null
+      - tags                = {} -> null
+      - tags_all            = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - zone_id             = "Z0ZKY2Z0GPQ3F1G" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_route_table.app[0] will be destroyed
+  - resource "aws_route_table" "app" {
+      - arn              = "arn:aws:ec2:us-east-1:000000000000:route-table/rtb-aacaf812" -> null
+      - id               = "rtb-aacaf812" -> null
+      - owner_id         = "000000000000" -> null
+      - propagating_vgws = [] -> null
+      - route            = [
+          - {
+              - cidr_block                 = "0.0.0.0/0"
+              - nat_gateway_id             = "nat-c59558919f54779b9"
+                # (11 unchanged attributes hidden)
+            },
+        ] -> null
+      - tags             = {
+          - "Name" = "exams-floci-rt-app-a"
+        } -> null
+      - tags_all         = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Name"        = "exams-floci-rt-app-a"
+          - "Project"     = "exams"
+        } -> null
+      - vpc_id           = "vpc-8005c811" -> null
+    }
+
+  # aws_route_table.app[1] will be destroyed
+  - resource "aws_route_table" "app" {
+      - arn              = "arn:aws:ec2:us-east-1:000000000000:route-table/rtb-368481bc" -> null
+      - id               = "rtb-368481bc" -> null
+      - owner_id         = "000000000000" -> null
+      - propagating_vgws = [] -> null
+      - route            = [
+          - {
+              - cidr_block                 = "0.0.0.0/0"
+              - nat_gateway_id             = "nat-de93b312b2cc73333"
+                # (11 unchanged attributes hidden)
+            },
+        ] -> null
+      - tags             = {
+          - "Name" = "exams-floci-rt-app-b"
+        } -> null
+      - tags_all         = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Name"        = "exams-floci-rt-app-b"
+          - "Project"     = "exams"
+        } -> null
+      - vpc_id           = "vpc-8005c811" -> null
+    }
+
+  # aws_route_table.data will be destroyed
+  - resource "aws_route_table" "data" {
+      - arn              = "arn:aws:ec2:us-east-1:000000000000:route-table/rtb-93919396" -> null
+      - id               = "rtb-93919396" -> null
+      - owner_id         = "000000000000" -> null
+      - propagating_vgws = [] -> null
+      - route            = [] -> null
+      - tags             = {
+          - "Name" = "exams-floci-rt-data"
+        } -> null
+      - tags_all         = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Name"        = "exams-floci-rt-data"
+          - "Project"     = "exams"
+        } -> null
+      - vpc_id           = "vpc-8005c811" -> null
+    }
+
+  # aws_route_table.public will be destroyed
+  - resource "aws_route_table" "public" {
+      - arn              = "arn:aws:ec2:us-east-1:000000000000:route-table/rtb-b9c4472e" -> null
+      - id               = "rtb-b9c4472e" -> null
+      - owner_id         = "000000000000" -> null
+      - propagating_vgws = [] -> null
+      - route            = [
+          - {
+              - cidr_block                 = "0.0.0.0/0"
+              - gateway_id                 = "igw-749c8d48"
+                # (11 unchanged attributes hidden)
+            },
+        ] -> null
+      - tags             = {
+          - "Name" = "exams-floci-rt-public"
+        } -> null
+      - tags_all         = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Name"        = "exams-floci-rt-public"
+          - "Project"     = "exams"
+        } -> null
+      - vpc_id           = "vpc-8005c811" -> null
+    }
+
+  # aws_route_table_association.app[0] will be destroyed
+  - resource "aws_route_table_association" "app" {
+      - id             = "rtbassoc-a4ae12c2" -> null
+      - route_table_id = "rtb-aacaf812" -> null
+      - subnet_id      = "subnet-942b9ef5" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_route_table_association.app[1] will be destroyed
+  - resource "aws_route_table_association" "app" {
+      - id             = "rtbassoc-177518fd" -> null
+      - route_table_id = "rtb-368481bc" -> null
+      - subnet_id      = "subnet-16d82426" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_route_table_association.data[0] will be destroyed
+  - resource "aws_route_table_association" "data" {
+      - id             = "rtbassoc-b914b13f" -> null
+      - route_table_id = "rtb-93919396" -> null
+      - subnet_id      = "subnet-f6a2ec04" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_route_table_association.data[1] will be destroyed
+  - resource "aws_route_table_association" "data" {
+      - id             = "rtbassoc-05b667e8" -> null
+      - route_table_id = "rtb-93919396" -> null
+      - subnet_id      = "subnet-eb6f21e6" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_route_table_association.public[0] will be destroyed
+  - resource "aws_route_table_association" "public" {
+      - id             = "rtbassoc-bdb875ba" -> null
+      - route_table_id = "rtb-b9c4472e" -> null
+      - subnet_id      = "subnet-67aa09f6" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_route_table_association.public[1] will be destroyed
+  - resource "aws_route_table_association" "public" {
+      - id             = "rtbassoc-eeb69e7b" -> null
+      - route_table_id = "rtb-b9c4472e" -> null
+      - subnet_id      = "subnet-1017c8f7" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_s3_bucket.frontend will be destroyed
+  - resource "aws_s3_bucket" "frontend" {
+      - arn                         = "arn:aws:s3:::exams-floci-frontend-c08809" -> null
+      - bucket                      = "exams-floci-frontend-c08809" -> null
+      - bucket_domain_name          = "exams-floci-frontend-c08809.s3.amazonaws.com" -> null
+      - bucket_regional_domain_name = "exams-floci-frontend-c08809.s3.us-east-1.amazonaws.com" -> null
+      - force_destroy               = true -> null
+      - hosted_zone_id              = "Z3AQBSTGFYJSTF" -> null
+      - id                          = "exams-floci-frontend-c08809" -> null
+      - object_lock_enabled         = false -> null
+      - region                      = "us-east-1" -> null
+      - request_payer               = "BucketOwner" -> null
+      - tags                        = {} -> null
+      - tags_all                    = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+        # (3 unchanged attributes hidden)
+
+      - grant {
+          - id          = "000000000000" -> null
+          - permissions = [
+              - "FULL_CONTROL",
+            ] -> null
+          - type        = "CanonicalUser" -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - replication_configuration {
+        }
+
+      - server_side_encryption_configuration {
+          - rule {
+              - bucket_key_enabled = false -> null
+
+              - apply_server_side_encryption_by_default {
+                  - sse_algorithm     = "AES256" -> null
+                    # (1 unchanged attribute hidden)
+                }
+            }
+        }
+
+      - versioning {
+          - enabled    = false -> null
+          - mfa_delete = false -> null
+        }
+    }
+
+  # aws_s3_bucket.logs will be destroyed
+  - resource "aws_s3_bucket" "logs" {
+      - arn                         = "arn:aws:s3:::exams-floci-logs-c08809" -> null
+      - bucket                      = "exams-floci-logs-c08809" -> null
+      - bucket_domain_name          = "exams-floci-logs-c08809.s3.amazonaws.com" -> null
+      - bucket_regional_domain_name = "exams-floci-logs-c08809.s3.us-east-1.amazonaws.com" -> null
+      - force_destroy               = true -> null
+      - hosted_zone_id              = "Z3AQBSTGFYJSTF" -> null
+      - id                          = "exams-floci-logs-c08809" -> null
+      - object_lock_enabled         = false -> null
+      - region                      = "us-east-1" -> null
+      - request_payer               = "BucketOwner" -> null
+      - tags                        = {} -> null
+      - tags_all                    = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+        # (3 unchanged attributes hidden)
+
+      - grant {
+          - id          = "000000000000" -> null
+          - permissions = [
+              - "FULL_CONTROL",
+            ] -> null
+          - type        = "CanonicalUser" -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - lifecycle_rule {
+          - abort_incomplete_multipart_upload_days = 0 -> null
+          - enabled                                = true -> null
+          - id                                     = "logs-1y" -> null
+          - tags                                   = {} -> null
+            # (1 unchanged attribute hidden)
+
+          - expiration {
+              - days                         = 365 -> null
+              - expired_object_delete_marker = false -> null
+                # (1 unchanged attribute hidden)
+            }
+
+          - transition {
+              - days          = 30 -> null
+              - storage_class = "GLACIER_IR" -> null
+                # (1 unchanged attribute hidden)
+            }
+        }
+
+      - replication_configuration {
+        }
+
+      - server_side_encryption_configuration {
+          - rule {
+              - bucket_key_enabled = false -> null
+
+              - apply_server_side_encryption_by_default {
+                  - sse_algorithm     = "AES256" -> null
+                    # (1 unchanged attribute hidden)
+                }
+            }
+        }
+
+      - versioning {
+          - enabled    = false -> null
+          - mfa_delete = false -> null
+        }
+    }
+
+  # aws_s3_bucket.submissions will be destroyed
+  - resource "aws_s3_bucket" "submissions" {
+      - arn                         = "arn:aws:s3:::exams-floci-submissions-c08809" -> null
+      - bucket                      = "exams-floci-submissions-c08809" -> null
+      - bucket_domain_name          = "exams-floci-submissions-c08809.s3.amazonaws.com" -> null
+      - bucket_regional_domain_name = "exams-floci-submissions-c08809.s3.us-east-1.amazonaws.com" -> null
+      - force_destroy               = true -> null
+      - hosted_zone_id              = "Z3AQBSTGFYJSTF" -> null
+      - id                          = "exams-floci-submissions-c08809" -> null
+      - object_lock_enabled         = false -> null
+      - region                      = "us-east-1" -> null
+      - request_payer               = "BucketOwner" -> null
+      - tags                        = {} -> null
+      - tags_all                    = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+        # (3 unchanged attributes hidden)
+
+      - cors_rule {
+          - allowed_headers = [
+              - "content-type",
+              - "x-amz-*",
+            ] -> null
+          - allowed_methods = [
+              - "PUT",
+            ] -> null
+          - allowed_origins = [
+              - "*",
+            ] -> null
+          - expose_headers  = [] -> null
+          - max_age_seconds = 3000 -> null
+        }
+
+      - grant {
+          - id          = "000000000000" -> null
+          - permissions = [
+              - "FULL_CONTROL",
+            ] -> null
+          - type        = "CanonicalUser" -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - lifecycle_rule {
+          - abort_incomplete_multipart_upload_days = 0 -> null
+          - enabled                                = true -> null
+          - id                                     = "submissions-retention-5y" -> null
+          - prefix                                 = "submissions/" -> null
+          - tags                                   = {} -> null
+
+          - expiration {
+              - days                         = 1855 -> null
+              - expired_object_delete_marker = false -> null
+                # (1 unchanged attribute hidden)
+            }
+
+          - noncurrent_version_expiration {
+              - days = 30 -> null
+            }
+
+          - transition {
+              - days          = 180 -> null
+              - storage_class = "GLACIER_IR" -> null
+                # (1 unchanged attribute hidden)
+            }
+          - transition {
+              - days          = 30 -> null
+              - storage_class = "STANDARD_IA" -> null
+                # (1 unchanged attribute hidden)
+            }
+          - transition {
+              - days          = 365 -> null
+              - storage_class = "DEEP_ARCHIVE" -> null
+                # (1 unchanged attribute hidden)
+            }
+        }
+      - lifecycle_rule {
+          - abort_incomplete_multipart_upload_days = 1 -> null
+          - enabled                                = true -> null
+          - id                                     = "abort-incomplete-uploads" -> null
+          - tags                                   = {} -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - replication_configuration {
+        }
+
+      - server_side_encryption_configuration {
+          - rule {
+              - bucket_key_enabled = true -> null
+
+              - apply_server_side_encryption_by_default {
+                  - kms_master_key_id = "arn:aws:kms:us-east-1:000000000000:key/f627f8c9-6d6a-42b6-811f-af95084b9b81" -> null
+                  - sse_algorithm     = "aws:kms" -> null
+                }
+            }
+        }
+
+      - versioning {
+          - enabled    = true -> null
+          - mfa_delete = false -> null
+        }
+    }
+
+  # aws_s3_bucket_cors_configuration.submissions will be destroyed
+  - resource "aws_s3_bucket_cors_configuration" "submissions" {
+      - bucket                = "exams-floci-submissions-c08809" -> null
+      - id                    = "exams-floci-submissions-c08809" -> null
+        # (1 unchanged attribute hidden)
+
+      - cors_rule {
+          - allowed_headers = [
+              - "content-type",
+              - "x-amz-*",
+            ] -> null
+          - allowed_methods = [
+              - "PUT",
+            ] -> null
+          - allowed_origins = [
+              - "*",
+            ] -> null
+          - expose_headers  = [] -> null
+            id              = null
+          - max_age_seconds = 3000 -> null
+        }
+    }
+
+  # aws_s3_bucket_lifecycle_configuration.logs will be destroyed
+  - resource "aws_s3_bucket_lifecycle_configuration" "logs" {
+      - bucket                                 = "exams-floci-logs-c08809" -> null
+      - id                                     = "exams-floci-logs-c08809" -> null
+      - transition_default_minimum_object_size = "all_storage_classes_128K" -> null
+        # (1 unchanged attribute hidden)
+
+      - rule {
+          - id     = "logs-1y" -> null
+          - status = "Enabled" -> null
+            # (1 unchanged attribute hidden)
+
+          - expiration {
+              - days                         = 365 -> null
+              - expired_object_delete_marker = false -> null
+            }
+
+          - filter {
+                # (1 unchanged attribute hidden)
+            }
+
+          - transition {
+              - days          = 30 -> null
+              - storage_class = "GLACIER_IR" -> null
+            }
+        }
+    }
+
+  # aws_s3_bucket_lifecycle_configuration.submissions will be destroyed
+  - resource "aws_s3_bucket_lifecycle_configuration" "submissions" {
+      - bucket                                 = "exams-floci-submissions-c08809" -> null
+      - id                                     = "exams-floci-submissions-c08809" -> null
+      - transition_default_minimum_object_size = "all_storage_classes_128K" -> null
+        # (1 unchanged attribute hidden)
+
+      - rule {
+          - id     = "submissions-retention-5y" -> null
+          - status = "Enabled" -> null
+            # (1 unchanged attribute hidden)
+
+          - expiration {
+              - days                         = 1855 -> null
+              - expired_object_delete_marker = false -> null
+            }
+
+          - filter {
+              - prefix = "submissions/" -> null
+            }
+
+          - noncurrent_version_expiration {
+              - noncurrent_days = 30 -> null
+            }
+
+          - transition {
+              - days          = 180 -> null
+              - storage_class = "GLACIER_IR" -> null
+            }
+          - transition {
+              - days          = 30 -> null
+              - storage_class = "STANDARD_IA" -> null
+            }
+          - transition {
+              - days          = 365 -> null
+              - storage_class = "DEEP_ARCHIVE" -> null
+            }
+        }
+      - rule {
+          - id     = "abort-incomplete-uploads" -> null
+          - status = "Enabled" -> null
+            # (1 unchanged attribute hidden)
+
+          - abort_incomplete_multipart_upload {
+              - days_after_initiation = 1 -> null
+            }
+
+          - filter {
+                # (1 unchanged attribute hidden)
+            }
+        }
+    }
+
+  # aws_s3_bucket_notification.submissions will be destroyed
+  - resource "aws_s3_bucket_notification" "submissions" {
+      - bucket      = "exams-floci-submissions-c08809" -> null
+      - eventbridge = false -> null
+      - id          = "exams-floci-submissions-c08809" -> null
+
+      - queue {
+          - events        = [
+              - "s3:ObjectCreated:*",
+            ] -> null
+          - filter_prefix = "submissions/" -> null
+          - id            = "tf-s3-queue-20261115083328320400000001" -> null
+          - queue_arn     = "arn:aws:sqs:us-east-1:000000000000:exams-floci-uploads" -> null
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+  # aws_s3_bucket_public_access_block.all["frontend"] will be destroyed
+  - resource "aws_s3_bucket_public_access_block" "all" {
+      - block_public_acls       = true -> null
+      - block_public_policy     = true -> null
+      - bucket                  = "exams-floci-frontend-c08809" -> null
+      - id                      = "exams-floci-frontend-c08809" -> null
+      - ignore_public_acls      = true -> null
+      - restrict_public_buckets = true -> null
+    }
+
+  # aws_s3_bucket_public_access_block.all["logs"] will be destroyed
+  - resource "aws_s3_bucket_public_access_block" "all" {
+      - block_public_acls       = true -> null
+      - block_public_policy     = true -> null
+      - bucket                  = "exams-floci-logs-c08809" -> null
+      - id                      = "exams-floci-logs-c08809" -> null
+      - ignore_public_acls      = true -> null
+      - restrict_public_buckets = true -> null
+    }
+
+  # aws_s3_bucket_public_access_block.all["submissions"] will be destroyed
+  - resource "aws_s3_bucket_public_access_block" "all" {
+      - block_public_acls       = true -> null
+      - block_public_policy     = true -> null
+      - bucket                  = "exams-floci-submissions-c08809" -> null
+      - id                      = "exams-floci-submissions-c08809" -> null
+      - ignore_public_acls      = true -> null
+      - restrict_public_buckets = true -> null
+    }
+
+  # aws_s3_bucket_server_side_encryption_configuration.frontend will be destroyed
+  - resource "aws_s3_bucket_server_side_encryption_configuration" "frontend" {
+      - bucket                = "exams-floci-frontend-c08809" -> null
+      - id                    = "exams-floci-frontend-c08809" -> null
+        # (1 unchanged attribute hidden)
+
+      - rule {
+          - bucket_key_enabled = false -> null
+
+          - apply_server_side_encryption_by_default {
+              - sse_algorithm     = "AES256" -> null
+                # (1 unchanged attribute hidden)
+            }
+        }
+    }
+
+  # aws_s3_bucket_server_side_encryption_configuration.submissions will be destroyed
+  - resource "aws_s3_bucket_server_side_encryption_configuration" "submissions" {
+      - bucket                = "exams-floci-submissions-c08809" -> null
+      - id                    = "exams-floci-submissions-c08809" -> null
+        # (1 unchanged attribute hidden)
+
+      - rule {
+          - bucket_key_enabled = true -> null
+
+          - apply_server_side_encryption_by_default {
+              - kms_master_key_id = "arn:aws:kms:us-east-1:000000000000:key/f627f8c9-6d6a-42b6-811f-af95084b9b81" -> null
+              - sse_algorithm     = "aws:kms" -> null
+            }
+        }
+    }
+
+  # aws_s3_bucket_versioning.submissions will be destroyed
+  - resource "aws_s3_bucket_versioning" "submissions" {
+      - bucket                = "exams-floci-submissions-c08809" -> null
+      - id                    = "exams-floci-submissions-c08809" -> null
+        # (1 unchanged attribute hidden)
+
+      - versioning_configuration {
+          - status     = "Enabled" -> null
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+  # aws_s3_object.frontend["index.html"] will be destroyed
+  - resource "aws_s3_object" "frontend" {
+      - arn                           = "arn:aws:s3:::exams-floci-frontend-c08809/index.html" -> null
+      - bucket                        = "exams-floci-frontend-c08809" -> null
+      - bucket_key_enabled            = false -> null
+      - content_type                  = "text/html" -> null
+      - etag                          = "e7659e7dcd1acbc7708970cb57bb340c" -> null
+      - force_destroy                 = false -> null
+      - id                            = "index.html" -> null
+      - key                           = "index.html" -> null
+      - metadata                      = {} -> null
+      - source                        = "./../app/frontend/index.html" -> null
+      - storage_class                 = "STANDARD" -> null
+      - tags                          = {} -> null
+      - tags_all                      = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+        # (15 unchanged attributes hidden)
+    }
+
+  # aws_secretsmanager_secret.db will be destroyed
+  - resource "aws_secretsmanager_secret" "db" {
+      - arn                            = "arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-CPXBV6" -> null
+      - description                    = "PostgreSQL master credentials (rotated every 30 days in AWS)" -> null
+      - force_overwrite_replica_secret = false -> null
+      - id                             = "arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-CPXBV6" -> null
+      - kms_key_id                     = "arn:aws:kms:us-east-1:000000000000:key/f627f8c9-6d6a-42b6-811f-af95084b9b81" -> null
+      - name                           = "exams-floci/db/master" -> null
+      - recovery_window_in_days        = 0 -> null
+      - tags                           = {} -> null
+      - tags_all                       = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+        # (2 unchanged attributes hidden)
+    }
+
+  # aws_secretsmanager_secret_version.db will be destroyed
+  - resource "aws_secretsmanager_secret_version" "db" {
+      - arn              = "arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-CPXBV6" -> null
+      - id               = "arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-CPXBV6|terraform-2026111508291692190000000a" -> null
+      - secret_id        = "arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-CPXBV6" -> null
+      - secret_string    = (sensitive value) -> null
+      - secret_string_wo = (write-only attribute) -> null
+      - version_id       = "terraform-2026111508291692190000000a" -> null
+      - version_stages   = [
+          - "AWSCURRENT",
+        ] -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_security_group.db will be destroyed
+  - resource "aws_security_group" "db" {
+      - arn                    = "arn:aws:ec2:us-east-1:000000000000:security-group/sg-8cfc25df76dc74ff9" -> null
+      - description            = "RDS Proxy and PostgreSQL; only reachable from Lambda" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "10.20.200.0/24",
+                  - "10.20.201.0/24",
+                ]
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+                # (1 unchanged attribute hidden)
+            },
+        ] -> null
+      - id                     = "sg-8cfc25df76dc74ff9" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = []
+              - description      = "PostgreSQL from Lambda"
+              - from_port        = 5432
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = [
+                  - "sg-be588e612dc8fd566",
+                ]
+              - self             = false
+              - to_port          = 5432
+            },
+          - {
+              - cidr_blocks      = []
+              - description      = "Proxy to instance inside the data tier"
+              - from_port        = 5432
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = true
+              - to_port          = 5432
+            },
+        ] -> null
+      - name                   = "exams-floci-db-sg" -> null
+      - owner_id               = "000000000000" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {} -> null
+      - tags_all               = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - vpc_id                 = "vpc-8005c811" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_security_group.lambda will be destroyed
+  - resource "aws_security_group" "lambda" {
+      - arn                    = "arn:aws:ec2:us-east-1:000000000000:security-group/sg-be588e612dc8fd566" -> null
+      - description            = "API and worker Lambda ENIs" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "HTTPS to AWS APIs (via NAT / endpoints)"
+              - from_port        = 443
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 443
+            },
+          - {
+              - cidr_blocks      = [
+                  - "10.20.200.0/24",
+                  - "10.20.201.0/24",
+                ]
+              - description      = "PostgreSQL to RDS Proxy"
+              - from_port        = 5432
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 5432
+            },
+        ] -> null
+      - id                     = "sg-be588e612dc8fd566" -> null
+      - ingress                = [] -> null
+      - name                   = "exams-floci-lambda-sg" -> null
+      - owner_id               = "000000000000" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {} -> null
+      - tags_all               = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - vpc_id                 = "vpc-8005c811" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_ses_email_identity.sender will be destroyed
+  - resource "aws_ses_email_identity" "sender" {
+      - arn   = "arn:aws:ses:us-east-1::identity/no-reply@exams.example-university.edu" -> null
+      - email = "no-reply@exams.example-university.edu" -> null
+      - id    = "no-reply@exams.example-university.edu" -> null
+    }
+
+  # aws_sns_topic.alarms will be destroyed
+  - resource "aws_sns_topic" "alarms" {
+      - application_success_feedback_sample_rate = 0 -> null
+      - arn                                      = "arn:aws:sns:us-east-1:000000000000:exams-floci-alarms" -> null
+      - content_based_deduplication              = false -> null
+      - fifo_topic                               = false -> null
+      - firehose_success_feedback_sample_rate    = 0 -> null
+      - http_success_feedback_sample_rate        = 0 -> null
+      - id                                       = "arn:aws:sns:us-east-1:000000000000:exams-floci-alarms" -> null
+      - lambda_success_feedback_sample_rate      = 0 -> null
+      - name                                     = "exams-floci-alarms" -> null
+      - owner                                    = "000000000000" -> null
+      - policy                                   = jsonencode(
+            {
+              - Id        = "__default_policy_ID"
+              - Statement = [
+                  - {
+                      - Action    = [
+                          - "SNS:GetTopicAttributes",
+                          - "SNS:SetTopicAttributes",
+                          - "SNS:AddPermission",
+                          - "SNS:RemovePermission",
+                          - "SNS:DeleteTopic",
+                          - "SNS:Subscribe",
+                          - "SNS:ListSubscriptionsByTopic",
+                          - "SNS:Publish",
+                        ]
+                      - Condition = {
+                          - StringEquals = {
+                              - "AWS:SourceAccount" = "000000000000"
+                            }
+                        }
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - AWS = "*"
+                        }
+                      - Resource  = "arn:aws:sns:us-east-1:000000000000:exams-floci-alarms"
+                      - Sid       = "__default_statement_ID"
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - signature_version                        = 0 -> null
+      - sqs_success_feedback_sample_rate         = 0 -> null
+      - tags                                     = {} -> null
+      - tags_all                                 = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+        # (18 unchanged attributes hidden)
+    }
+
+  # aws_sns_topic_subscription.ops_email will be destroyed
+  - resource "aws_sns_topic_subscription" "ops_email" {
+      - arn                             = "arn:aws:sns:us-east-1:000000000000:exams-floci-alarms:1059b707-8843-4581-ad9a-88843142a230" -> null
+      - confirmation_timeout_in_minutes = 1 -> null
+      - confirmation_was_authenticated  = false -> null
+      - endpoint                        = "ops@exams.example-university.edu" -> null
+      - endpoint_auto_confirms          = false -> null
+      - filter_policy_scope             = "MessageAttributes" -> null
+      - id                              = "arn:aws:sns:us-east-1:000000000000:exams-floci-alarms:1059b707-8843-4581-ad9a-88843142a230" -> null
+      - owner_id                        = "000000000000" -> null
+      - pending_confirmation            = true -> null
+      - protocol                        = "email" -> null
+      - raw_message_delivery            = false -> null
+      - topic_arn                       = "arn:aws:sns:us-east-1:000000000000:exams-floci-alarms" -> null
+        # (5 unchanged attributes hidden)
+    }
+
+  # aws_sqs_queue.dlq["marking"] will be destroyed
+  - resource "aws_sqs_queue" "dlq" {
+      - arn                               = "arn:aws:sqs:us-east-1:000000000000:exams-floci-marking-dlq" -> null
+      - content_based_deduplication       = false -> null
+      - delay_seconds                     = 0 -> null
+      - fifo_queue                        = false -> null
+      - id                                = "http://floci:4566/000000000000/exams-floci-marking-dlq" -> null
+      - kms_data_key_reuse_period_seconds = 300 -> null
+      - max_message_size                  = 262144 -> null
+      - message_retention_seconds         = 1209600 -> null
+      - name                              = "exams-floci-marking-dlq" -> null
+      - receive_wait_time_seconds         = 0 -> null
+      - sqs_managed_sse_enabled           = false -> null
+      - tags                              = {} -> null
+      - tags_all                          = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - url                               = "http://floci:4566/000000000000/exams-floci-marking-dlq" -> null
+      - visibility_timeout_seconds        = 30 -> null
+        # (7 unchanged attributes hidden)
+    }
+
+  # aws_sqs_queue.dlq["notify"] will be destroyed
+  - resource "aws_sqs_queue" "dlq" {
+      - arn                               = "arn:aws:sqs:us-east-1:000000000000:exams-floci-notify-dlq" -> null
+      - content_based_deduplication       = false -> null
+      - delay_seconds                     = 0 -> null
+      - fifo_queue                        = false -> null
+      - id                                = "http://floci:4566/000000000000/exams-floci-notify-dlq" -> null
+      - kms_data_key_reuse_period_seconds = 300 -> null
+      - max_message_size                  = 262144 -> null
+      - message_retention_seconds         = 1209600 -> null
+      - name                              = "exams-floci-notify-dlq" -> null
+      - receive_wait_time_seconds         = 0 -> null
+      - sqs_managed_sse_enabled           = false -> null
+      - tags                              = {} -> null
+      - tags_all                          = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - url                               = "http://floci:4566/000000000000/exams-floci-notify-dlq" -> null
+      - visibility_timeout_seconds        = 30 -> null
+        # (7 unchanged attributes hidden)
+    }
+
+  # aws_sqs_queue.dlq["uploads"] will be destroyed
+  - resource "aws_sqs_queue" "dlq" {
+      - arn                               = "arn:aws:sqs:us-east-1:000000000000:exams-floci-uploads-dlq" -> null
+      - content_based_deduplication       = false -> null
+      - delay_seconds                     = 0 -> null
+      - fifo_queue                        = false -> null
+      - id                                = "http://floci:4566/000000000000/exams-floci-uploads-dlq" -> null
+      - kms_data_key_reuse_period_seconds = 300 -> null
+      - max_message_size                  = 262144 -> null
+      - message_retention_seconds         = 1209600 -> null
+      - name                              = "exams-floci-uploads-dlq" -> null
+      - receive_wait_time_seconds         = 0 -> null
+      - sqs_managed_sse_enabled           = false -> null
+      - tags                              = {} -> null
+      - tags_all                          = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - url                               = "http://floci:4566/000000000000/exams-floci-uploads-dlq" -> null
+      - visibility_timeout_seconds        = 30 -> null
+        # (7 unchanged attributes hidden)
+    }
+
+  # aws_sqs_queue.main["marking"] will be destroyed
+  - resource "aws_sqs_queue" "main" {
+      - arn                               = "arn:aws:sqs:us-east-1:000000000000:exams-floci-marking" -> null
+      - content_based_deduplication       = false -> null
+      - delay_seconds                     = 0 -> null
+      - fifo_queue                        = false -> null
+      - id                                = "http://floci:4566/000000000000/exams-floci-marking" -> null
+      - kms_data_key_reuse_period_seconds = 300 -> null
+      - max_message_size                  = 262144 -> null
+      - message_retention_seconds         = 345600 -> null
+      - name                              = "exams-floci-marking" -> null
+      - receive_wait_time_seconds         = 0 -> null
+      - redrive_policy                    = jsonencode(
+            {
+              - deadLetterTargetArn = "arn:aws:sqs:us-east-1:000000000000:exams-floci-marking-dlq"
+              - maxReceiveCount     = 5
+            }
+        ) -> null
+      - sqs_managed_sse_enabled           = false -> null
+      - tags                              = {} -> null
+      - tags_all                          = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - url                               = "http://floci:4566/000000000000/exams-floci-marking" -> null
+      - visibility_timeout_seconds        = 120 -> null
+        # (6 unchanged attributes hidden)
+    }
+
+  # aws_sqs_queue.main["notify"] will be destroyed
+  - resource "aws_sqs_queue" "main" {
+      - arn                               = "arn:aws:sqs:us-east-1:000000000000:exams-floci-notify" -> null
+      - content_based_deduplication       = false -> null
+      - delay_seconds                     = 0 -> null
+      - fifo_queue                        = false -> null
+      - id                                = "http://floci:4566/000000000000/exams-floci-notify" -> null
+      - kms_data_key_reuse_period_seconds = 300 -> null
+      - max_message_size                  = 262144 -> null
+      - message_retention_seconds         = 345600 -> null
+      - name                              = "exams-floci-notify" -> null
+      - receive_wait_time_seconds         = 0 -> null
+      - redrive_policy                    = jsonencode(
+            {
+              - deadLetterTargetArn = "arn:aws:sqs:us-east-1:000000000000:exams-floci-notify-dlq"
+              - maxReceiveCount     = 5
+            }
+        ) -> null
+      - sqs_managed_sse_enabled           = false -> null
+      - tags                              = {} -> null
+      - tags_all                          = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - url                               = "http://floci:4566/000000000000/exams-floci-notify" -> null
+      - visibility_timeout_seconds        = 60 -> null
+        # (6 unchanged attributes hidden)
+    }
+
+  # aws_sqs_queue.uploads will be destroyed
+  - resource "aws_sqs_queue" "uploads" {
+      - arn                               = "arn:aws:sqs:us-east-1:000000000000:exams-floci-uploads" -> null
+      - content_based_deduplication       = false -> null
+      - delay_seconds                     = 0 -> null
+      - fifo_queue                        = false -> null
+      - id                                = "http://floci:4566/000000000000/exams-floci-uploads" -> null
+      - kms_data_key_reuse_period_seconds = 300 -> null
+      - max_message_size                  = 262144 -> null
+      - message_retention_seconds         = 345600 -> null
+      - name                              = "exams-floci-uploads" -> null
+      - policy                            = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "sqs:SendMessage"
+                      - Condition = {
+                          - ArnEquals = {
+                              - "aws:SourceArn" = "arn:aws:s3:::exams-floci-submissions-c08809"
+                            }
+                        }
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "s3.amazonaws.com"
+                        }
+                      - Resource  = "arn:aws:sqs:us-east-1:000000000000:exams-floci-uploads"
+                      - Sid       = "AllowS3Events"
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - receive_wait_time_seconds         = 0 -> null
+      - redrive_policy                    = jsonencode(
+            {
+              - deadLetterTargetArn = "arn:aws:sqs:us-east-1:000000000000:exams-floci-uploads-dlq"
+              - maxReceiveCount     = 5
+            }
+        ) -> null
+      - sqs_managed_sse_enabled           = true -> null
+      - tags                              = {} -> null
+      - tags_all                          = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - url                               = "http://floci:4566/000000000000/exams-floci-uploads" -> null
+      - visibility_timeout_seconds        = 60 -> null
+        # (5 unchanged attributes hidden)
+    }
+
+  # aws_sqs_queue_policy.uploads will be destroyed
+  - resource "aws_sqs_queue_policy" "uploads" {
+      - id        = "http://floci:4566/000000000000/exams-floci-uploads" -> null
+      - policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "sqs:SendMessage"
+                      - Condition = {
+                          - ArnEquals = {
+                              - "aws:SourceArn" = "arn:aws:s3:::exams-floci-submissions-c08809"
+                            }
+                        }
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "s3.amazonaws.com"
+                        }
+                      - Resource  = "arn:aws:sqs:us-east-1:000000000000:exams-floci-uploads"
+                      - Sid       = "AllowS3Events"
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - queue_url = "http://floci:4566/000000000000/exams-floci-uploads" -> null
+    }
+
+  # aws_subnet.app[0] will be destroyed
+  - resource "aws_subnet" "app" {
+      - arn                                            = "arn:aws:ec2:us-east-1:000000000000:subnet/subnet-942b9ef5" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1a" -> null
+      - availability_zone_id                           = "us-east-1-az1" -> null
+      - cidr_block                                     = "10.20.16.0/20" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-942b9ef5" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = false -> null
+      - owner_id                                       = "000000000000" -> null
+      - tags                                           = {
+          - "Name" = "exams-floci-app-a"
+          - "Tier" = "private-app"
+        } -> null
+      - tags_all                                       = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Name"        = "exams-floci-app-a"
+          - "Project"     = "exams"
+          - "Tier"        = "private-app"
+        } -> null
+      - vpc_id                                         = "vpc-8005c811" -> null
+        # (5 unchanged attributes hidden)
+    }
+
+  # aws_subnet.app[1] will be destroyed
+  - resource "aws_subnet" "app" {
+      - arn                                            = "arn:aws:ec2:us-east-1:000000000000:subnet/subnet-16d82426" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1b" -> null
+      - availability_zone_id                           = "us-east-1-az1" -> null
+      - cidr_block                                     = "10.20.32.0/20" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-16d82426" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = false -> null
+      - owner_id                                       = "000000000000" -> null
+      - tags                                           = {
+          - "Name" = "exams-floci-app-b"
+          - "Tier" = "private-app"
+        } -> null
+      - tags_all                                       = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Name"        = "exams-floci-app-b"
+          - "Project"     = "exams"
+          - "Tier"        = "private-app"
+        } -> null
+      - vpc_id                                         = "vpc-8005c811" -> null
+        # (5 unchanged attributes hidden)
+    }
+
+  # aws_subnet.data[0] will be destroyed
+  - resource "aws_subnet" "data" {
+      - arn                                            = "arn:aws:ec2:us-east-1:000000000000:subnet/subnet-f6a2ec04" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1a" -> null
+      - availability_zone_id                           = "us-east-1-az1" -> null
+      - cidr_block                                     = "10.20.200.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-f6a2ec04" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = false -> null
+      - owner_id                                       = "000000000000" -> null
+      - tags                                           = {
+          - "Name" = "exams-floci-data-a"
+          - "Tier" = "private-data"
+        } -> null
+      - tags_all                                       = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Name"        = "exams-floci-data-a"
+          - "Project"     = "exams"
+          - "Tier"        = "private-data"
+        } -> null
+      - vpc_id                                         = "vpc-8005c811" -> null
+        # (5 unchanged attributes hidden)
+    }
+
+  # aws_subnet.data[1] will be destroyed
+  - resource "aws_subnet" "data" {
+      - arn                                            = "arn:aws:ec2:us-east-1:000000000000:subnet/subnet-eb6f21e6" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1b" -> null
+      - availability_zone_id                           = "us-east-1-az1" -> null
+      - cidr_block                                     = "10.20.201.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-eb6f21e6" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = false -> null
+      - owner_id                                       = "000000000000" -> null
+      - tags                                           = {
+          - "Name" = "exams-floci-data-b"
+          - "Tier" = "private-data"
+        } -> null
+      - tags_all                                       = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Name"        = "exams-floci-data-b"
+          - "Project"     = "exams"
+          - "Tier"        = "private-data"
+        } -> null
+      - vpc_id                                         = "vpc-8005c811" -> null
+        # (5 unchanged attributes hidden)
+    }
+
+  # aws_subnet.public[0] will be destroyed
+  - resource "aws_subnet" "public" {
+      - arn                                            = "arn:aws:ec2:us-east-1:000000000000:subnet/subnet-67aa09f6" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1a" -> null
+      - availability_zone_id                           = "us-east-1-az1" -> null
+      - cidr_block                                     = "10.20.0.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-67aa09f6" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = false -> null
+      - owner_id                                       = "000000000000" -> null
+      - tags                                           = {
+          - "Name" = "exams-floci-public-a"
+          - "Tier" = "public"
+        } -> null
+      - tags_all                                       = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Name"        = "exams-floci-public-a"
+          - "Project"     = "exams"
+          - "Tier"        = "public"
+        } -> null
+      - vpc_id                                         = "vpc-8005c811" -> null
+        # (5 unchanged attributes hidden)
+    }
+
+  # aws_subnet.public[1] will be destroyed
+  - resource "aws_subnet" "public" {
+      - arn                                            = "arn:aws:ec2:us-east-1:000000000000:subnet/subnet-1017c8f7" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1b" -> null
+      - availability_zone_id                           = "us-east-1-az1" -> null
+      - cidr_block                                     = "10.20.1.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-1017c8f7" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = false -> null
+      - owner_id                                       = "000000000000" -> null
+      - tags                                           = {
+          - "Name" = "exams-floci-public-b"
+          - "Tier" = "public"
+        } -> null
+      - tags_all                                       = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Name"        = "exams-floci-public-b"
+          - "Project"     = "exams"
+          - "Tier"        = "public"
+        } -> null
+      - vpc_id                                         = "vpc-8005c811" -> null
+        # (5 unchanged attributes hidden)
+    }
+
+  # aws_vpc.main will be destroyed
+  - resource "aws_vpc" "main" {
+      - arn                                  = "arn:aws:ec2:us-east-1:000000000000:vpc/vpc-8005c811" -> null
+      - assign_generated_ipv6_cidr_block     = false -> null
+      - cidr_block                           = "10.20.0.0/16" -> null
+      - default_network_acl_id               = "acl-55fe626d6ecf4d478" -> null
+      - default_route_table_id               = "rtb-0448c1f84f76ea9b3" -> null
+      - default_security_group_id            = "sg-1f1e5b6069bfff826" -> null
+      - dhcp_options_id                      = "dopt-default" -> null
+      - enable_dns_hostnames                 = true -> null
+      - enable_dns_support                   = true -> null
+      - enable_network_address_usage_metrics = false -> null
+      - id                                   = "vpc-8005c811" -> null
+      - instance_tenancy                     = "default" -> null
+      - ipv6_netmask_length                  = 0 -> null
+      - main_route_table_id                  = "rtb-0448c1f84f76ea9b3" -> null
+      - owner_id                             = "000000000000" -> null
+      - tags                                 = {
+          - "Name" = "exams-floci-vpc"
+        } -> null
+      - tags_all                             = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Name"        = "exams-floci-vpc"
+          - "Project"     = "exams"
+        } -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_vpc_endpoint.dynamodb will be destroyed
+  - resource "aws_vpc_endpoint" "dynamodb" {
+      - arn                        = "arn:aws:ec2:us-east-1::vpc-endpoint/vpce-9380a8d18d97e17b3" -> null
+      - cidr_blocks                = [
+          - "3.218.182.0/24",
+          - "52.94.0.0/22",
+        ] -> null
+      - dns_entry                  = [] -> null
+      - id                         = "vpce-9380a8d18d97e17b3" -> null
+      - network_interface_ids      = [] -> null
+      - prefix_list_id             = "pl-02cd2c6b" -> null
+      - private_dns_enabled        = false -> null
+      - requester_managed          = false -> null
+      - route_table_ids            = [
+          - "rtb-368481bc",
+          - "rtb-aacaf812",
+        ] -> null
+      - security_group_ids         = [] -> null
+      - service_name               = "com.amazonaws.us-east-1.dynamodb" -> null
+      - state                      = "available" -> null
+      - subnet_ids                 = [] -> null
+      - tags                       = {
+          - "Name" = "exams-floci-vpce-dynamodb"
+        } -> null
+      - tags_all                   = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Name"        = "exams-floci-vpce-dynamodb"
+          - "Project"     = "exams"
+        } -> null
+      - vpc_endpoint_type          = "Gateway" -> null
+      - vpc_id                     = "vpc-8005c811" -> null
+        # (6 unchanged attributes hidden)
+    }
+
+  # aws_vpc_endpoint.s3 will be destroyed
+  - resource "aws_vpc_endpoint" "s3" {
+      - arn                        = "arn:aws:ec2:us-east-1::vpc-endpoint/vpce-7f04e876144190f37" -> null
+      - cidr_blocks                = [
+          - "52.216.0.0/15",
+          - "54.231.0.0/16",
+        ] -> null
+      - dns_entry                  = [] -> null
+      - id                         = "vpce-7f04e876144190f37" -> null
+      - network_interface_ids      = [] -> null
+      - prefix_list_id             = "pl-63a5400a" -> null
+      - private_dns_enabled        = false -> null
+      - requester_managed          = false -> null
+      - route_table_ids            = [
+          - "rtb-368481bc",
+          - "rtb-aacaf812",
+        ] -> null
+      - security_group_ids         = [] -> null
+      - service_name               = "com.amazonaws.us-east-1.s3" -> null
+      - state                      = "available" -> null
+      - subnet_ids                 = [] -> null
+      - tags                       = {
+          - "Name" = "exams-floci-vpce-s3"
+        } -> null
+      - tags_all                   = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Name"        = "exams-floci-vpce-s3"
+          - "Project"     = "exams"
+        } -> null
+      - vpc_endpoint_type          = "Gateway" -> null
+      - vpc_id                     = "vpc-8005c811" -> null
+        # (6 unchanged attributes hidden)
+    }
+
+  # aws_wafv2_web_acl.edge[0] will be destroyed
+  - resource "aws_wafv2_web_acl" "edge" {
+      - arn                         = "arn:aws:wafv2:us-east-1:000000000000:global/webacl/exams-floci-edge-acl/8efd20f2-e4ec-45e4-87ed-6161a93be8e3" -> null
+      - capacity                    = 3 -> null
+      - id                          = "8efd20f2-e4ec-45e4-87ed-6161a93be8e3" -> null
+      - lock_token                  = "bd6990d4-5a4e-4310-806f-04f19cec793a" -> null
+      - name                        = "exams-floci-edge-acl" -> null
+      - scope                       = "CLOUDFRONT" -> null
+      - tags                        = {} -> null
+      - tags_all                    = {
+          - "Environment" = "floci"
+          - "ManagedBy"   = "terraform"
+          - "Module"      = "DSO303-A2"
+          - "Project"     = "exams"
+        } -> null
+      - token_domains               = [] -> null
+        # (3 unchanged attributes hidden)
+
+      - default_action {
+          - allow {
+            }
+        }
+
+      - rule {
+          - name     = "rate-limit-per-ip" -> null
+          - priority = 3 -> null
+
+          - action {
+              - block {
+                }
+            }
+
+          - statement {
+              - rate_based_statement {
+                  - aggregate_key_type    = "IP" -> null
+                  - evaluation_window_sec = 300 -> null
+                  - limit                 = 20000 -> null
+                }
+            }
+
+          - visibility_config {
+              - cloudwatch_metrics_enabled = true -> null
+              - metric_name                = "rate-limit" -> null
+              - sampled_requests_enabled   = true -> null
+            }
+        }
+      - rule {
+          - name     = "aws-bad-inputs" -> null
+          - priority = 2 -> null
+
+          - override_action {
+              - none {}
+            }
+
+          - statement {
+              - managed_rule_group_statement {
+                  - name        = "AWSManagedRulesKnownBadInputsRuleSet" -> null
+                  - vendor_name = "AWS" -> null
+                    # (1 unchanged attribute hidden)
+                }
+            }
+
+          - visibility_config {
+              - cloudwatch_metrics_enabled = true -> null
+              - metric_name                = "aws-bad-inputs" -> null
+              - sampled_requests_enabled   = true -> null
+            }
+        }
+      - rule {
+          - name     = "aws-common" -> null
+          - priority = 1 -> null
+
+          - override_action {
+              - none {}
+            }
+
+          - statement {
+              - managed_rule_group_statement {
+                  - name        = "AWSManagedRulesCommonRuleSet" -> null
+                  - vendor_name = "AWS" -> null
+                    # (1 unchanged attribute hidden)
+
+                  - rule_action_override {
+                      - name = "SizeRestrictions_BODY" -> null
+
+                      - action_to_use {
+                          - count {
+                            }
+                        }
+                    }
+                }
+            }
+
+          - visibility_config {
+              - cloudwatch_metrics_enabled = true -> null
+              - metric_name                = "aws-common" -> null
+              - sampled_requests_enabled   = true -> null
+            }
+        }
+
+      - visibility_config {
+          - cloudwatch_metrics_enabled = true -> null
+          - metric_name                = "exams-floci-edge-acl" -> null
+          - sampled_requests_enabled   = true -> null
+        }
+    }
+
+  # random_id.suffix will be destroyed
+  - resource "random_id" "suffix" {
+      - b64_std     = "wIgJ" -> null
+      - b64_url     = "wIgJ" -> null
+      - byte_length = 3 -> null
+      - dec         = "12617737" -> null
+      - hex         = "c08809" -> null
+      - id          = "wIgJ" -> null
+    }
+
+  # random_password.db will be destroyed
+  - resource "random_password" "db" {
+      - bcrypt_hash = (sensitive value) -> null
+      - id          = "none" -> null
+      - length      = 32 -> null
+      - lower       = true -> null
+      - min_lower   = 0 -> null
+      - min_numeric = 0 -> null
+      - min_special = 0 -> null
+      - min_upper   = 0 -> null
+      - number      = true -> null
+      - numeric     = true -> null
+      - result      = (sensitive value) -> null
+      - special     = false -> null
+      - upper       = true -> null
+    }
+
+Plan: 0 to add, 0 to change, 113 to destroy.
+
+Changes to Outputs:
+  - api_endpoint         = "https://3e525490a7.execute-api.us-east-1.amazonaws.com" -> null
+  - api_id               = "3e525490a7" -> null
+  - api_url              = "http://3e525490a7.execute-api.localhost.floci.io:4566" -> null
+  - attempts_table       = "exams-floci-attempts" -> null
+  - cognito_client_id    = "0494a73cdd7a493c982b551049" -> null
+  - cognito_user_pool_id = "us-east-1_31634362b" -> null
+  - db_cluster_arn       = "arn:aws:rds:us-east-1:000000000000:cluster:exams-floci-aurora" -> null
+  - db_secret_arn        = "arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-CPXBV6" -> null
+  - frontend_bucket      = "exams-floci-frontend-c08809" -> null
+  - lambda_functions     = {
+      - api      = "exams-floci-api"
+      - marker   = "exams-floci-marker"
+      - notifier = "exams-floci-notifier"
+    } -> null
+  - queues               = {
+      - marking = "http://floci:4566/000000000000/exams-floci-marking"
+      - notify  = "http://floci:4566/000000000000/exams-floci-notify"
+      - uploads = "http://floci:4566/000000000000/exams-floci-uploads"
+    } -> null
+  - submissions_bucket   = "exams-floci-submissions-c08809" -> null
+  - submissions_table    = "exams-floci-submissions" -> null
+  - subnets              = {
+      - app    = {
+          - us-east-1a = "subnet-942b9ef5"
+          - us-east-1b = "subnet-16d82426"
+        }
+      - data   = {
+          - us-east-1a = "subnet-f6a2ec04"
+          - us-east-1b = "subnet-eb6f21e6"
+        }
+      - public = {
+          - us-east-1a = "subnet-67aa09f6"
+          - us-east-1b = "subnet-1017c8f7"
+        }
+    } -> null
+  - vpc_id               = "vpc-8005c811" -> null
+aws_apigatewayv2_stage.default: Destroying... [id=$default]
+aws_sns_topic_subscription.ops_email: Destroying... [id=arn:aws:sns:us-east-1:000000000000:exams-floci-alarms:1059b707-8843-4581-ad9a-88843142a230]
+aws_kms_alias.data: Destroying... [id=alias/exams-floci-data]
+aws_lambda_event_source_mapping.notifier_uploads: Destroying... [id=d9648ec6-4df6-48c9-852f-cb39364434e7]
+aws_route_table_association.public[1]: Destroying... [id=rtbassoc-eeb69e7b]
+aws_iam_role_policy_attachment.vpc_access["notifier"]: Destroying... [id=exams-floci-notifier-role-20261115082905548400000004]
+aws_route_table_association.public[0]: Destroying... [id=rtbassoc-bdb875ba]
+aws_s3_bucket_cors_configuration.submissions: Destroying... [id=exams-floci-submissions-c08809]
+aws_s3_bucket_public_access_block.all["logs"]: Destroying... [id=exams-floci-logs-c08809]
+aws_lambda_event_source_mapping.marker: Destroying... [id=a4640f1f-3443-43d8-8148-e5b8de43bec4]
+aws_apigatewayv2_stage.default: Destruction complete after 1s
+aws_cognito_user_group.roles["students"]: Destroying... [id=us-east-1_31634362b/students]
+aws_iam_role_policy_attachment.vpc_access["notifier"]: Destruction complete after 1s
+aws_lambda_event_source_mapping.notifier_notify: Destroying... [id=9cc55959-4d28-4c5e-966c-ba5190794613]
+aws_kms_alias.data: Destruction complete after 1s
+aws_route_table_association.app[1]: Destroying... [id=rtbassoc-177518fd]
+aws_lambda_event_source_mapping.notifier_uploads: Destruction complete after 1s
+aws_sns_topic_subscription.ops_email: Destruction complete after 1s
+aws_route_table_association.public[1]: Destruction complete after 1s
+aws_s3_bucket_cors_configuration.submissions: Destruction complete after 1s
+aws_s3_object.frontend["index.html"]: Destroying... [id=index.html]
+aws_cloudwatch_metric_alarm.alarms["api-latency-p95"]: Destroying... [id=exams-floci-api-latency-p95]
+aws_s3_bucket_server_side_encryption_configuration.submissions: Destroying... [id=exams-floci-submissions-c08809]
+aws_lambda_permission.apigw: Destroying... [id=AllowHttpApiInvoke]
+aws_s3_bucket_public_access_block.all["logs"]: Destruction complete after 1s
+aws_cognito_user_group.roles["tutors"]: Destroying... [id=us-east-1_31634362b/tutors]
+aws_lambda_event_source_mapping.marker: Destruction complete after 1s
+aws_apigatewayv2_route.routes["POST /exams/{examId}/results/release"]: Destroying... [id=ac53b789]
+aws_s3_bucket_server_side_encryption_configuration.submissions: Destruction complete after 0s
+aws_apigatewayv2_route.routes["POST /attempts/{attemptId}/submit"]: Destroying... [id=1d92a9c3]
+aws_cognito_user_group.roles["tutors"]: Destruction complete after 1s
+aws_route_table_association.public[0]: Destruction complete after 2s
+aws_lambda_event_source_mapping.notifier_notify: Destruction complete after 1s
+aws_iam_role_policy_attachment.vpc_access["marker"]: Destroying... [id=exams-floci-marker-role-20261115082905447900000003]
+aws_cloudwatch_metric_alarm.alarms["uploads-dlq"]: Destroying... [id=exams-floci-uploads-dlq]
+aws_cognito_user_group.roles["students"]: Destruction complete after 1s
+aws_cloudwatch_metric_alarm.alarms["marking-backlog-age"]: Destroying... [id=exams-floci-marking-backlog-age]
+aws_apigatewayv2_route.routes["POST /exams/{examId}/results/release"]: Destruction complete after 1s
+aws_s3_bucket_notification.submissions: Destroying... [id=exams-floci-submissions-c08809]
+aws_route_table_association.app[1]: Destruction complete after 1s
+aws_rds_cluster_instance.main[1]: Destroying... [id=exams-floci-aurora-b]
+aws_cloudwatch_metric_alarm.alarms["api-latency-p95"]: Destruction complete after 1s
+aws_s3_bucket_public_access_block.all["submissions"]: Destroying... [id=exams-floci-submissions-c08809]
+aws_s3_object.frontend["index.html"]: Destruction complete after 1s
+aws_s3_bucket_public_access_block.all["frontend"]: Destroying... [id=exams-floci-frontend-c08809]
+aws_s3_bucket_versioning.submissions: Destroying... [id=exams-floci-submissions-c08809]
+aws_cloudwatch_metric_alarm.alarms["uploads-dlq"]: Destruction complete after 0s
+aws_apigatewayv2_route.routes["POST /attempts/{attemptId}/submit"]: Destruction complete after 1s
+aws_cloudwatch_metric_alarm.alarms["marking-backlog-age"]: Destruction complete after 0s
+aws_s3_bucket_server_side_encryption_configuration.frontend: Destroying... [id=exams-floci-frontend-c08809]
+aws_iam_role_policy_attachment.vpc_access["marker"]: Destruction complete after 0s
+aws_cognito_user_group.roles["admins"]: Destroying... [id=us-east-1_31634362b/admins]
+aws_lambda_permission.apigw: Destruction complete after 1s
+aws_rds_cluster_instance.main[0]: Destroying... [id=exams-floci-aurora-a]
+aws_apigatewayv2_route.routes["GET /courses/{courseId}/submissions"]: Destroying... [id=74f8007a]
+aws_apigatewayv2_route.routes["GET /courses/{courseId}/submissions"]: Destruction complete after 0s
+aws_s3_bucket_server_side_encryption_configuration.frontend: Destruction complete after 0s
+aws_route.public_internet: Destroying... [id=r-rtb-b9c4472e1080289494]
+aws_route53_record.api_direct[0]: Destroying... [id=Z0ZKY2Z0GPQ3F1G_api.exams.example-university.edu_CNAME]
+aws_s3_bucket_public_access_block.all["submissions"]: Destruction complete after 0s
+aws_cloudwatch_metric_alarm.aurora_cpu[0]: Destroying... [id=exams-floci-aurora-cpu]
+aws_s3_bucket_versioning.submissions: Destruction complete after 0s
+aws_s3_bucket_public_access_block.all["frontend"]: Destruction complete after 0s
+aws_cloudwatch_metric_alarm.alarms["marking-dlq"]: Destroying... [id=exams-floci-marking-dlq]
+aws_route_table_association.data[0]: Destroying... [id=rtbassoc-b914b13f]
+aws_s3_bucket_notification.submissions: Destruction complete after 0s
+aws_route_table_association.app[0]: Destroying... [id=rtbassoc-a4ae12c2]
+aws_cloudwatch_metric_alarm.alarms["marking-dlq"]: Destruction complete after 0s
+aws_route.app_nat[1]: Destroying... [id=r-rtb-368481bc1080289494]
+aws_cognito_user_group.roles["admins"]: Destruction complete after 0s
+aws_apigatewayv2_route.routes["GET /exams/{examId}"]: Destroying... [id=153c5c33]
+aws_cloudwatch_metric_alarm.aurora_cpu[0]: Destruction complete after 0s
+aws_vpc_endpoint.dynamodb: Destroying... [id=vpce-9380a8d18d97e17b3]
+aws_apigatewayv2_route.routes["GET /exams/{examId}"]: Destruction complete after 0s
+aws_vpc_endpoint.s3: Destroying... [id=vpce-7f04e876144190f37]
+aws_route_table_association.data[0]: Destruction complete after 0s
+aws_route_table_association.data[1]: Destroying... [id=rtbassoc-05b667e8]
+aws_route_table_association.app[0]: Destruction complete after 0s
+aws_cloudwatch_metric_alarm.alarms["lambda-throttles"]: Destroying... [id=exams-floci-lambda-throttles]
+aws_cloudwatch_metric_alarm.alarms["lambda-throttles"]: Destruction complete after 0s
+aws_apigatewayv2_route.routes["PUT /attempts/{attemptId}/answers"]: Destroying... [id=c958380c]
+aws_route_table_association.data[1]: Destruction complete after 0s
+aws_apigatewayv2_route.routes["POST /exams/{examId}/attempts"]: Destroying... [id=c7071350]
+aws_apigatewayv2_route.routes["PUT /attempts/{attemptId}/answers"]: Destruction complete after 0s
+aws_s3_bucket_lifecycle_configuration.logs: Destroying... [id=exams-floci-logs-c08809]
+aws_route.app_nat[1]: Destruction complete after 0s
+aws_apigatewayv2_route.routes["POST /exams/{examId}/attempts"]: Destruction complete after 0s
+aws_s3_bucket_lifecycle_configuration.submissions: Destroying... [id=exams-floci-submissions-c08809]
+aws_apigatewayv2_route.routes["POST /uploads"]: Destroying... [id=5cacadd3]
+aws_route.public_internet: Destruction complete after 0s
+aws_iam_role_policy_attachment.vpc_access["api"]: Destroying... [id=exams-floci-api-role-20261115082905336700000002]
+aws_apigatewayv2_route.routes["POST /uploads"]: Destruction complete after 0s
+aws_ses_email_identity.sender: Destroying... [id=no-reply@exams.example-university.edu]
+aws_iam_role_policy_attachment.vpc_access["api"]: Destruction complete after 0s
+aws_cloudwatch_metric_alarm.alarms["api-5xx"]: Destroying... [id=exams-floci-api-5xx]
+aws_s3_bucket_lifecycle_configuration.submissions: Destruction complete after 0s
+aws_cloudwatch_metric_alarm.alarms["api-5xx"]: Destruction complete after 0s
+aws_s3_bucket_lifecycle_configuration.logs: Destruction complete after 0s
+aws_apigatewayv2_route.routes["GET /health"]: Destroying... [id=1ba6df4f]
+aws_ses_email_identity.sender: Destruction complete after 0s
+aws_route.app_nat[0]: Destroying... [id=r-rtb-aacaf8121080289494]
+aws_cloudwatch_log_group.api: Destroying... [id=/aws/apigateway/exams-floci-api]
+aws_s3_bucket.frontend: Destroying... [id=exams-floci-frontend-c08809]
+aws_apigatewayv2_route.routes["GET /health"]: Destruction complete after 0s
+aws_sqs_queue_policy.uploads: Destroying... [id=http://floci:4566/000000000000/exams-floci-uploads]
+aws_cloudwatch_log_group.api: Destruction complete after 1s
+aws_route_table.data: Destroying... [id=rtb-93919396]
+aws_s3_bucket.frontend: Destruction complete after 1s
+aws_route_table.public: Destroying... [id=rtb-b9c4472e]
+aws_route.app_nat[0]: Destruction complete after 1s
+aws_s3_bucket.logs: Destroying... [id=exams-floci-logs-c08809]
+aws_s3_bucket.logs: Destruction complete after 0s
+aws_sns_topic.alarms: Destroying... [id=arn:aws:sns:us-east-1:000000000000:exams-floci-alarms]
+aws_route_table.data: Destruction complete after 0s
+aws_apigatewayv2_integration.api: Destroying... [id=6b408d16]
+aws_sns_topic.alarms: Destruction complete after 0s
+aws_apigatewayv2_authorizer.cognito: Destroying... [id=d8bf6dfe]
+aws_route_table.public: Destruction complete after 0s
+aws_apigatewayv2_integration.api: Destruction complete after 0s
+aws_nat_gateway.main[1]: Destroying... [id=nat-de93b312b2cc73333]
+aws_nat_gateway.main[0]: Destroying... [id=nat-c59558919f54779b9]
+aws_apigatewayv2_authorizer.cognito: Destruction complete after 0s
+aws_lambda_alias.api_live: Destroying... [id=arn:aws:lambda:us-east-1:000000000000:function:exams-floci-api:live]
+aws_lambda_alias.api_live: Destruction complete after 0s
+aws_cognito_user_pool_client.web: Destroying... [id=0494a73cdd7a493c982b551049]
+aws_cognito_user_pool_client.web: Destruction complete after 0s
+aws_lambda_function.fn["api"]: Destroying... [id=exams-floci-api]
+aws_lambda_function.fn["api"]: Destruction complete after 0s
+aws_lambda_function.fn["notifier"]: Destroying... [id=exams-floci-notifier]
+aws_lambda_function.fn["notifier"]: Destruction complete after 0s
+aws_lambda_function.fn["marker"]: Destroying... [id=exams-floci-marker]
+aws_lambda_function.fn["marker"]: Destruction complete after 0s
+aws_cognito_user_pool.main: Destroying... [id=us-east-1_31634362b]
+aws_cognito_user_pool.main: Destruction complete after 0s
+aws_cloudwatch_log_group.fn["marker"]: Destroying... [id=/aws/lambda/exams-floci-marker]
+aws_wafv2_web_acl.edge[0]: Destroying... [id=8efd20f2-e4ec-45e4-87ed-6161a93be8e3]
+aws_cloudwatch_log_group.fn["marker"]: Destruction complete after 1s
+aws_subnet.app[0]: Destroying... [id=subnet-942b9ef5]
+aws_subnet.app[0]: Destruction complete after 0s
+aws_subnet.app[1]: Destroying... [id=subnet-16d82426]
+aws_wafv2_web_acl.edge[0]: Destruction complete after 1s
+aws_iam_role_policy.fn["marker"]: Destroying... [id=exams-floci-marker-role:exams-floci-marker-policy]
+aws_subnet.app[1]: Destruction complete after 0s
+aws_cloudwatch_log_group.fn["api"]: Destroying... [id=/aws/lambda/exams-floci-api]
+aws_iam_role_policy.fn["marker"]: Destruction complete after 0s
+aws_iam_role_policy.fn["api"]: Destroying... [id=exams-floci-api-role:exams-floci-api-policy]
+aws_iam_role_policy.fn["api"]: Destruction complete after 0s
+aws_cloudwatch_log_group.fn["api"]: Destruction complete after 0s
+aws_iam_role_policy.fn["notifier"]: Destroying... [id=exams-floci-notifier-role:exams-floci-notifier-policy]
+aws_cloudwatch_log_group.fn["notifier"]: Destroying... [id=/aws/lambda/exams-floci-notifier]
+aws_iam_role_policy.fn["notifier"]: Destruction complete after 0s
+aws_iam_role.fn["marker"]: Destroying... [id=exams-floci-marker-role]
+aws_cloudwatch_log_group.fn["notifier"]: Destruction complete after 0s
+aws_iam_role.fn["api"]: Destroying... [id=exams-floci-api-role]
+aws_iam_role.fn["api"]: Destruction complete after 0s
+aws_iam_role.fn["marker"]: Destruction complete after 0s
+aws_iam_role.fn["notifier"]: Destroying... [id=exams-floci-notifier-role]
+aws_dynamodb_table.attempts: Destroying... [id=exams-floci-attempts]
+aws_iam_role.fn["notifier"]: Destruction complete after 0s
+aws_sqs_queue.main["notify"]: Destroying... [id=http://floci:4566/000000000000/exams-floci-notify]
+aws_dynamodb_table.attempts: Destruction complete after 0s
+aws_dynamodb_table.submissions: Destroying... [id=exams-floci-submissions]
+aws_dynamodb_table.submissions: Destruction complete after 0s
+aws_sqs_queue.main["marking"]: Destroying... [id=http://floci:4566/000000000000/exams-floci-marking]
+aws_sqs_queue.main["notify"]: Destruction complete after 2s
+aws_sqs_queue.main["marking"]: Destruction complete after 2s
+aws_vpc_endpoint.dynamodb: Destruction complete after 5s
+aws_vpc_endpoint.s3: Destruction complete after 5s
+aws_route_table.app[0]: Destroying... [id=rtb-aacaf812]
+aws_route_table.app[1]: Destroying... [id=rtb-368481bc]
+aws_route_table.app[0]: Destruction complete after 0s
+aws_route_table.app[1]: Destruction complete after 0s
+aws_rds_cluster_instance.main[1]: Still destroying... [id=exams-floci-aurora-b, 00m10s elapsed]
+aws_rds_cluster_instance.main[0]: Still destroying... [id=exams-floci-aurora-a, 00m10s elapsed]
+aws_route53_record.api_direct[0]: Still destroying... [id=Z0ZKY2Z0GPQ3F1G_api.exams.example-university.edu_CNAME, 00m10s elapsed]
+aws_sqs_queue_policy.uploads: Still destroying... [id=http://floci:4566/000000000000/exams-floci-uploads, 00m10s elapsed]
+aws_nat_gateway.main[1]: Still destroying... [id=nat-de93b312b2cc73333, 00m10s elapsed]
+aws_nat_gateway.main[0]: Still destroying... [id=nat-c59558919f54779b9, 00m10s elapsed]
+aws_nat_gateway.main[0]: Destruction complete after 10s
+aws_nat_gateway.main[1]: Destruction complete after 10s
+aws_internet_gateway.main: Destroying... [id=igw-749c8d48]
+aws_eip.nat[1]: Destroying... [id=eipalloc-8d04dba68e6b96b74]
+aws_subnet.public[0]: Destroying... [id=subnet-67aa09f6]
+aws_eip.nat[0]: Destroying... [id=eipalloc-e7028529fce05a3fb]
+aws_subnet.public[1]: Destroying... [id=subnet-1017c8f7]
+aws_eip.nat[1]: Destruction complete after 0s
+aws_eip.nat[0]: Destruction complete after 0s
+aws_internet_gateway.main: Destruction complete after 0s
+aws_subnet.public[1]: Destruction complete after 0s
+aws_subnet.public[0]: Destruction complete after 0s
+aws_route53_record.api_direct[0]: Destruction complete after 15s
+aws_route53_zone.main[0]: Destroying... [id=Z0ZKY2Z0GPQ3F1G]
+aws_apigatewayv2_api.main: Destroying... [id=3e525490a7]
+aws_apigatewayv2_api.main: Destruction complete after 0s
+aws_rds_cluster_instance.main[1]: Still destroying... [id=exams-floci-aurora-b, 00m20s elapsed]
+aws_rds_cluster_instance.main[0]: Still destroying... [id=exams-floci-aurora-a, 00m20s elapsed]
+aws_sqs_queue_policy.uploads: Still destroying... [id=http://floci:4566/000000000000/exams-floci-uploads, 00m20s elapsed]
+aws_route53_zone.main[0]: Still destroying... [id=Z0ZKY2Z0GPQ3F1G, 00m10s elapsed]
+aws_sqs_queue_policy.uploads: Destruction complete after 26s
+aws_sqs_queue.uploads: Destroying... [id=http://floci:4566/000000000000/exams-floci-uploads]
+aws_s3_bucket.submissions: Destroying... [id=exams-floci-submissions-c08809]
+aws_s3_bucket.submissions: Destruction complete after 0s
+random_id.suffix: Destroying... [id=wIgJ]
+random_id.suffix: Destruction complete after 0s
+aws_sqs_queue.uploads: Destruction complete after 1s
+aws_sqs_queue.dlq["notify"]: Destroying... [id=http://floci:4566/000000000000/exams-floci-notify-dlq]
+aws_sqs_queue.dlq["uploads"]: Destroying... [id=http://floci:4566/000000000000/exams-floci-uploads-dlq]
+aws_sqs_queue.dlq["marking"]: Destroying... [id=http://floci:4566/000000000000/exams-floci-marking-dlq]
+aws_sqs_queue.dlq["notify"]: Destruction complete after 2s
+aws_sqs_queue.dlq["marking"]: Destruction complete after 2s
+aws_sqs_queue.dlq["uploads"]: Destruction complete after 2s
+aws_rds_cluster_instance.main[1]: Still destroying... [id=exams-floci-aurora-b, 00m30s elapsed]
+aws_rds_cluster_instance.main[0]: Still destroying... [id=exams-floci-aurora-a, 00m30s elapsed]
+aws_rds_cluster_instance.main[1]: Destruction complete after 30s
+aws_rds_cluster_instance.main[0]: Destruction complete after 30s
+aws_rds_cluster.main[0]: Destroying... [id=exams-floci-aurora]
+aws_route53_zone.main[0]: Destruction complete after 15s
+aws_rds_cluster.main[0]: Still destroying... [id=exams-floci-aurora, 00m10s elapsed]
+aws_rds_cluster.main[0]: Still destroying... [id=exams-floci-aurora, 00m20s elapsed]
+aws_rds_cluster.main[0]: Still destroying... [id=exams-floci-aurora, 00m30s elapsed]
+aws_rds_cluster.main[0]: Destruction complete after 31s
+aws_db_subnet_group.main: Destroying... [id=exams-floci-db-subnets]
+aws_secretsmanager_secret_version.db: Destroying... [id=arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-CPXBV6|terraform-2026111508291692190000000a]
+aws_security_group.db: Destroying... [id=sg-8cfc25df76dc74ff9]
+aws_db_subnet_group.main: Destruction complete after 0s
+aws_subnet.data[1]: Destroying... [id=subnet-eb6f21e6]
+aws_subnet.data[0]: Destroying... [id=subnet-f6a2ec04]
+aws_secretsmanager_secret_version.db: Destruction complete after 0s
+random_password.db: Destroying... [id=none]
+aws_secretsmanager_secret.db: Destroying... [id=arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-CPXBV6]
+random_password.db: Destruction complete after 0s
+aws_subnet.data[0]: Destruction complete after 0s
+aws_security_group.db: Destruction complete after 0s
+aws_subnet.data[1]: Destruction complete after 0s
+aws_security_group.lambda: Destroying... [id=sg-be588e612dc8fd566]
+aws_secretsmanager_secret.db: Destruction complete after 0s
+aws_security_group.lambda: Destruction complete after 0s
+aws_kms_key.data: Destroying... [id=f627f8c9-6d6a-42b6-811f-af95084b9b81]
+aws_vpc.main: Destroying... [id=vpc-8005c811]
+aws_vpc.main: Destruction complete after 0s
+aws_kms_key.data: Destruction complete after 0s
+
+Destroy complete! Resources: 113 destroyed.
+[exit 0]

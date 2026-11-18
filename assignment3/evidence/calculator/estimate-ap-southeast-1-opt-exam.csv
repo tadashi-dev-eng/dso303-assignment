@@ -1,0 +1,24 @@
+Estimate,exam platform - opt - exam month,Region,ap-southeast-1,Prices,"AWS Price List API, published 2026-11-11T22:30:04Z"
+Service,Description,Region,Monthly (USD),12 months (USD),Configuration summary
+Amazon Aurora PostgreSQL,"Serverless v2, writer + reader (0.5-16 ACU)",ap-southeast-1,237.00,2844.00,"1,185 ACU-h x $0.2"
+Amazon Aurora PostgreSQL,"storage, I/O and backup beyond the free allowance",ap-southeast-1,9.03,108.36,"20 GB, 30 M I/O, 10 GB backup"
+RDS Data API,Data API requests (hidden cost),ap-southeast-1,4.06,48.72,9.67 M requests
+AWS Lambda,api + marker + notifier requests and duration (arm64),ap-southeast-1,9.97,119.64,"25.84 M requests, 775,200 GB-s (free tier applied)"
+AWS Lambda,provisioned concurrency during exam windows,ap-southeast-1,7.49,89.88,50 x 0.5 GB x 20 h
+Amazon API Gateway,HTTP API requests,ap-southeast-1,32.30,387.60,25.84 M requests
+AWS WAF,"web ACL, rules, requests",ap-southeast-1,25.51,306.12,"1 ACL, 4 rules, 27.52 M requests"
+Amazon CloudFront,HTTPS requests (India edge) beyond free tier,ap-southeast-1,21.02,252.24,"27.52 M requests, 320 GB out (1 TB free)"
+Amazon Route 53,hosted zone (alias queries are free),ap-southeast-1,0.50,6.00,1 zone
+Amazon Cognito,"8,400 MAU (Essentials free tier 10,000)",ap-southeast-1,0.00,0.00,8400 MAU
+Amazon DynamoDB,"on-demand writes/reads, PITR",ap-southeast-1,18.93,227.16,"21.5 M WRU, 9.6 M RRU, 10 GB + PITR"
+AWS Backup,"DynamoDB backups (hidden cost) - monthly only, PITR covers 35 days",ap-southeast-1,6.50,78.00,10 GB table
+Amazon S3,"submissions (lifecycle Std->IA->Glacier IR->Deep Archive), frontend, logs",ap-southeast-1,17.48,209.76,"62 GB new; 1,500 GB stored at month 12"
+Data transfer out,tutor downloads straight from S3 (hidden cost),ap-southeast-1,9.00,108.00,75 GB
+Amazon CloudWatch,Logs ingestion + storage (hidden cost),ap-southeast-1,18.45,221.40,"25.3 GB/month, 30 days"
+Amazon CloudWatch,"alarms, dashboard, EMF metrics",ap-southeast-1,10.20,122.40,"9 alarms, 1 dashboard, 24 EMF metrics"
+AWS X-Ray,traces (1/s reservoir + sampling rate),ap-southeast-1,4.75,57.00,1.05 M traces at 1%
+Amazon SQS,"marking, notify, uploads queues",ap-southeast-1,0.64,7.68,2.6 M requests
+Amazon SES,result and submission emails,ap-southeast-1,4.80,57.60,"48,000 emails"
+AWS KMS,1 customer key + requests (hidden cost),ap-southeast-1,2.80,33.60,"1 key, 600,000 requests"
+AWS Secrets Manager,database secret,ap-southeast-1,0.40,4.80,1 secret
+TOTAL,,ap-southeast-1,440.83,5289.96,

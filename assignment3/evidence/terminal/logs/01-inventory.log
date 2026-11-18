@@ -1,0 +1,42 @@
+$ ./scripts/inventory.sh
+
+==> Region: ap-southeast-1   name prefix: exams-sg
+
+==> Lambda functions (no VPC attachment -> no NAT gateway, no ENIs)
+----------------------------------------------------------------
+|                         ListFunctions                        |
++--------------------+-------------+--------+------+-----+-----+
+|  exams-sg-notifier |  nodejs20.x |  arm64 |  256 |  60 |  0  |
+|  exams-sg-api      |  nodejs20.x |  arm64 |  512 |  30 |  0  |
+|  exams-sg-marker   |  nodejs20.x |  arm64 |  256 |  60 |  0  |
++--------------------+-------------+--------+------+-----+-----+
+NAT gateways in the VPC: 0
+subnet  ap-southeast-1a	10.20.200.0/24	private-data
+subnet  ap-southeast-1b	10.20.201.0/24	private-data
+
+==> Aurora PostgreSQL Serverless v2
+cluster exams-sg-aurora  available  port 7004
+configured (infra/data.tf): PITR 35 days, Data API on, Serverless v2 0.5-16 ACU, reader promotion tier 2
+instance  exams-sg-aurora-a	db.serverless	available
+instance  exams-sg-aurora-b	db.serverless	available
+
+==> DynamoDB tables (on-demand, PITR)
+exams-sg-attempts      PITR=ENABLED
+exams-sg-submissions   PITR=ENABLED
+
+==> S3 buckets, SQS queues
+exams-sg-logs-f9dcc2
+exams-sg-submissions-f9dcc2
+exams-sg-frontend-f9dcc2
+exams-sg-notify-dlq exams-sg-uploads-dlq exams-sg-marking exams-sg-marking-dlq exams-sg-uploads exams-sg-notify
+
+==> Edge: WAF (us-east-1, CLOUDFRONT scope) rate rules
+rule  1	aws-common	-
+rule  2	aws-bad-inputs	-
+rule  3	rate-limit-per-user	600
+rule  4	rate-limit-per-ip	100000
+
+==> Alarms
+exams-sg-api-5xx exams-sg-marking-dlq exams-sg-lambda-throttles exams-sg-uploads-dlq exams-sg-api-latency-p95 exams-sg-marking-backlog-age exams-sg-aurora-acu-high
+us-east-1: exams-sg-waf-blocked
+[exit 0]

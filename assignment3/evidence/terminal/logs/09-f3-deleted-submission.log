@@ -1,0 +1,19 @@
+$ ./infra/failure-tests/f3-deleted-submission.sh
+
+==> 1. Student submission stored (5 MB PDF)
+version: 66bd20f0-1f3c-48b6-8c5a-39acf6c5c2f2
+sha256 (first 16): 7dc1a724fbc5f02f
+
+==> 2. FAILURE at 16:13:39Z: the object is deleted
+delete marker created: True  marker version: 6769486d-64b8-4fd4-bffd-e8ea78916a20
+tutor download: 404 Not Found
+
+==> 3. RECOVERY: list versions and remove the delete marker
+version	66bd20f0-1f3c-48b6-8c5a-39acf6c5c2f2	5242880
+version	f644b687-bf87-403d-97c8-de65c187eb76	5242880
+delete-marker	6769486d-64b8-4fd4-bffd-e8ea78916a20	-
+delete marker 6769486d-64b8-4fd4-bffd-e8ea78916a20 removed
+restored: 5242880 bytes
+sha256 (first 16): 7dc1a724fbc5f02f  IDENTICAL
+RPO: 0 bytes lost. RTO: 28s from deletion to restored file (target 3600s)
+[exit 0]

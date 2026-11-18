@@ -1,0 +1,7 @@
+$ ./scripts/region-latency.sh
+Region           Endpoint                                  TCP p50    TCP p90    TLS p50
+ap-south-1       dynamodb.ap-south-1.amazonaws.com            63ms     1090ms      125ms
+ap-south-2       dynamodb.ap-south-2.amazonaws.com            76ms     1085ms      157ms
+ap-southeast-1   dynamodb.ap-southeast-1.amazonaws.com        87ms      138ms      177ms
+us-east-1        dynamodb.us-east-1.amazonaws.com            331ms      421ms      662ms
+[exit 0]

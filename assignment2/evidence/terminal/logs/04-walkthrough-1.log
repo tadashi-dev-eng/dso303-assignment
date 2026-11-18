@@ -1,0 +1,63 @@
+$ ./scripts/walkthrough-1-exam-autosave.sh
+
+==> 1. Cognito sign-in (student is in the 'students' group)
+IdToken: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtp...  (groups: students)
+
+==> 2. GET /exams/dso303-midterm  (API Gateway -> api Lambda -> Aurora via Data API)
+{
+    "exam_id": "dso303-midterm",
+    "title": "DSO303 Mid-term (MCQ + short answer)",
+    "duration_min": 60,
+    "closes_at": "2026-12-15T09:31:36Z",
+    "questions": [
+        {
+            "question_id": "q1",
+            "qtype": "mcq",
+            "prompt": "Which service gives a relational database a synchronous standby in a second AZ?",
+            "options": [
+                "S3",
+                "RDS/Aurora Multi-AZ",
+                "CloudFront",
+                "SQS"
+            ],
+            "marks": 2
+        },
+        {
+            "question_id": "q2",
+            "qtype": "mcq",
+            "prompt": "Which service decouples auto-marking from the request path?",
+            "options": [
+                "SQS",
+                "Route 53",
+                "WAF",
+                "KMS"
+            ],
+            "marks": 2
+        },
+
+==> 3. POST /exams/dso303-midterm/attempts  (start the timer)
+{"attemptId":"268e993b-714b-4a23-9986-1cc78349f5d7","endsAt":"2026-11-15T10:32:16Z","autosaveSeconds":30}
+
+==> 4. Autosave every 30 s: PUT /attempts/268e993b-714b-4a23-9986-1cc78349f5d7/answers  (-> DynamoDB, conditional write)
+{"attemptId":"268e993b-714b-4a23-9986-1cc78349f5d7","saved":2,"stale":0,"savedAt":"2026-11-15T09:32:16.968Z"}   <- t=0s
+{"attemptId":"268e993b-714b-4a23-9986-1cc78349f5d7","saved":3,"stale":0,"savedAt":"2026-11-15T09:32:17.043Z"}   <- t=30s
+Late retry of the t=0s request (must NOT overwrite the newer q2 answer):
+{"attemptId":"268e993b-714b-4a23-9986-1cc78349f5d7","saved":0,"stale":1,"savedAt":"2026-11-15T09:32:17.091Z"}
+
+==> 5. Answers stored in DynamoDB table exams-floci-attempts
+------------------------------------------------------------------------------------------
+|                                          Query                                         |
++-------+---------------------------------------------------+----------------------------+
+|  #meta|  in-progress                                      |  2026-11-15T10:32:16Z      |
+|  q1   |  RDS/Aurora Multi-AZ                              |  2026-11-15T09:32:16.946Z  |
+|  q2   |  SQS                                              |  2026-11-15T09:32:17.021Z  |
+|  q3   |  S3 presigned URL                                 |  2026-11-15T09:32:17.021Z  |
+|  q4   |  RPO = data you can lose; RTO = time to restore.  |  2026-11-15T09:32:17.021Z  |
++-------+---------------------------------------------------+----------------------------+
+
+==> 6. Submit -> SQS marking queue -> marker Lambda auto-marks MCQs
+{"attemptId":"268e993b-714b-4a23-9986-1cc78349f5d7","status":"submitted","marking":"queued"}
+Aurora results row: attempt=268e993b-714b-4a23-9986-1cc78349f5d7 student=stu-0001 mcq_score=6/6 status=mcq-marked-awaiting-tutor
+marker log:
+{"level":"info","event":"attempt-marked","attemptId":"268e993b-714b-4a23-9986-1cc78349f5d7","examId":"dso303-midterm","score":6,"total":6,"status":"mcq-marked-awaiting-tutor","answered":4}
+[exit 0]

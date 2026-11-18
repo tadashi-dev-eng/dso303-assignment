@@ -1,0 +1,1168 @@
+{
+ "assumptions": {
+  "normal_api_req": 15840000.0,
+  "sittings": 40000,
+  "req_per_sitting": 250,
+  "autosave_per_sitting": 240,
+  "exam_sessions": 20,
+  "share_autosave": 0.3,
+  "share_db": 0.4,
+  "sql_per_db_req": 1.5,
+  "sql_per_sitting": {
+   "a2": 6,
+   "opt": 4.1
+  },
+  "lambda_ms": 60,
+  "lambda_gb": 0.5,
+  "wru_per_save": 1.5,
+  "rru_per_save": 0.5,
+  "aurora_storage_gb": 20,
+  "aurora_io_normal": 20000000.0,
+  "aurora_io_exam": 30000000.0,
+  "aurora_backup_extra_gb": 10,
+  "acu_normal": {
+   "writer": 1.0,
+   "reader": 0.5
+  },
+  "acu_exam_window_h": 30,
+  "acu_exam_window": 4,
+  "pc": {
+   "a2": [
+    300,
+    200
+   ],
+   "opt": [
+    50,
+    20
+   ]
+  },
+  "ddb_table_gb": 10,
+  "uploads": {
+   "normal": 16000,
+   "exam": 8000
+  },
+  "upload_mb": 8,
+  "downloads_per_upload": 1.2,
+  "s3_months": {
+   "std": 1,
+   "sia": 5,
+   "gir": 6,
+   "gda": 0
+  },
+  "sessions_per_user": 20,
+  "spa_mb": 1.5,
+  "static_req_per_session": 10,
+  "api_resp_kb": 3,
+  "lambda_log_bytes": 350,
+  "api_access_log_bytes": 250,
+  "emf_bytes": 450,
+  "log_retention_months": {
+   "a2": 3,
+   "opt": 1
+  },
+  "xray_rate": {
+   "a2": 0.05,
+   "opt": 0.01
+  },
+  "emf_metrics": 24,
+  "emails": {
+   "normal": 24000,
+   "exam": 48000
+  },
+  "kms_req": {
+   "normal": 300000,
+   "exam": 600000
+  },
+  "nat_gb": 30,
+  "sqs_req": {
+   "normal": 2100000.0,
+   "exam": 2600000.0
+  },
+  "alarms": {
+   "a2": 8,
+   "opt": 9
+  }
+ },
+ "results": {
+  "ap-southeast-1/a2/normal": {
+   "total": 720.01,
+   "items": [
+    {
+     "service": "Amazon Aurora PostgreSQL",
+     "description": "2 x db.r6g.large On-Demand (writer AZ-a, reader AZ-b)",
+     "monthly": 456.98,
+     "config": "2 instances x 730 h x $0.313/h"
+    },
+    {
+     "service": "Amazon Aurora PostgreSQL",
+     "description": "storage, I/O and backup beyond the free allowance",
+     "monthly": 6.83,
+     "config": "20 GB, 20 M I/O, 10 GB backup"
+    },
+    {
+     "service": "RDS Data API",
+     "description": "Data API requests (hidden cost)",
+     "monthly": 3.99,
+     "config": "9.50 M requests"
+    },
+    {
+     "service": "AWS Lambda",
+     "description": "api + marker + notifier requests and duration (arm64)",
+     "monthly": 3.97,
+     "config": "15.84 M requests, 475,200 GB-s (free tier applied)"
+    },
+    {
+     "service": "Amazon API Gateway",
+     "description": "HTTP API requests",
+     "monthly": 19.8,
+     "config": "15.84 M requests"
+    },
+    {
+     "service": "AWS WAF",
+     "description": "web ACL, rules, requests",
+     "monthly": 18.51,
+     "config": "1 ACL, 3 rules, 17.52 M requests"
+    },
+    {
+     "service": "Amazon CloudFront",
+     "description": "HTTPS requests (India edge) beyond free tier",
+     "monthly": 9.02,
+     "config": "17.52 M requests, 291 GB out (1 TB free)"
+    },
+    {
+     "service": "Amazon Route 53",
+     "description": "hosted zone (alias queries are free)",
+     "monthly": 0.5,
+     "config": "1 zone"
+    },
+    {
+     "service": "Amazon Cognito",
+     "description": "8,400 MAU (Essentials free tier 10,000)",
+     "monthly": 0,
+     "config": "8400 MAU"
+    },
+    {
+     "service": "Amazon DynamoDB",
+     "description": "on-demand writes/reads, PITR",
+     "monthly": 8.02,
+     "config": "7.1 M WRU, 4.8 M RRU, 10 GB + PITR"
+    },
+    {
+     "service": "AWS Backup",
+     "description": "DynamoDB backups (hidden cost) - daily x35 + monthly",
+     "monthly": 46.4,
+     "config": "10 GB table"
+    },
+    {
+     "service": "Amazon S3",
+     "description": "submissions (lifecycle Std->IA->Glacier IR->Deep Archive), frontend, logs",
+     "monthly": 17.53,
+     "config": "125 GB new; 1,500 GB stored at month 12"
+    },
+    {
+     "service": "Data transfer out",
+     "description": "tutor downloads straight from S3 (hidden cost)",
+     "monthly": 18.0,
+     "config": "150 GB"
+    },
+    {
+     "service": "NAT gateway",
+     "description": "2 NAT gateways (one per AZ) + processing (hidden cost)",
+     "monthly": 87.91,
+     "config": "2 x 730 h + 30 GB"
+    },
+    {
+     "service": "Amazon CloudWatch",
+     "description": "Logs ingestion + storage (hidden cost)",
+     "monthly": 6.99,
+     "config": "8.9 GB/month, 90 days"
+    },
+    {
+     "service": "Amazon CloudWatch",
+     "description": "alarms, dashboard, EMF metrics",
+     "monthly": 3.0,
+     "config": "8 alarms, 1 dashboard"
+    },
+    {
+     "service": "AWS X-Ray",
+     "description": "traces (1/s reservoir + sampling rate)",
+     "monthly": 7.42,
+     "config": "1.58 M traces at 5%"
+    },
+    {
+     "service": "Amazon SQS",
+     "description": "marking, notify, uploads queues",
+     "monthly": 0.44,
+     "config": "2.1 M requests"
+    },
+    {
+     "service": "Amazon SES",
+     "description": "result and submission emails",
+     "monthly": 2.4,
+     "config": "24,000 emails"
+    },
+    {
+     "service": "AWS KMS",
+     "description": "1 customer key + requests (hidden cost)",
+     "monthly": 1.9,
+     "config": "1 key, 300,000 requests"
+    },
+    {
+     "service": "AWS Secrets Manager",
+     "description": "database secret",
+     "monthly": 0.4,
+     "config": "1 secret"
+    }
+   ]
+  },
+  "ap-southeast-1/a2/exam": {
+   "total": 1220.29,
+   "items": [
+    {
+     "service": "Amazon Aurora PostgreSQL",
+     "description": "2 x db.r6g.large On-Demand (writer AZ-a, reader AZ-b)",
+     "monthly": 456.98,
+     "config": "2 instances x 730 h x $0.313/h"
+    },
+    {
+     "service": "Amazon Aurora PostgreSQL",
+     "description": "storage, I/O and backup beyond the free allowance",
+     "monthly": 9.03,
+     "config": "20 GB, 30 M I/O, 10 GB backup"
+    },
+    {
+     "service": "RDS Data API",
+     "description": "Data API requests (hidden cost)",
+     "monthly": 4.09,
+     "config": "9.74 M requests"
+    },
+    {
+     "service": "AWS Lambda",
+     "description": "api + marker + notifier requests and duration (arm64)",
+     "monthly": 9.97,
+     "config": "25.84 M requests, 775,200 GB-s (free tier applied)"
+    },
+    {
+     "service": "AWS Lambda",
+     "description": "provisioned concurrency during exam windows",
+     "monthly": 449.2,
+     "config": "300 x 0.5 GB x 200 h"
+    },
+    {
+     "service": "Amazon API Gateway",
+     "description": "HTTP API requests",
+     "monthly": 32.3,
+     "config": "25.84 M requests"
+    },
+    {
+     "service": "AWS WAF",
+     "description": "web ACL, rules, requests",
+     "monthly": 24.51,
+     "config": "1 ACL, 3 rules, 27.52 M requests"
+    },
+    {
+     "service": "Amazon CloudFront",
+     "description": "HTTPS requests (India edge) beyond free tier",
+     "monthly": 21.02,
+     "config": "27.52 M requests, 320 GB out (1 TB free)"
+    },
+    {
+     "service": "Amazon Route 53",
+     "description": "hosted zone (alias queries are free)",
+     "monthly": 0.5,
+     "config": "1 zone"
+    },
+    {
+     "service": "Amazon Cognito",
+     "description": "8,400 MAU (Essentials free tier 10,000)",
+     "monthly": 0,
+     "config": "8400 MAU"
+    },
+    {
+     "service": "Amazon DynamoDB",
+     "description": "on-demand writes/reads, PITR",
+     "monthly": 18.93,
+     "config": "21.5 M WRU, 9.6 M RRU, 10 GB + PITR"
+    },
+    {
+     "service": "AWS Backup",
+     "description": "DynamoDB backups (hidden cost) - daily x35 + monthly",
+     "monthly": 46.4,
+     "config": "10 GB table"
+    },
+    {
+     "service": "Amazon S3",
+     "description": "submissions (lifecycle Std->IA->Glacier IR->Deep Archive), frontend, logs",
+     "monthly": 17.48,
+     "config": "62 GB new; 1,500 GB stored at month 12"
+    },
+    {
+     "service": "Data transfer out",
+     "description": "tutor downloads straight from S3 (hidden cost)",
+     "monthly": 9.0,
+     "config": "75 GB"
+    },
+    {
+     "service": "NAT gateway",
+     "description": "2 NAT gateways (one per AZ) + processing (hidden cost)",
+     "monthly": 87.91,
+     "config": "2 x 730 h + 30 GB"
+    },
+    {
+     "service": "Amazon CloudWatch",
+     "description": "Logs ingestion + storage (hidden cost)",
+     "monthly": 11.41,
+     "config": "14.4 GB/month, 90 days"
+    },
+    {
+     "service": "Amazon CloudWatch",
+     "description": "alarms, dashboard, EMF metrics",
+     "monthly": 3.0,
+     "config": "8 alarms, 1 dashboard"
+    },
+    {
+     "service": "AWS X-Ray",
+     "description": "traces (1/s reservoir + sampling rate)",
+     "monthly": 9.92,
+     "config": "2.08 M traces at 5%"
+    },
+    {
+     "service": "Amazon SQS",
+     "description": "marking, notify, uploads queues",
+     "monthly": 0.64,
+     "config": "2.6 M requests"
+    },
+    {
+     "service": "Amazon SES",
+     "description": "result and submission emails",
+     "monthly": 4.8,
+     "config": "48,000 emails"
+    },
+    {
+     "service": "AWS KMS",
+     "description": "1 customer key + requests (hidden cost)",
+     "monthly": 2.8,
+     "config": "1 key, 600,000 requests"
+    },
+    {
+     "service": "AWS Secrets Manager",
+     "description": "database secret",
+     "monthly": 0.4,
+     "config": "1 secret"
+    }
+   ]
+  },
+  "ap-southeast-1/opt/normal": {
+   "total": 363.57,
+   "items": [
+    {
+     "service": "Amazon Aurora PostgreSQL",
+     "description": "Serverless v2, writer + reader (0.5-16 ACU)",
+     "monthly": 219.0,
+     "config": "1,095 ACU-h x $0.2"
+    },
+    {
+     "service": "Amazon Aurora PostgreSQL",
+     "description": "storage, I/O and backup beyond the free allowance",
+     "monthly": 6.83,
+     "config": "20 GB, 20 M I/O, 10 GB backup"
+    },
+    {
+     "service": "RDS Data API",
+     "description": "Data API requests (hidden cost)",
+     "monthly": 3.99,
+     "config": "9.50 M requests"
+    },
+    {
+     "service": "AWS Lambda",
+     "description": "api + marker + notifier requests and duration (arm64)",
+     "monthly": 3.97,
+     "config": "15.84 M requests, 475,200 GB-s (free tier applied)"
+    },
+    {
+     "service": "Amazon API Gateway",
+     "description": "HTTP API requests",
+     "monthly": 19.8,
+     "config": "15.84 M requests"
+    },
+    {
+     "service": "AWS WAF",
+     "description": "web ACL, rules, requests",
+     "monthly": 19.51,
+     "config": "1 ACL, 4 rules, 17.52 M requests"
+    },
+    {
+     "service": "Amazon CloudFront",
+     "description": "HTTPS requests (India edge) beyond free tier",
+     "monthly": 9.02,
+     "config": "17.52 M requests, 291 GB out (1 TB free)"
+    },
+    {
+     "service": "Amazon Route 53",
+     "description": "hosted zone (alias queries are free)",
+     "monthly": 0.5,
+     "config": "1 zone"
+    },
+    {
+     "service": "Amazon Cognito",
+     "description": "8,400 MAU (Essentials free tier 10,000)",
+     "monthly": 0,
+     "config": "8400 MAU"
+    },
+    {
+     "service": "Amazon DynamoDB",
+     "description": "on-demand writes/reads, PITR",
+     "monthly": 8.02,
+     "config": "7.1 M WRU, 4.8 M RRU, 10 GB + PITR"
+    },
+    {
+     "service": "AWS Backup",
+     "description": "DynamoDB backups (hidden cost) - monthly only, PITR covers 35 days",
+     "monthly": 6.5,
+     "config": "10 GB table"
+    },
+    {
+     "service": "Amazon S3",
+     "description": "submissions (lifecycle Std->IA->Glacier IR->Deep Archive), frontend, logs",
+     "monthly": 17.53,
+     "config": "125 GB new; 1,500 GB stored at month 12"
+    },
+    {
+     "service": "Data transfer out",
+     "description": "tutor downloads straight from S3 (hidden cost)",
+     "monthly": 18.0,
+     "config": "150 GB"
+    },
+    {
+     "service": "Amazon CloudWatch",
+     "description": "Logs ingestion + storage (hidden cost)",
+     "monthly": 11.31,
+     "config": "15.5 GB/month, 30 days"
+    },
+    {
+     "service": "Amazon CloudWatch",
+     "description": "alarms, dashboard, EMF metrics",
+     "monthly": 10.2,
+     "config": "9 alarms, 1 dashboard, 24 EMF metrics"
+    },
+    {
+     "service": "AWS X-Ray",
+     "description": "traces (1/s reservoir + sampling rate)",
+     "monthly": 4.25,
+     "config": "0.95 M traces at 1%"
+    },
+    {
+     "service": "Amazon SQS",
+     "description": "marking, notify, uploads queues",
+     "monthly": 0.44,
+     "config": "2.1 M requests"
+    },
+    {
+     "service": "Amazon SES",
+     "description": "result and submission emails",
+     "monthly": 2.4,
+     "config": "24,000 emails"
+    },
+    {
+     "service": "AWS KMS",
+     "description": "1 customer key + requests (hidden cost)",
+     "monthly": 1.9,
+     "config": "1 key, 300,000 requests"
+    },
+    {
+     "service": "AWS Secrets Manager",
+     "description": "database secret",
+     "monthly": 0.4,
+     "config": "1 secret"
+    }
+   ]
+  },
+  "ap-southeast-1/opt/exam": {
+   "total": 440.83,
+   "items": [
+    {
+     "service": "Amazon Aurora PostgreSQL",
+     "description": "Serverless v2, writer + reader (0.5-16 ACU)",
+     "monthly": 237.0,
+     "config": "1,185 ACU-h x $0.2"
+    },
+    {
+     "service": "Amazon Aurora PostgreSQL",
+     "description": "storage, I/O and backup beyond the free allowance",
+     "monthly": 9.03,
+     "config": "20 GB, 30 M I/O, 10 GB backup"
+    },
+    {
+     "service": "RDS Data API",
+     "description": "Data API requests (hidden cost)",
+     "monthly": 4.06,
+     "config": "9.67 M requests"
+    },
+    {
+     "service": "AWS Lambda",
+     "description": "api + marker + notifier requests and duration (arm64)",
+     "monthly": 9.97,
+     "config": "25.84 M requests, 775,200 GB-s (free tier applied)"
+    },
+    {
+     "service": "AWS Lambda",
+     "description": "provisioned concurrency during exam windows",
+     "monthly": 7.49,
+     "config": "50 x 0.5 GB x 20 h"
+    },
+    {
+     "service": "Amazon API Gateway",
+     "description": "HTTP API requests",
+     "monthly": 32.3,
+     "config": "25.84 M requests"
+    },
+    {
+     "service": "AWS WAF",
+     "description": "web ACL, rules, requests",
+     "monthly": 25.51,
+     "config": "1 ACL, 4 rules, 27.52 M requests"
+    },
+    {
+     "service": "Amazon CloudFront",
+     "description": "HTTPS requests (India edge) beyond free tier",
+     "monthly": 21.02,
+     "config": "27.52 M requests, 320 GB out (1 TB free)"
+    },
+    {
+     "service": "Amazon Route 53",
+     "description": "hosted zone (alias queries are free)",
+     "monthly": 0.5,
+     "config": "1 zone"
+    },
+    {
+     "service": "Amazon Cognito",
+     "description": "8,400 MAU (Essentials free tier 10,000)",
+     "monthly": 0,
+     "config": "8400 MAU"
+    },
+    {
+     "service": "Amazon DynamoDB",
+     "description": "on-demand writes/reads, PITR",
+     "monthly": 18.93,
+     "config": "21.5 M WRU, 9.6 M RRU, 10 GB + PITR"
+    },
+    {
+     "service": "AWS Backup",
+     "description": "DynamoDB backups (hidden cost) - monthly only, PITR covers 35 days",
+     "monthly": 6.5,
+     "config": "10 GB table"
+    },
+    {
+     "service": "Amazon S3",
+     "description": "submissions (lifecycle Std->IA->Glacier IR->Deep Archive), frontend, logs",
+     "monthly": 17.48,
+     "config": "62 GB new; 1,500 GB stored at month 12"
+    },
+    {
+     "service": "Data transfer out",
+     "description": "tutor downloads straight from S3 (hidden cost)",
+     "monthly": 9.0,
+     "config": "75 GB"
+    },
+    {
+     "service": "Amazon CloudWatch",
+     "description": "Logs ingestion + storage (hidden cost)",
+     "monthly": 18.45,
+     "config": "25.3 GB/month, 30 days"
+    },
+    {
+     "service": "Amazon CloudWatch",
+     "description": "alarms, dashboard, EMF metrics",
+     "monthly": 10.2,
+     "config": "9 alarms, 1 dashboard, 24 EMF metrics"
+    },
+    {
+     "service": "AWS X-Ray",
+     "description": "traces (1/s reservoir + sampling rate)",
+     "monthly": 4.75,
+     "config": "1.05 M traces at 1%"
+    },
+    {
+     "service": "Amazon SQS",
+     "description": "marking, notify, uploads queues",
+     "monthly": 0.64,
+     "config": "2.6 M requests"
+    },
+    {
+     "service": "Amazon SES",
+     "description": "result and submission emails",
+     "monthly": 4.8,
+     "config": "48,000 emails"
+    },
+    {
+     "service": "AWS KMS",
+     "description": "1 customer key + requests (hidden cost)",
+     "monthly": 2.8,
+     "config": "1 key, 600,000 requests"
+    },
+    {
+     "service": "AWS Secrets Manager",
+     "description": "database secret",
+     "monthly": 0.4,
+     "config": "1 secret"
+    }
+   ]
+  },
+  "ap-south-1/a2/normal": {
+   "total": 684.16,
+   "items": [
+    {
+     "service": "Amazon Aurora PostgreSQL",
+     "description": "2 x db.r6g.large On-Demand (writer AZ-a, reader AZ-b)",
+     "monthly": 430.7,
+     "config": "2 instances x 730 h x $0.295/h"
+    },
+    {
+     "service": "Amazon Aurora PostgreSQL",
+     "description": "storage, I/O and backup beyond the free allowance",
+     "monthly": 6.83,
+     "config": "20 GB, 20 M I/O, 10 GB backup"
+    },
+    {
+     "service": "RDS Data API",
+     "description": "Data API requests (hidden cost)",
+     "monthly": 3.77,
+     "config": "9.50 M requests"
+    },
+    {
+     "service": "AWS Lambda",
+     "description": "api + marker + notifier requests and duration (arm64)",
+     "monthly": 3.97,
+     "config": "15.84 M requests, 475,200 GB-s (free tier applied)"
+    },
+    {
+     "service": "Amazon API Gateway",
+     "description": "HTTP API requests",
+     "monthly": 16.63,
+     "config": "15.84 M requests"
+    },
+    {
+     "service": "AWS WAF",
+     "description": "web ACL, rules, requests",
+     "monthly": 18.51,
+     "config": "1 ACL, 3 rules, 17.52 M requests"
+    },
+    {
+     "service": "Amazon CloudFront",
+     "description": "HTTPS requests (India edge) beyond free tier",
+     "monthly": 9.02,
+     "config": "17.52 M requests, 291 GB out (1 TB free)"
+    },
+    {
+     "service": "Amazon Route 53",
+     "description": "hosted zone (alias queries are free)",
+     "monthly": 0.5,
+     "config": "1 zone"
+    },
+    {
+     "service": "Amazon Cognito",
+     "description": "8,400 MAU (Essentials free tier 10,000)",
+     "monthly": 0,
+     "config": "8400 MAU"
+    },
+    {
+     "service": "Amazon DynamoDB",
+     "description": "on-demand writes/reads, PITR",
+     "monthly": 8.02,
+     "config": "7.1 M WRU, 4.8 M RRU, 10 GB + PITR"
+    },
+    {
+     "service": "AWS Backup",
+     "description": "DynamoDB backups (hidden cost) - daily x35 + monthly",
+     "monthly": 46.4,
+     "config": "10 GB table"
+    },
+    {
+     "service": "Amazon S3",
+     "description": "submissions (lifecycle Std->IA->Glacier IR->Deep Archive), frontend, logs",
+     "monthly": 17.69,
+     "config": "125 GB new; 1,500 GB stored at month 12"
+    },
+    {
+     "service": "Data transfer out",
+     "description": "tutor downloads straight from S3 (hidden cost)",
+     "monthly": 16.39,
+     "config": "150 GB"
+    },
+    {
+     "service": "NAT gateway",
+     "description": "2 NAT gateways (one per AZ) + processing (hidden cost)",
+     "monthly": 83.44,
+     "config": "2 x 730 h + 30 GB"
+    },
+    {
+     "service": "Amazon CloudWatch",
+     "description": "Logs ingestion + storage (hidden cost)",
+     "monthly": 6.73,
+     "config": "8.9 GB/month, 90 days"
+    },
+    {
+     "service": "Amazon CloudWatch",
+     "description": "alarms, dashboard, EMF metrics",
+     "monthly": 3.0,
+     "config": "8 alarms, 1 dashboard"
+    },
+    {
+     "service": "AWS X-Ray",
+     "description": "traces (1/s reservoir + sampling rate)",
+     "monthly": 7.42,
+     "config": "1.58 M traces at 5%"
+    },
+    {
+     "service": "Amazon SQS",
+     "description": "marking, notify, uploads queues",
+     "monthly": 0.44,
+     "config": "2.1 M requests"
+    },
+    {
+     "service": "Amazon SES",
+     "description": "result and submission emails",
+     "monthly": 2.4,
+     "config": "24,000 emails"
+    },
+    {
+     "service": "AWS KMS",
+     "description": "1 customer key + requests (hidden cost)",
+     "monthly": 1.9,
+     "config": "1 key, 300,000 requests"
+    },
+    {
+     "service": "AWS Secrets Manager",
+     "description": "database secret",
+     "monthly": 0.4,
+     "config": "1 secret"
+    }
+   ]
+  },
+  "ap-south-1/a2/exam": {
+   "total": 1122.54,
+   "items": [
+    {
+     "service": "Amazon Aurora PostgreSQL",
+     "description": "2 x db.r6g.large On-Demand (writer AZ-a, reader AZ-b)",
+     "monthly": 430.7,
+     "config": "2 instances x 730 h x $0.295/h"
+    },
+    {
+     "service": "Amazon Aurora PostgreSQL",
+     "description": "storage, I/O and backup beyond the free allowance",
+     "monthly": 9.03,
+     "config": "20 GB, 30 M I/O, 10 GB backup"
+    },
+    {
+     "service": "RDS Data API",
+     "description": "Data API requests (hidden cost)",
+     "monthly": 3.87,
+     "config": "9.74 M requests"
+    },
+    {
+     "service": "AWS Lambda",
+     "description": "api + marker + notifier requests and duration (arm64)",
+     "monthly": 9.97,
+     "config": "25.84 M requests, 775,200 GB-s (free tier applied)"
+    },
+    {
+     "service": "AWS Lambda",
+     "description": "provisioned concurrency during exam windows",
+     "monthly": 388.67,
+     "config": "300 x 0.5 GB x 200 h"
+    },
+    {
+     "service": "Amazon API Gateway",
+     "description": "HTTP API requests",
+     "monthly": 27.13,
+     "config": "25.84 M requests"
+    },
+    {
+     "service": "AWS WAF",
+     "description": "web ACL, rules, requests",
+     "monthly": 24.51,
+     "config": "1 ACL, 3 rules, 27.52 M requests"
+    },
+    {
+     "service": "Amazon CloudFront",
+     "description": "HTTPS requests (India edge) beyond free tier",
+     "monthly": 21.02,
+     "config": "27.52 M requests, 320 GB out (1 TB free)"
+    },
+    {
+     "service": "Amazon Route 53",
+     "description": "hosted zone (alias queries are free)",
+     "monthly": 0.5,
+     "config": "1 zone"
+    },
+    {
+     "service": "Amazon Cognito",
+     "description": "8,400 MAU (Essentials free tier 10,000)",
+     "monthly": 0,
+     "config": "8400 MAU"
+    },
+    {
+     "service": "Amazon DynamoDB",
+     "description": "on-demand writes/reads, PITR",
+     "monthly": 18.93,
+     "config": "21.5 M WRU, 9.6 M RRU, 10 GB + PITR"
+    },
+    {
+     "service": "AWS Backup",
+     "description": "DynamoDB backups (hidden cost) - daily x35 + monthly",
+     "monthly": 46.4,
+     "config": "10 GB table"
+    },
+    {
+     "service": "Amazon S3",
+     "description": "submissions (lifecycle Std->IA->Glacier IR->Deep Archive), frontend, logs",
+     "monthly": 17.64,
+     "config": "62 GB new; 1,500 GB stored at month 12"
+    },
+    {
+     "service": "Data transfer out",
+     "description": "tutor downloads straight from S3 (hidden cost)",
+     "monthly": 8.2,
+     "config": "75 GB"
+    },
+    {
+     "service": "NAT gateway",
+     "description": "2 NAT gateways (one per AZ) + processing (hidden cost)",
+     "monthly": 83.44,
+     "config": "2 x 730 h + 30 GB"
+    },
+    {
+     "service": "Amazon CloudWatch",
+     "description": "Logs ingestion + storage (hidden cost)",
+     "monthly": 10.97,
+     "config": "14.4 GB/month, 90 days"
+    },
+    {
+     "service": "Amazon CloudWatch",
+     "description": "alarms, dashboard, EMF metrics",
+     "monthly": 3.0,
+     "config": "8 alarms, 1 dashboard"
+    },
+    {
+     "service": "AWS X-Ray",
+     "description": "traces (1/s reservoir + sampling rate)",
+     "monthly": 9.92,
+     "config": "2.08 M traces at 5%"
+    },
+    {
+     "service": "Amazon SQS",
+     "description": "marking, notify, uploads queues",
+     "monthly": 0.64,
+     "config": "2.6 M requests"
+    },
+    {
+     "service": "Amazon SES",
+     "description": "result and submission emails",
+     "monthly": 4.8,
+     "config": "48,000 emails"
+    },
+    {
+     "service": "AWS KMS",
+     "description": "1 customer key + requests (hidden cost)",
+     "monthly": 2.8,
+     "config": "1 key, 600,000 requests"
+    },
+    {
+     "service": "AWS Secrets Manager",
+     "description": "database secret",
+     "monthly": 0.4,
+     "config": "1 secret"
+    }
+   ]
+  },
+  "ap-south-1/opt/normal": {
+   "total": 336.36,
+   "items": [
+    {
+     "service": "Amazon Aurora PostgreSQL",
+     "description": "Serverless v2, writer + reader (0.5-16 ACU)",
+     "monthly": 197.1,
+     "config": "1,095 ACU-h x $0.18"
+    },
+    {
+     "service": "Amazon Aurora PostgreSQL",
+     "description": "storage, I/O and backup beyond the free allowance",
+     "monthly": 6.83,
+     "config": "20 GB, 20 M I/O, 10 GB backup"
+    },
+    {
+     "service": "RDS Data API",
+     "description": "Data API requests (hidden cost)",
+     "monthly": 3.77,
+     "config": "9.50 M requests"
+    },
+    {
+     "service": "AWS Lambda",
+     "description": "api + marker + notifier requests and duration (arm64)",
+     "monthly": 3.97,
+     "config": "15.84 M requests, 475,200 GB-s (free tier applied)"
+    },
+    {
+     "service": "Amazon API Gateway",
+     "description": "HTTP API requests",
+     "monthly": 16.63,
+     "config": "15.84 M requests"
+    },
+    {
+     "service": "AWS WAF",
+     "description": "web ACL, rules, requests",
+     "monthly": 19.51,
+     "config": "1 ACL, 4 rules, 17.52 M requests"
+    },
+    {
+     "service": "Amazon CloudFront",
+     "description": "HTTPS requests (India edge) beyond free tier",
+     "monthly": 9.02,
+     "config": "17.52 M requests, 291 GB out (1 TB free)"
+    },
+    {
+     "service": "Amazon Route 53",
+     "description": "hosted zone (alias queries are free)",
+     "monthly": 0.5,
+     "config": "1 zone"
+    },
+    {
+     "service": "Amazon Cognito",
+     "description": "8,400 MAU (Essentials free tier 10,000)",
+     "monthly": 0,
+     "config": "8400 MAU"
+    },
+    {
+     "service": "Amazon DynamoDB",
+     "description": "on-demand writes/reads, PITR",
+     "monthly": 8.02,
+     "config": "7.1 M WRU, 4.8 M RRU, 10 GB + PITR"
+    },
+    {
+     "service": "AWS Backup",
+     "description": "DynamoDB backups (hidden cost) - monthly only, PITR covers 35 days",
+     "monthly": 6.5,
+     "config": "10 GB table"
+    },
+    {
+     "service": "Amazon S3",
+     "description": "submissions (lifecycle Std->IA->Glacier IR->Deep Archive), frontend, logs",
+     "monthly": 17.69,
+     "config": "125 GB new; 1,500 GB stored at month 12"
+    },
+    {
+     "service": "Data transfer out",
+     "description": "tutor downloads straight from S3 (hidden cost)",
+     "monthly": 16.39,
+     "config": "150 GB"
+    },
+    {
+     "service": "Amazon CloudWatch",
+     "description": "Logs ingestion + storage (hidden cost)",
+     "monthly": 10.84,
+     "config": "15.5 GB/month, 30 days"
+    },
+    {
+     "service": "Amazon CloudWatch",
+     "description": "alarms, dashboard, EMF metrics",
+     "monthly": 10.2,
+     "config": "9 alarms, 1 dashboard, 24 EMF metrics"
+    },
+    {
+     "service": "AWS X-Ray",
+     "description": "traces (1/s reservoir + sampling rate)",
+     "monthly": 4.25,
+     "config": "0.95 M traces at 1%"
+    },
+    {
+     "service": "Amazon SQS",
+     "description": "marking, notify, uploads queues",
+     "monthly": 0.44,
+     "config": "2.1 M requests"
+    },
+    {
+     "service": "Amazon SES",
+     "description": "result and submission emails",
+     "monthly": 2.4,
+     "config": "24,000 emails"
+    },
+    {
+     "service": "AWS KMS",
+     "description": "1 customer key + requests (hidden cost)",
+     "monthly": 1.9,
+     "config": "1 key, 300,000 requests"
+    },
+    {
+     "service": "AWS Secrets Manager",
+     "description": "database secret",
+     "monthly": 0.4,
+     "config": "1 secret"
+    }
+   ]
+  },
+  "ap-south-1/opt/exam": {
+   "total": 409.33,
+   "items": [
+    {
+     "service": "Amazon Aurora PostgreSQL",
+     "description": "Serverless v2, writer + reader (0.5-16 ACU)",
+     "monthly": 213.3,
+     "config": "1,185 ACU-h x $0.18"
+    },
+    {
+     "service": "Amazon Aurora PostgreSQL",
+     "description": "storage, I/O and backup beyond the free allowance",
+     "monthly": 9.03,
+     "config": "20 GB, 30 M I/O, 10 GB backup"
+    },
+    {
+     "service": "RDS Data API",
+     "description": "Data API requests (hidden cost)",
+     "monthly": 3.84,
+     "config": "9.67 M requests"
+    },
+    {
+     "service": "AWS Lambda",
+     "description": "api + marker + notifier requests and duration (arm64)",
+     "monthly": 9.97,
+     "config": "25.84 M requests, 775,200 GB-s (free tier applied)"
+    },
+    {
+     "service": "AWS Lambda",
+     "description": "provisioned concurrency during exam windows",
+     "monthly": 6.48,
+     "config": "50 x 0.5 GB x 20 h"
+    },
+    {
+     "service": "Amazon API Gateway",
+     "description": "HTTP API requests",
+     "monthly": 27.13,
+     "config": "25.84 M requests"
+    },
+    {
+     "service": "AWS WAF",
+     "description": "web ACL, rules, requests",
+     "monthly": 25.51,
+     "config": "1 ACL, 4 rules, 27.52 M requests"
+    },
+    {
+     "service": "Amazon CloudFront",
+     "description": "HTTPS requests (India edge) beyond free tier",
+     "monthly": 21.02,
+     "config": "27.52 M requests, 320 GB out (1 TB free)"
+    },
+    {
+     "service": "Amazon Route 53",
+     "description": "hosted zone (alias queries are free)",
+     "monthly": 0.5,
+     "config": "1 zone"
+    },
+    {
+     "service": "Amazon Cognito",
+     "description": "8,400 MAU (Essentials free tier 10,000)",
+     "monthly": 0,
+     "config": "8400 MAU"
+    },
+    {
+     "service": "Amazon DynamoDB",
+     "description": "on-demand writes/reads, PITR",
+     "monthly": 18.93,
+     "config": "21.5 M WRU, 9.6 M RRU, 10 GB + PITR"
+    },
+    {
+     "service": "AWS Backup",
+     "description": "DynamoDB backups (hidden cost) - monthly only, PITR covers 35 days",
+     "monthly": 6.5,
+     "config": "10 GB table"
+    },
+    {
+     "service": "Amazon S3",
+     "description": "submissions (lifecycle Std->IA->Glacier IR->Deep Archive), frontend, logs",
+     "monthly": 17.64,
+     "config": "62 GB new; 1,500 GB stored at month 12"
+    },
+    {
+     "service": "Data transfer out",
+     "description": "tutor downloads straight from S3 (hidden cost)",
+     "monthly": 8.2,
+     "config": "75 GB"
+    },
+    {
+     "service": "Amazon CloudWatch",
+     "description": "Logs ingestion + storage (hidden cost)",
+     "monthly": 17.69,
+     "config": "25.3 GB/month, 30 days"
+    },
+    {
+     "service": "Amazon CloudWatch",
+     "description": "alarms, dashboard, EMF metrics",
+     "monthly": 10.2,
+     "config": "9 alarms, 1 dashboard, 24 EMF metrics"
+    },
+    {
+     "service": "AWS X-Ray",
+     "description": "traces (1/s reservoir + sampling rate)",
+     "monthly": 4.75,
+     "config": "1.05 M traces at 1%"
+    },
+    {
+     "service": "Amazon SQS",
+     "description": "marking, notify, uploads queues",
+     "monthly": 0.64,
+     "config": "2.6 M requests"
+    },
+    {
+     "service": "Amazon SES",
+     "description": "result and submission emails",
+     "monthly": 4.8,
+     "config": "48,000 emails"
+    },
+    {
+     "service": "AWS KMS",
+     "description": "1 customer key + requests (hidden cost)",
+     "monthly": 2.8,
+     "config": "1 key, 600,000 requests"
+    },
+    {
+     "service": "AWS Secrets Manager",
+     "description": "database secret",
+     "monthly": 0.4,
+     "config": "1 secret"
+    }
+   ]
+  },
+  "ap-southeast-1/a2/year": {
+   "normal": 720.01,
+   "exam": 1220.29,
+   "annual": 9640.68,
+   "avg_month": 803.39,
+   "per_student_year": 1.21,
+   "per_sitting": 0.121
+  },
+  "ap-southeast-1/opt/year": {
+   "normal": 363.57,
+   "exam": 440.83,
+   "annual": 4517.36,
+   "avg_month": 376.45,
+   "per_student_year": 0.56,
+   "per_sitting": 0.056
+  },
+  "ap-south-1/a2/year": {
+   "normal": 684.16,
+   "exam": 1122.54,
+   "annual": 9086.68,
+   "avg_month": 757.22,
+   "per_student_year": 1.14,
+   "per_sitting": 0.114
+  },
+  "ap-south-1/opt/year": {
+   "normal": 336.36,
+   "exam": 409.33,
+   "annual": 4182.26,
+   "avg_month": 348.52,
+   "per_student_year": 0.52,
+   "per_sitting": 0.052
+  }
+ }
+}

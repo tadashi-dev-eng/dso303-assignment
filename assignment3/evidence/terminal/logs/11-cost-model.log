@@ -1,0 +1,35 @@
+$ python3 tools/cost_model.py
+Prices: AWS Price List API, published 2026-11-11T22:30:04Z  (checked 2026-11-15)
+
+Service                      Description                                                     A2 normal    A2 exam  A3 normal    A3 exam
+Amazon Aurora PostgreSQL     2 x db.r6g.large On-Demand (writer AZ-a, reader AZ-b)              456.98     456.98          -          -
+Amazon Aurora PostgreSQL     storage, I/O and backup beyond the free allowance                    6.83       9.03       6.83       9.03
+RDS Data API                 Data API requests (hidden cost)                                      3.99       4.09       3.99       4.06
+AWS Lambda                   api + marker + notifier requests and duration (arm64)                3.97       9.97       3.97       9.97
+AWS Lambda                   provisioned concurrency during exam windows                             -     449.20          -       7.49
+Amazon API Gateway           HTTP API requests                                                   19.80      32.30      19.80      32.30
+AWS WAF                      web ACL, rules, requests                                            18.51      24.51      19.51      25.51
+Amazon CloudFront            HTTPS requests (India edge) beyond free tier                         9.02      21.02       9.02      21.02
+Amazon Route 53              hosted zone (alias queries are free)                                 0.50       0.50       0.50       0.50
+Amazon Cognito               8,400 MAU (Essentials free tier 10,000)                              0.00       0.00       0.00       0.00
+Amazon DynamoDB              on-demand writes/reads, PITR                                         8.02      18.93       8.02      18.93
+AWS Backup                   DynamoDB backups (hidden cost) - daily x35 + monthly                46.40      46.40          -          -
+Amazon S3                    submissions (lifecycle Std->IA->Glacier IR->Deep Archive), fro      17.53      17.48      17.53      17.48
+Data transfer out            tutor downloads straight from S3 (hidden cost)                      18.00       9.00      18.00       9.00
+NAT gateway                  2 NAT gateways (one per AZ) + processing (hidden cost)              87.91      87.91          -          -
+Amazon CloudWatch            Logs ingestion + storage (hidden cost)                               6.99      11.41      11.31      18.45
+Amazon CloudWatch            alarms, dashboard, EMF metrics                                       3.00       3.00      10.20      10.20
+AWS X-Ray                    traces (1/s reservoir + sampling rate)                               7.42       9.92       4.25       4.75
+Amazon SQS                   marking, notify, uploads queues                                      0.44       0.64       0.44       0.64
+Amazon SES                   result and submission emails                                         2.40       4.80       2.40       4.80
+AWS KMS                      1 customer key + requests (hidden cost)                              1.90       2.80       1.90       2.80
+AWS Secrets Manager          database secret                                                      0.40       0.40       0.40       0.40
+Amazon Aurora PostgreSQL     Serverless v2, writer + reader (0.5-16 ACU)                             -          -     219.00     237.00
+AWS Backup                   DynamoDB backups (hidden cost) - monthly only, PITR covers 35           -          -       6.50       6.50
+TOTAL per month                                                                                 720.01    1220.29     363.57     440.83
+
+ap-southeast-1  Assignment 2 design: normal $720.01  exam $1,220.29  annual $9,640.68  avg/month $803.39  per student/yr $1.21  per exam sitting $0.121
+ap-southeast-1  Assignment 3 design: normal $363.57  exam $440.83  annual $4,517.36  avg/month $376.45  per student/yr $0.56  per exam sitting $0.056
+ap-south-1      Assignment 2 design: normal $684.16  exam $1,122.54  annual $9,086.68  avg/month $757.22  per student/yr $1.14  per exam sitting $0.114
+ap-south-1      Assignment 3 design: normal $336.36  exam $409.33  annual $4,182.26  avg/month $348.52  per student/yr $0.52  per exam sitting $0.052
+[exit 0]

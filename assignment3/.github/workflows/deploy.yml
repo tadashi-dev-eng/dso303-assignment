@@ -1,0 +1,69 @@
+name: deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write # GitHub OIDC -> IAM role, no long-lived AWS keys
+
+concurrency:
+  group: deploy-prod
+  cancel-in-progress: false # never interrupt a running terraform apply
+
+env:
+  ENV: prod
+  AWS_REGION: ap-southeast-1
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.14.8
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ap-southeast-1
+      - run: terraform -chdir=infra fmt -check -recursive
+      - run: terraform -chdir=infra init -input=false -backend-config=envs/prod.backend.hcl
+      - run: terraform -chdir=infra plan -input=false -var-file=envs/prod.tfvars -out=tfplan
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tfplan
+          path: |
+            infra/tfplan
+            infra/.build/
+          include-hidden-files: true
+
+  apply:
+    needs: plan
+    runs-on: ubuntu-latest
+    environment: production # optional required reviewers; blocks applies outside exam freeze rules
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.14.8
+          terraform_wrapper: false
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ap-southeast-1
+      - uses: actions/download-artifact@v4
+        with:
+          name: tfplan
+          path: infra
+      - run: terraform -chdir=infra init -input=false -backend-config=envs/prod.backend.hcl
+      - run: terraform -chdir=infra apply -input=false tfplan
+      - name: migrate database
+        run: |
+          FN=$(terraform -chdir=infra output -json lambda_functions | jq -r .api)
+          aws lambda invoke --function-name "$FN" --cli-binary-format raw-in-base64-out --payload '{"action":"migrate"}' out.json
+          cat out.json
+      - name: smoke test
+        run: curl -fsS "$(terraform -chdir=infra output -raw api_url)/health"

@@ -1,0 +1,62 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.14.8
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: terraform fmt
+        run: terraform -chdir=infra fmt -check -recursive
+      - name: terraform validate
+        run: terraform -chdir=infra init -backend=false -input=false && terraform -chdir=infra validate
+      - name: lambda syntax
+        run: for f in app/*/*.mjs scripts/*.mjs infra/failure-tests/*.mjs; do node --check "$f"; done
+      - name: shellcheck
+        run: shellcheck -x scripts/*.sh infra/failure-tests/*.sh
+      - name: cost model runs
+        run: python3 tools/cost_model.py
+
+  # Full deploy + walkthroughs + failure tests F1-F4 against the Floci AWS emulator (ap-southeast-1).
+  integration:
+    needs: static
+    runs-on: ubuntu-latest
+    env:
+      ENV: floci
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.14.8
+          terraform_wrapper: false
+      - name: start Floci
+        run: |
+          docker network create floci-net
+          docker run -d --name floci --network floci-net -p 4566:4566 \
+            -v /var/run/docker.sock:/var/run/docker.sock \
+            -e FLOCI_HOSTNAME=floci -e FLOCI_SERVICES_DOCKER_NETWORK=floci-net \
+            floci/floci:1.7.0
+          for i in $(seq 1 60); do curl -sf localhost:4566/_floci/health && break; sleep 2; done
+          echo "127.0.0.1 floci" | sudo tee -a /etc/hosts
+      - run: ./scripts/deploy.sh
+      - run: ./scripts/walkthrough-1-exam-autosave.sh
+      - run: ./scripts/walkthrough-2-upload-notify.sh
+      - run: ./infra/failure-tests/f1-az-loss.sh
+      - run: ./infra/failure-tests/f2-marking-outage.sh
+      - run: ./infra/failure-tests/f3-deleted-submission.sh
+      - run: ./infra/failure-tests/f4-bad-deploy.sh
+      - if: always()
+        run: ./scripts/destroy.sh

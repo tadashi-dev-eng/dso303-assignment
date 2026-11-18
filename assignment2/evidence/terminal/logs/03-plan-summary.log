@@ -1,0 +1,39 @@
+$ terraform -chdir=infra state list | wc -l; terraform -chdir=infra output
+124
+api_endpoint = "https://f29bd18fc1.execute-api.us-east-1.amazonaws.com"
+api_id = "f29bd18fc1"
+api_url = "http://f29bd18fc1.execute-api.localhost.floci.io:4566"
+attempts_table = "exams-floci-attempts"
+cognito_client_id = "f739378200e5471b8f70fd1fd5"
+cognito_user_pool_id = "us-east-1_3524bf586"
+db_cluster_arn = "arn:aws:rds:us-east-1:000000000000:cluster:exams-floci-aurora"
+db_secret_arn = "arn:aws:secretsmanager:us-east-1:000000000000:secret:exams-floci/db/master-BTBRZC"
+frontend_bucket = "exams-floci-frontend-90e5fe"
+lambda_functions = {
+  "api" = "exams-floci-api"
+  "marker" = "exams-floci-marker"
+  "notifier" = "exams-floci-notifier"
+}
+queues = {
+  "marking" = "http://floci:4566/000000000000/exams-floci-marking"
+  "notify" = "http://floci:4566/000000000000/exams-floci-notify"
+  "uploads" = "http://floci:4566/000000000000/exams-floci-uploads"
+}
+submissions_bucket = "exams-floci-submissions-90e5fe"
+submissions_table = "exams-floci-submissions"
+subnets = {
+  "app" = {
+    "us-east-1a" = "subnet-e121509d"
+    "us-east-1b" = "subnet-b684c73d"
+  }
+  "data" = {
+    "us-east-1a" = "subnet-d339a8d8"
+    "us-east-1b" = "subnet-177de688"
+  }
+  "public" = {
+    "us-east-1a" = "subnet-e61c0536"
+    "us-east-1b" = "subnet-c61555b1"
+  }
+}
+vpc_id = "vpc-4e5e4289"
+[exit 0]

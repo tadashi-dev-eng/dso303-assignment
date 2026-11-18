@@ -1,0 +1,5 @@
+$ terraform -chdir=infra fmt -check -recursive && echo 'fmt: OK' && terraform -chdir=infra validate
+fmt: OK
+Success! The configuration is valid.
+
+[exit 0]

@@ -1,0 +1,46 @@
+$ ./scripts/load-test.sh before
+
+==> 1. Configure: exam_cache_seconds=0 (terraform apply resets every execution environment)
+Apply complete! Resources: 0 added, 21 changed, 0 destroyed.
+
+==> 2. No pre-warm (cold start at exam start, as in an unprepared exam)
+
+==> 3. Load: 40 students open the exam within 60s, autosave every 30s, hold 90s
+load test "before": 40 students start dso303-midterm within 60s, autosave every 30s, hold 90s
+  t= 10s  started=   6  req/s=   0.0  p95=    0 ms  errors(10s)=0  in-flight=7
+  t= 20s  started=  13  req/s=   0.0  p95=    0 ms  errors(10s)=0  in-flight=14
+  t= 30s  started=  20  req/s=   1.6  p95= 7517 ms  errors(10s)=16  in-flight=14
+  t= 40s  started=  26  req/s=   2.2  p95=30004 ms  errors(10s)=22  in-flight=10
+  t= 50s  started=  33  req/s=   1.5  p95=30010 ms  errors(10s)=14  in-flight=12
+  t= 60s  started=  40  req/s=   1.0  p95=16082 ms  errors(10s)=8  in-flight=13
+  t= 70s  started=  40  req/s=   1.1  p95=27557 ms  errors(10s)=5  in-flight=6
+  t= 80s  started=  40  req/s=   0.6  p95=30002 ms  errors(10s)=1  in-flight=4
+  t= 90s  started=  40  req/s=   0.3  p95=13982 ms  errors(10s)=0  in-flight=3
+  t=100s  started=  40  req/s=   0.7  p95=16361 ms  errors(10s)=0  in-flight=0
+  t=110s  started=  40  req/s=   0.2  p95=  286 ms  errors(10s)=0  in-flight=0
+  t=120s  started=  40  req/s=   0.3  p95= 1232 ms  errors(10s)=0  in-flight=0
+  t=130s  started=  40  req/s=   0.6  p95=  210 ms  errors(10s)=0  in-flight=0
+  t=140s  started=  40  req/s=   0.2  p95=  234 ms  errors(10s)=0  in-flight=0
+  t=150s  started=  40  req/s=   0.3  p95=  830 ms  errors(10s)=0  in-flight=0
+  t=160s  started=  40  req/s=   0.0  p95=    0 ms  errors(10s)=0  in-flight=0
+  t=170s  started=  40  req/s=   0.0  p95=    0 ms  errors(10s)=0  in-flight=0
+
+route            requests    ok   429   5xx  p50 ms  p95 ms  max ms
+GET exam               40     3     0    37    4688   30010   30021
+POST attempt           40    11     0    29    4042   22745   27557
+PUT autosave           26    26     0     0     287   11830   13982
+ALL                   106    40     0    66    3572   30003   30021
+success rate 37.74%  over 180s
+
+==> 4. CloudWatch metrics ExamPlatform/LoadTest (Run=before), 60 s periods
+Requests    Sum     per minute:       38      52      16       0
+Errors5xx   Sum     per minute:       38      28       0       0
+LatencyP95  Maximum per minute:    30004   30010    1232       0
+
+==> 5. CloudWatch Logs /aws/lambda/exams-sg-api: cold starts and where request time goes
+new execution environments (cold starts) during the test: 10
+EMF route                              requests   avg ms  SQL calls/req  SQL ms/req
+GET /exams/{examId}                          14    15060           2.00       15013
+POST /exams/{examId}/attempts                11    10595           1.00        6491
+PUT /attempts/{attemptId}/answers            26     1055           0.00           0
+[exit 0]

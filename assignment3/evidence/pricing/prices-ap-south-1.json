@@ -1,0 +1,350 @@
+{
+  "region": "ap-south-1",
+  "source": "AWS Price List API (same data as the AWS Pricing Calculator)",
+  "prices": {
+    "lambda_request": {
+      "price": 2e-07,
+      "unit": "Requests",
+      "usageType": "APS3-Request-ARM",
+      "description": "AWS Lambda - Total Requests for ARM - Asia Pacific (Mumbai)",
+      "published": "2026-11-11T22:30:04Z"
+    },
+    "lambda_gb_s_arm": {
+      "price": 1.33334e-05,
+      "unit": "Lambda-GB-Second",
+      "usageType": "APS3-Lambda-GB-Second-ARM",
+      "description": "AWS Lambda - Total Compute for ARM - Asia Pacific (Mumbai)-Tier-1",
+      "published": "2026-11-11T22:30:04Z"
+    },
+    "lambda_pc_arm": {
+      "price": 3.5988e-06,
+      "unit": "Lambda-GB-Second",
+      "usageType": "APS3-Lambda-Provisioned-Concurrency-ARM",
+      "description": "AWS Lambda - Provisioned Concurrency for ARM - Asia Pacific (Mumbai)",
+      "published": "2026-11-11T22:30:04Z"
+    },
+    "lambda_pc_gb_s_arm": {
+      "price": 8.3973e-06,
+      "unit": "Lambda-GB-Second",
+      "usageType": "APS3-Lambda-Provisioned-GB-Second-ARM",
+      "description": "AWS Lambda - Total Compute (Provisioned) for ARM - Asia Pacific (Mumbai)",
+      "published": "2026-11-11T22:30:04Z"
+    },
+    "apigw_http_per_req": {
+      "price": 1.05e-06,
+      "unit": "Requests",
+      "usageType": "APS3-ApiGatewayHttpRequest",
+      "description": "$1.05/million requests - API Gateway HTTP API (first 300 million)",
+      "published": "2026-11-12T21:59:20Z"
+    },
+    "ddb_wru": {
+      "price": 7.1e-07,
+      "unit": "WriteRequestUnits",
+      "usageType": "APS3-WriteRequestUnits",
+      "description": "$0.71 per million write request units (Asia Pacific (India))",
+      "published": "2026-11-11T15:36:12Z"
+    },
+    "ddb_rru": {
+      "price": 1.425e-07,
+      "unit": "ReadRequestUnits",
+      "usageType": "APS3-ReadRequestUnits",
+      "description": "$0.1425 per million read request units (Asia Pacific (India))",
+      "published": "2026-11-11T15:36:12Z"
+    },
+    "ddb_storage_gb": {
+      "price": 0.285,
+      "unit": "GB-Mo",
+      "usageType": "APS3-TimedStorage-ByteHrs",
+      "description": "$0.285 per GB-Month of storage used beyond first 25 free GB-Months",
+      "published": "2026-11-11T15:36:12Z"
+    },
+    "ddb_pitr_gb": {
+      "price": 0.228,
+      "unit": "GB-Mo",
+      "usageType": "APS3-TimedPITRStorage-ByteHrs",
+      "description": "$0.228 per GB-Month of storage used for DynamoDB PITR backup",
+      "published": "2026-11-11T15:36:12Z"
+    },
+    "aurora_r6g_large_hr": {
+      "price": 0.295,
+      "unit": "Hrs",
+      "usageType": "APS3-InstanceUsage:db.r6g.large",
+      "description": "$ 0.295 per RDS db.r6g.large Single-AZ instance hour (or partial hour) running Aurora PostgreSQL",
+      "published": "2026-11-13T21:52:33Z"
+    },
+    "aurora_acu_hr": {
+      "price": 0.18,
+      "unit": "ACU-Hr",
+      "usageType": "APS3-Aurora:ServerlessV2Usage",
+      "description": "USD 0.18 per Aurora Capacity Unit hour running Aurora PostgreSQL Serverless v2",
+      "published": "2026-11-13T21:52:33Z"
+    },
+    "aurora_storage_gb": {
+      "price": 0.11,
+      "unit": "GB-Mo",
+      "usageType": "APS3-Aurora:StorageUsage",
+      "description": "USD 0.11 per GB-month of consumed storage for Aurora PostgreSQL",
+      "published": "2026-11-13T21:52:33Z"
+    },
+    "aurora_io_per_req": {
+      "price": 2.2e-07,
+      "unit": "IOs",
+      "usageType": "APS3-Aurora:StorageIOUsage",
+      "description": "USD 0.22 per 1 million I/O requests for Aurora PostgreSQL",
+      "published": "2026-11-13T21:52:33Z"
+    },
+    "aurora_backup_gb": {
+      "price": 0.023,
+      "unit": "GB-Mo",
+      "usageType": "APS3-Aurora:BackupUsage",
+      "description": "USD 0.023 per GB-month of backup storage exceeding free allocation for Aurora PostgreSQL",
+      "published": "2026-11-13T21:52:33Z"
+    },
+    "rds_data_api_per_req": {
+      "price": 3.97e-07,
+      "unit": "API Calls",
+      "usageType": "APS3-RDS:Data-API-Usage",
+      "description": "$0.000000397 per Data API request up to 1B in Asia Pacific (Mumbai)",
+      "published": "2026-11-13T21:52:33Z"
+    },
+    "s3_std_gb": {
+      "price": 0.025,
+      "unit": "GB-Mo",
+      "usageType": "APS3-TimedStorage-ByteHrs",
+      "description": "$0.025 per GB - first 50 TB / month of storage used",
+      "published": "2026-11-09T15:43:10Z"
+    },
+    "s3_sia_gb": {
+      "price": 0.0138,
+      "unit": "GB-Mo",
+      "usageType": "APS3-TimedStorage-SIA-ByteHrs",
+      "description": "$0.0138 per GB-Month of storage used in Standard-Infrequent Access",
+      "published": "2026-11-09T15:43:10Z"
+    },
+    "s3_gir_gb": {
+      "price": 0.005,
+      "unit": "GB-Mo",
+      "usageType": "APS3-TimedStorage-GIR-ByteHrs",
+      "description": "$0.005 per GB-Month of storage used in Glacier Instant Retrieval",
+      "published": "2026-11-09T15:43:10Z"
+    },
+    "s3_int_monitor_per_obj": {
+      "price": 2.5e-06,
+      "unit": "Objects",
+      "usageType": "APS3-Monitoring-Automation-INT",
+      "description": "$0.0025 per 1,000 Objects per month in Intelligent-Tiering",
+      "published": "2026-11-09T15:43:10Z"
+    },
+    "s3_put_per_req": {
+      "price": 5e-06,
+      "unit": "Requests",
+      "usageType": "APS3-Requests-Tier1",
+      "description": "$0.005 per 1,000 PUT, COPY, POST, or LIST requests",
+      "published": "2026-11-09T15:43:10Z"
+    },
+    "s3_get_per_req": {
+      "price": 4e-07,
+      "unit": "Requests",
+      "usageType": "APS3-Requests-Tier2",
+      "description": "$0.004 per 10,000 GET and all other requests",
+      "published": "2026-11-09T15:43:10Z"
+    },
+    "s3_sia_put_per_req": {
+      "price": 1e-05,
+      "unit": "Requests",
+      "usageType": "APS3-Requests-SIA-Tier1",
+      "description": "$0.01 per 1,000 PUT, COPY, POST or LIST requests to Standard-Infrequent Access",
+      "published": "2026-11-09T15:43:10Z"
+    },
+    "s3_gir_put_per_req": {
+      "price": 2e-05,
+      "unit": "Requests",
+      "usageType": "APS3-Requests-GIR-Tier1",
+      "description": "$0.02 per 1,000 PUT, COPY, POST or LIST requests to Glacier Instant Retrieval",
+      "published": "2026-11-09T15:43:10Z"
+    },
+    "s3_gda_gb": {
+      "price": 0.002,
+      "unit": "GB-Mo",
+      "usageType": "APS3-TimedStorage-GDA-ByteHrs",
+      "description": "$0.002 per GB-Month for storage used in Glacier Deep Archive in Asia Pacific (Mumbai)",
+      "published": "2026-09-11T12:45:07Z"
+    },
+    "s3_gda_transition_per_req": {
+      "price": 7e-05,
+      "unit": "Requests",
+      "usageType": "APS3-Requests-Tier3",
+      "description": "$0.07 per 1,000 Lifecycle requests to Glacier Deep Archive in Asia Pacific (Mumbai)",
+      "published": "2026-09-11T12:45:07Z"
+    },
+    "dto_internet_gb": {
+      "price": 0.1093,
+      "unit": "GB",
+      "usageType": "APS3-DataTransfer-Out-Bytes",
+      "description": "$0.1093 per GB - first 10 TB / month data transfer out beyond the global free tier",
+      "published": "2026-11-11T19:19:41Z"
+    },
+    "waf_acl_month": {
+      "price": 5.0,
+      "unit": "Month",
+      "usageType": "APS3-WebACLV2",
+      "description": "$5.00 per web ACL created (prorated hourly)",
+      "published": "2026-09-14T16:39:21Z"
+    },
+    "waf_rule_month": {
+      "price": 1.0,
+      "unit": "Month",
+      "usageType": "APS3-RuleV2",
+      "description": "$1.00 per rule created (prorated hourly)",
+      "published": "2026-09-14T16:39:21Z"
+    },
+    "waf_per_req": {
+      "price": 6e-07,
+      "unit": "Request",
+      "usageType": "APS3-RequestV2-Tier1",
+      "description": "$0.60 per million requests processed",
+      "published": "2026-09-14T16:39:21Z"
+    },
+    "cw_logs_ingest_gb": {
+      "price": 0.67,
+      "unit": "GB",
+      "usageType": "APS3-DataProcessing-Bytes",
+      "description": "$0.67 per GB custom log data ingested in Standard log class - Asia Pacific (Mumbai)",
+      "published": "2026-11-04T21:35:32Z"
+    },
+    "cw_vended_logs_gb": {
+      "price": 0.67,
+      "unit": "GB",
+      "usageType": "APS3-VendedLog-Bytes",
+      "description": "$0.67 per GB of vended logs ingested in Standard log class for the first 10TB - Asia Pacific (Mumbai)",
+      "published": "2026-11-04T21:35:32Z"
+    },
+    "cw_logs_storage_gb": {
+      "price": 0.03,
+      "unit": "GB-Mo",
+      "usageType": "APS3-TimedStorage-ByteHrs",
+      "description": "$0.03 per GB-mo of log storage - Asia Pacific (Mumbai)",
+      "published": "2026-11-04T21:35:32Z"
+    },
+    "cw_alarm_month": {
+      "price": 0.1,
+      "unit": "Alarms",
+      "usageType": "APS3-CW:AlarmMonitorUsage",
+      "description": "$0.10 per alarm metric month (standard resolution) - Asia Pacific (Mumbai)",
+      "published": "2026-11-04T21:35:32Z"
+    },
+    "cw_metric_month": {
+      "price": 0.3,
+      "unit": "Metrics",
+      "usageType": "APS3-CW:MetricMonitorUsage",
+      "description": "$0.30 per metric-month for the first 10,000 metrics - Asia Pacific (Mumbai)",
+      "published": "2026-11-04T21:35:32Z"
+    },
+    "sqs_per_req": {
+      "price": 4e-07,
+      "unit": "Requests",
+      "usageType": "APS3-Requests-Tier1",
+      "description": "$0.40 per million Amazon SQS standard requests in Tier1 in Asia Pacific (Mumbai)",
+      "published": "2026-11-11T15:35:51Z"
+    },
+    "ses_per_email": {
+      "price": 0.0001,
+      "unit": "Count",
+      "usageType": "APS3-Recipients",
+      "description": "USD1.0E-4 per Count for Recipients:Send in Asia Pacific (Mumbai)",
+      "published": "2026-11-04T17:41:09Z"
+    },
+    "secret_month": {
+      "price": 0.4,
+      "unit": "Secrets",
+      "usageType": "APS3-AWSSecretsManager-Secret",
+      "description": "$0.40 per Secret",
+      "published": "2026-11-11T19:56:06Z"
+    },
+    "secrets_api_per_req": {
+      "price": 5e-06,
+      "unit": "API Requests",
+      "usageType": "APS3-AWSSecretsManagerAPIRequest",
+      "description": "$0.05 per 10000 API Requests",
+      "published": "2026-11-11T19:56:06Z"
+    },
+    "kms_per_req": {
+      "price": 3e-06,
+      "unit": "Requests",
+      "usageType": "ap-south-1-KMS-Requests",
+      "description": "$0.03 per 10000 KMS requests in Asia Pacific (Mumbai)",
+      "published": "2026-11-08T17:23:42Z"
+    },
+    "vpce_hour": {
+      "price": 0.013,
+      "unit": "Hrs",
+      "usageType": "APS3-VpcEndpoint-Hours",
+      "description": "$0.013 per VPC Endpoint Hour",
+      "published": "2026-11-05T18:19:45Z"
+    },
+    "vpce_gb": {
+      "price": 0.01,
+      "unit": "GB",
+      "usageType": "APS3-VpcEndpoint-Bytes",
+      "description": "$0.01 per GB for upto 1 PB monthly data processed by VPC Endpoints",
+      "published": "2026-11-05T18:19:45Z"
+    },
+    "nat_hour": {
+      "price": 0.056,
+      "unit": "Hrs",
+      "usageType": "APS3-NatGateway-Hours",
+      "description": "$0.056 per NAT Gateway Hour",
+      "published": "2026-11-11T22:30:04Z"
+    },
+    "nat_gb": {
+      "price": 0.056,
+      "unit": "GB",
+      "usageType": "APS3-NatGateway-Bytes",
+      "description": "$0.056 per GB Data Processed by NAT Gateways",
+      "published": "2026-11-11T22:30:04Z"
+    },
+    "backup_ddb_warm_gb": {
+      "price": 0.114,
+      "unit": "GB-month",
+      "usageType": "APS3-WarmStorage-ByteHrs-DynamoDB",
+      "description": "$0.114 per GB-month for warm backup storage for DynamoDB",
+      "published": "2026-11-13T22:24:42Z"
+    },
+    "backup_ddb_cold_gb": {
+      "price": 0.0342,
+      "unit": "GB-month",
+      "usageType": "APS3-ColdStorage-ByteHrs-DynamoDB",
+      "description": "$0.0342 per GB-month for cold backup storage for DynamoDB",
+      "published": "2026-11-13T22:24:42Z"
+    },
+    "xray_trace": {
+      "price": 5e-06,
+      "unit": "traces",
+      "usageType": "APS3-XRay-TracesStored",
+      "description": "AWS X-Ray - Total Traces Stored - Asia Pacific (Mumbai)",
+      "published": "2026-11-08T17:23:24Z"
+    },
+    "cf_india_gb": {
+      "price": 0.109,
+      "unit": "GB",
+      "usageType": "IN-DataTransfer-Out-Bytes",
+      "description": "$0.109 per GB - first 10 TB / month data transfer out (India)",
+      "published": "2026-10-19T15:05:00Z"
+    },
+    "cf_india_https_per_req": {
+      "price": 1.2e-06,
+      "unit": "Requests",
+      "usageType": "IN-Requests-Tier2-HTTPS",
+      "description": "$0.0120 per 10,000 HTTPS Requests (India)",
+      "published": "2026-10-19T15:05:00Z"
+    },
+    "route53_zone_month": {
+      "price": 0.5,
+      "unit": "HostedZone",
+      "usageType": "HostedZone",
+      "description": "$0.50 per Hosted Zone for the first 25 Hosted Zones",
+      "published": "2026-11-14T01:47:05Z"
+    }
+  },
+  "published": "2026-11-11T22:30:04Z"
+}

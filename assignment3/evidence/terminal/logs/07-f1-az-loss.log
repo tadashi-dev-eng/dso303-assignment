@@ -1,0 +1,43 @@
+$ ./infra/failure-tests/f1-az-loss.sh
+
+==> 0. Baseline: Aurora cluster members and Lambda networking
+-------------------------------------------------------
+|                 DescribeDBInstances                 |
++--------------------+-------------------+------------+
+|  exams-sg-aurora-b |  ap-southeast-1a  |  available |
+|  exams-sg-aurora-a |  ap-southeast-1a  |  available |
++--------------------+-------------------+------------+
+lambda exams-sg-api VPC subnets: 0 (runs in every AZ of the Region)
+lambda exams-sg-marker VPC subnets: 0 (runs in every AZ of the Region)
+lambda exams-sg-notifier VPC subnets: 0 (runs in every AZ of the Region)
+
+==> 1. FAILURE at 15:41:27Z: ap-southeast-1a lost (Aurora writer instance removed)
+Aurora instance down: exams-sg-aurora-a	deleting
+
+==> 2. During the outage: exam opens and Aurora reads
+15:41:31Z  GET /exams/dso303-midterm -> 200 in 10.159563s
+15:41:41Z  GET /exams/dso303-midterm -> 200 in 4.346245s
+15:41:46Z  GET /exams/dso303-midterm -> 200 in 5.488160s
+Aurora (AZ-b member) answering, attempts rows: 93
+time from failure to verified service: 30s
+
+==> 3. RPO: autosave traffic that ran through the failure
+autosaves sent 35, failed 1, longest failure window 10s
+  lt-2901  client latest=answer-v7      stored=answer-v7      OK
+  lt-2902  client latest=answer-v7      stored=answer-v7      OK
+  lt-2903  client latest=answer-v7      stored=answer-v7      OK
+  lt-2904  client latest=answer-v7      stored=answer-v7      OK
+  lt-2905  client latest=answer-v7      stored=answer-v7      OK
+RPO measured: 0 answers lost (target: at most 5 minutes of work)
+
+==> 4. RECOVERY: terraform apply rebuilds the AZ-a instance from code
+aws_rds_cluster_instance.main[0]: Creation complete after 31s [id=exams-sg-aurora-a]
+Apply complete! Resources: 1 added, 20 changed, 0 destroyed.
+-------------------------------------------------------
+|                 DescribeDBInstances                 |
++--------------------+-------------------+------------+
+|  exams-sg-aurora-b |  ap-southeast-1a  |  available |
+|  exams-sg-aurora-a |  ap-southeast-1a  |  available |
++--------------------+-------------------+------------+
+AZ-a capacity restored in 110s; total incident 184s (RTO target 3600s)
+[exit 0]

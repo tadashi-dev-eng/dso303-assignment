@@ -1,0 +1,47 @@
+$ ./scripts/inventory.sh
+
+==> Lambda functions
+-----------------------------------------------------
+|                   ListFunctions                   |
++-----------------------+--------------+------+-----+
+|  exams-floci-marker   |  nodejs20.x  |  256 |  60 |
+|  exams-floci-notifier |  nodejs20.x  |  256 |  60 |
+|  exams-floci-api      |  nodejs20.x  |  512 |  10 |
++-----------------------+--------------+------+-----+
+
+==> Aurora PostgreSQL cluster and instances
+exams-floci-aurora	available	172.19.0.2	7001
+exams-floci-aurora-a	db.t4g.medium	available
+exams-floci-aurora-b	db.t4g.medium	available
+
+==> DynamoDB tables (PITR)
+exams-floci-attempts       PITR=ENABLED
+exams-floci-submissions    PITR=ENABLED
+
+==> S3 buckets
+exams-floci-frontend-90e5fe
+exams-floci-submissions-90e5fe
+exams-floci-logs-90e5fe
+
+==> SQS queues
+exams-floci-uploads
+exams-floci-notify-dlq
+exams-floci-notify
+exams-floci-marking-dlq
+exams-floci-uploads-dlq
+exams-floci-marking
+
+==> Cognito groups, WAF, Route 53, KMS, Secrets, alarms
+admins	students	tutors
+exams-floci-edge-acl
+exams.example-university.edu.
+alias/exams-floci-data
+exams-floci/db/master
+exams-floci-marking-dlq
+exams-floci-aurora-cpu
+exams-floci-uploads-dlq
+exams-floci-api-latency-p95
+exams-floci-marking-backlog-age
+exams-floci-lambda-throttles
+exams-floci-api-5xx
+[exit 0]

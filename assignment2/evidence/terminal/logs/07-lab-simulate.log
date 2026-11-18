@@ -1,0 +1,104 @@
+$ LAB_DIR=~/Desktop/aws-resilience-simulator node --experimental-strip-types --no-warnings lab/simulate.ts
+
+=== Healthy - both AZs ===
+
+Walkthrough 1a: student opens exam, answers autosave  [PASS HTTP 200, 205 ms]
+   1 Client Application -> Student (exam session)  Issued PUT /api/attempts/{id}/answers
+   2 Student (exam session) -> Route 53 (exams.example-university.edu)  Forward DNS request
+   3 Route 53 (exams.example-university.edu) -> CloudFront (SPA + /api/*)  Forward HTTPS request
+   4 CloudFront (SPA + /api/*) -> AWS WAF (CRS, bad inputs, rate limit)  Edge Cache MISS -> Forwarding to Origin
+   5 CloudFront (SPA + /api/*) -> AWS WAF (CRS, bad inputs, rate limit)  Forward HTTPS request
+   6 AWS WAF (CRS, bad inputs, rate limit)  AWS WAF: Inspection Passed
+   7 AWS WAF (CRS, bad inputs, rate limit) -> API Gateway HTTP API (JWT auth)  Forward HTTPS request
+   8 API Gateway HTTP API (JWT auth) -> api Lambda (AZ-A)  Route to api Lambda (AZ-A)
+   9 api Lambda (AZ-A)  Serverless Elastic Concurrency Scaling
+     > api Lambda (AZ-A) detected traffic surge (VERY_HIGH). Serverless control plane instantly provisioned concurrent execution environments without provisioning servers.
+  10 api Lambda (AZ-A) -> DynamoDB attempts (autosave, PITR)  Forward HTTPS request
+  11 DynamoDB attempts (autosave, PITR)  Query Completed
+  12 DynamoDB attempts (autosave, PITR) -> Student (exam session)  HTTP 200 Response Delivered
+  summary: Request successfully processed across all architectural tiers.
+
+Walkthrough 1b: submit -> marking queue  [PASS HTTP 202, 20 ms]
+   1 Client Application -> SQS marking queue (+DLQ)  Issued POST sqs://marking
+   2 SQS marking queue (+DLQ)  sqs: send
+   3 SQS marking queue (+DLQ)  HTTP 202 Response Delivered
+  summary: SQS marking queue (+DLQ): operation accepted. See trace for delivery, alarm or audit outcomes.
+
+Walkthrough 1c: marker Lambda writes result to Aurora  [PASS HTTP 200, 95 ms]
+   1 Client Application -> marker Lambda (AZ-A)  Issued POST /internal/mark
+   2 marker Lambda (AZ-A)  Serverless Elastic Concurrency Scaling
+     > marker Lambda (AZ-A) detected traffic surge (HIGH). Serverless control plane instantly provisioned concurrent execution environments without provisioning servers.
+   3 marker Lambda (AZ-A) -> Aurora PostgreSQL writer (AZ-A)  Forward SQL request
+   4 Aurora PostgreSQL writer (AZ-A)  Query Completed
+   5 Aurora PostgreSQL writer (AZ-A) -> marker Lambda (AZ-A)  HTTP 200 Response Delivered
+  summary: Request successfully processed across all architectural tiers.
+
+Walkthrough 2a: 40 MB PUT to S3 -> uploads queue  [PASS HTTP 202, 40 ms]
+   1 Client Application -> Student (assignment upload)  Issued PUT /submissions/DSO303/A2/report.pdf
+   2 Student (assignment upload) -> S3 submissions (SSE-KMS, versioned, lifecycle 5y)  Forward HTTPS request
+   3 S3 submissions (SSE-KMS, versioned, lifecycle 5y) -> SQS uploads queue (+DLQ)  sqs: send
+   4 S3 submissions (SSE-KMS, versioned, lifecycle 5y) -> Student (assignment upload)  HTTP 202 Response Delivered
+  summary: SQS uploads queue (+DLQ): operation accepted. See trace for delivery, alarm or audit outcomes.
+
+Walkthrough 2b: notifier Lambda records submission (DynamoDB), SES email drawn  [PASS HTTP 200, 65 ms]
+   1 Client Application -> notifier Lambda (regional, outside VPC)  Issued POST /internal/notify
+   2 notifier Lambda (regional, outside VPC) -> DynamoDB submissions register  Forward HTTPS request
+   3 DynamoDB submissions register  Query Completed
+   4 DynamoDB submissions register -> notifier Lambda (regional, outside VPC)  HTTP 200 Response Delivered
+  summary: Request successfully processed across all architectural tiers.
+
+*** Failure injected: az_failure AZ-A (us-east-1a) ***
+  directly failed : NAT gateway A, api Lambda (AZ-A), marker Lambda (AZ-A), Aurora PostgreSQL writer (AZ-A)
+  cascaded        : none
+  degraded        : none
+
+=== AZ-A down - only us-east-1b serving ===
+
+Walkthrough 1a: student opens exam, answers autosave  [PASS HTTP 200, 205 ms]
+   1 Client Application -> Student (exam session)  Issued PUT /api/attempts/{id}/answers
+   2 Student (exam session) -> Route 53 (exams.example-university.edu)  Forward DNS request
+   3 Route 53 (exams.example-university.edu) -> CloudFront (SPA + /api/*)  Forward HTTPS request
+   4 CloudFront (SPA + /api/*) -> AWS WAF (CRS, bad inputs, rate limit)  Edge Cache MISS -> Forwarding to Origin
+   5 CloudFront (SPA + /api/*) -> AWS WAF (CRS, bad inputs, rate limit)  Forward HTTPS request
+   6 AWS WAF (CRS, bad inputs, rate limit)  AWS WAF: Inspection Passed
+   7 AWS WAF (CRS, bad inputs, rate limit) -> API Gateway HTTP API (JWT auth)  Forward HTTPS request
+   8 API Gateway HTTP API (JWT auth) -> api Lambda (AZ-B)  Route to api Lambda (AZ-B)
+     > API Gateway HTTP API (JWT auth) evaluated 2 registered target(s). Selected healthy target [api Lambda (AZ-B)]. Health check detected 1 FAILED target(s) (api Lambda (AZ-A)) and removed them from active rotation. Resilience maintain
+   9 api Lambda (AZ-B)  Serverless Elastic Concurrency Scaling
+     > api Lambda (AZ-B) detected traffic surge (VERY_HIGH). Serverless control plane instantly provisioned concurrent execution environments without provisioning servers.
+  10 api Lambda (AZ-B) -> DynamoDB attempts (autosave, PITR)  Forward HTTPS request
+  11 DynamoDB attempts (autosave, PITR)  Query Completed
+  12 DynamoDB attempts (autosave, PITR) -> Student (exam session)  HTTP 200 Response Delivered
+  summary: Request successfully processed across all architectural tiers.
+
+Walkthrough 1b: submit -> marking queue  [PASS HTTP 202, 20 ms]
+   1 Client Application -> SQS marking queue (+DLQ)  Issued POST sqs://marking
+   2 SQS marking queue (+DLQ)  sqs: send
+   3 SQS marking queue (+DLQ)  HTTP 202 Response Delivered
+  summary: SQS marking queue (+DLQ): operation accepted. See trace for delivery, alarm or audit outcomes.
+
+Walkthrough 1c: marker Lambda writes result to Aurora  [PASS HTTP 200, 95 ms]
+   1 Client Application -> marker Lambda (AZ-B)  Issued POST /internal/mark
+   2 marker Lambda (AZ-B)  Serverless Elastic Concurrency Scaling
+     > marker Lambda (AZ-B) detected traffic surge (HIGH). Serverless control plane instantly provisioned concurrent execution environments without provisioning servers.
+   3 marker Lambda (AZ-B) -> Aurora PostgreSQL writer (AZ-A)  Multi-AZ Automated Database Failover
+     > Primary DB in AZ-A failed. Amazon RDS Multi-AZ automated failover detected heartbeat loss: Promoted synchronous standby replica in secondary AZ to primary writer via DNS CNAME update (~35 seconds). Zero data loss!
+   4 marker Lambda (AZ-B)  HTTP 200 Response Delivered
+  summary: Request succeeded: Multi-AZ database automatically failed over to standby replica.
+
+Walkthrough 2a: 40 MB PUT to S3 -> uploads queue  [PASS HTTP 202, 40 ms]
+   1 Client Application -> Student (assignment upload)  Issued PUT /submissions/DSO303/A2/report.pdf
+   2 Student (assignment upload) -> S3 submissions (SSE-KMS, versioned, lifecycle 5y)  Forward HTTPS request
+   3 S3 submissions (SSE-KMS, versioned, lifecycle 5y) -> SQS uploads queue (+DLQ)  sqs: send
+   4 S3 submissions (SSE-KMS, versioned, lifecycle 5y) -> Student (assignment upload)  HTTP 202 Response Delivered
+  summary: SQS uploads queue (+DLQ): operation accepted. See trace for delivery, alarm or audit outcomes.
+
+Walkthrough 2b: notifier Lambda records submission (DynamoDB), SES email drawn  [PASS HTTP 200, 65 ms]
+   1 Client Application -> notifier Lambda (regional, outside VPC)  Issued POST /internal/notify
+   2 notifier Lambda (regional, outside VPC) -> DynamoDB submissions register  Forward HTTPS request
+   3 DynamoDB submissions register  Query Completed
+   4 DynamoDB submissions register -> notifier Lambda (regional, outside VPC)  HTTP 200 Response Delivered
+  summary: Request successfully processed across all architectural tiers.
+
+Result: healthy 5/5 passed, AZ-A failure 5/5 passed
+[exit 0]

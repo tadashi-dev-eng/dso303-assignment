@@ -1,0 +1,33 @@
+$ ./infra/failure-tests/f2-marking-outage.sh
+
+==> 1. FAILURE at 15:45:22Z: marker Lambda stopped (reserved concurrency 0)
+marker reserved concurrency: 0
+
+==> 2. 10 students submit while marking is down
+15:45:28Z lt-2801 submit -> {"attemptId":"bf84d1ad-6186-4725-ade3-3ae9d0adff28","status":"submitted","marking":"queued"}
+15:45:36Z lt-2802 submit -> {"attemptId":"cfc907aa-b45d-4899-8135-1c288534fd73","status":"submitted","marking":"queued"}
+15:45:42Z lt-2803 submit -> {"attemptId":"aca049d8-aead-4bc9-a093-32a2d5a297db","status":"submitted","marking":"queued"}
+15:45:46Z lt-2804 submit -> {"attemptId":"74683e35-5916-4c74-a987-85f0dbecaa04","status":"submitted","marking":"queued"}
+15:45:55Z lt-2805 submit -> {"attemptId":"583fa303-6c2b-4505-9b0d-6b3aefe1af40","status":"submitted","marking":"queued"}
+15:46:09Z lt-2806 submit -> {"attemptId":"59fb0414-9c61-4050-b6b8-15e3f79655b6","status":"submitted","marking":"queued"}
+15:46:24Z lt-2807 submit -> {"attemptId":"8bd6dce6-27aa-4f37-b329-f518300402aa","status":"submitted","marking":"queued"}
+15:46:46Z lt-2808 submit -> {"attemptId":"bb9233d5-a38e-42d1-a53c-5d7f0d18d76e","status":"submitted","marking":"queued"}
+15:46:53Z lt-2809 submit -> {"attemptId":"19270263-1f15-4446-9775-53a22466fd1c","status":"submitted","marking":"queued"}
+15:47:01Z lt-2810 submit -> {"attemptId":"e9f7e0be-880f-4386-9df5-9921d4fb819e","status":"submitted","marking":"queued"}
+marking queue: visible=0 in-flight=10
+results rows for these students: 0/10
+
+==> 3. FIX at 15:47:18Z: restore the worker from code (terraform apply sets reserved concurrency 50)
+Apply complete! Resources: 0 added, 21 changed, 0 destroyed.
+marker reserved concurrency: 50
+
+==> 4. Backlog drains
+15:49:22Z  marked 3/10   marking queue: visible=0 in-flight=7
+15:49:31Z  marked 3/10   marking queue: visible=0 in-flight=7
+15:49:39Z  marked 4/10   marking queue: visible=0 in-flight=6
+15:49:48Z  marked 4/10   marking queue: visible=0 in-flight=6
+15:49:57Z  marked 5/10   marking queue: visible=0 in-flight=4
+15:50:07Z  marked 8/10   marking queue: visible=0 in-flight=2
+15:50:16Z  marked 10/10   marking queue: visible=0 in-flight=0
+RPO: 0 submissions lost. Drain after fix: 180s. Incident length: 296s (RTO target 3600s)
+[exit 0]

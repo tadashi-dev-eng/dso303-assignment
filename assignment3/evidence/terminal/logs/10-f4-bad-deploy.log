@@ -1,0 +1,23 @@
+$ ./infra/failure-tests/f4-bad-deploy.sh
+
+==> 1. FAILURE at 16:03:57Z: broken release of exams-sg-api deployed
+deployed: exams-sg-api	Successful
+16:04:03Z  PUT autosave -> 502
+16:04:16Z  PUT autosave -> 502
+alarm api-5xx would fire after 2 x 60 s; on-call rolls back
+
+==> 2. ROLLBACK at 16:04:31Z: redeploy the last good build
+rolled back: exams-sg-api	Successful
+16:04:36Z  GET /health -> {"status":"ok","db":"reachable","region":"ap-southeast-1"}
+rollback took 20s; outage 54s
+
+==> 3. RPO: answers typed during the outage were re-sent from the browser copy
+autosaves sent 10, failed 1, longest failure window 0s
+  lt-2621  client latest=answer-v2      stored=answer-v2      OK
+  lt-2622  client latest=answer-v2      stored=answer-v2      OK
+  lt-2623  client latest=answer-v2      stored=answer-v2      OK
+  lt-2624  client latest=answer-v2      stored=answer-v2      OK
+  lt-2625  client latest=answer-v2      stored=answer-v2      OK
+RPO measured: 0 answers lost (target: at most 5 minutes of work)
+RTO measured: 135s including the browser re-sync (target 3600s)
+[exit 0]

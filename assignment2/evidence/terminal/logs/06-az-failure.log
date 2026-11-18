@@ -1,0 +1,74 @@
+$ ./scripts/az-failure.sh
+
+==> 0. Healthy baseline (two AZs)
+---------------------------------------------------------------------
+|                          DescribeSubnets                          |
++------------+------------------+---------------+-------------------+
+|  us-east-1a|  10.20.0.0/24    |  public       |  subnet-e61c0536  |
+|  us-east-1b|  10.20.1.0/24    |  public       |  subnet-c61555b1  |
+|  us-east-1a|  10.20.16.0/20   |  private-app  |  subnet-e121509d  |
+|  us-east-1a|  10.20.200.0/24  |  private-data |  subnet-d339a8d8  |
+|  us-east-1b|  10.20.201.0/24  |  private-data |  subnet-177de688  |
+|  us-east-1b|  10.20.32.0/20   |  private-app  |  subnet-b684c73d  |
++------------+------------------+---------------+-------------------+
+NAT  nat-fbc0dd0086cf754c0	subnet-e61c0536	available
+NAT  nat-15e8ec890d58341f5	subnet-c61555b1	available
+Aurora members: exams-floci-aurora-b	exams-floci-aurora-a
+{"status":"ok","db":"reachable","region":"us-east-1"}
+
+==> 1. FAILURE INJECTED: us-east-1a is lost at 09:38:19Z
+Aurora instance down: exams-floci-aurora-a	deleting
+NAT gateway down:     None
+Lambda functions re-pinned to app subnet B only (subnet-b684c73d)
+(Floci does not model Lambda ENI placement; in AWS this happens automatically.)
+
+==> 2. State during the outage
+---------------------------------------------------------------------
+|                          DescribeSubnets                          |
++------------+------------------+---------------+-------------------+
+|  us-east-1a|  10.20.0.0/24    |  public       |  subnet-e61c0536  |
+|  us-east-1b|  10.20.1.0/24    |  public       |  subnet-c61555b1  |
+|  us-east-1a|  10.20.16.0/20   |  private-app  |  subnet-e121509d  |
+|  us-east-1a|  10.20.200.0/24  |  private-data |  subnet-d339a8d8  |
+|  us-east-1b|  10.20.201.0/24  |  private-data |  subnet-177de688  |
+|  us-east-1b|  10.20.32.0/20   |  private-app  |  subnet-b684c73d  |
++------------+------------------+---------------+-------------------+
+NAT  nat-15e8ec890d58341f5	subnet-c61555b1	available
+Aurora members: exams-floci-aurora-b
+
+==> 3. Platform still serving from us-east-1b
+{"status":"ok","db":"reachable","region":"us-east-1"}
+==> 3. POST /exams/dso303-midterm/attempts  (start the timer)
+{"attemptId":"94bd3e0b-b596-4745-b780-a56cbe22d70f","endsAt":"2026-11-15T10:39:13Z","autosaveSeconds":30}
+
+==> 4. Autosave every 30 s: PUT /attempts/94bd3e0b-b596-4745-b780-a56cbe22d70f/answers  (-> DynamoDB, conditional write)
+{"attemptId":"94bd3e0b-b596-4745-b780-a56cbe22d70f","saved":2,"stale":0,"savedAt":"2026-11-15T09:39:13.571Z"}   <- t=0s
+{"attemptId":"94bd3e0b-b596-4745-b780-a56cbe22d70f","saved":3,"stale":0,"savedAt":"2026-11-15T09:39:13.694Z"}   <- t=30s
+Late retry of the t=0s request (must NOT overwrite the newer q2 answer):
+{"attemptId":"94bd3e0b-b596-4745-b780-a56cbe22d70f","saved":0,"stale":1,"savedAt":"2026-11-15T09:39:13.833Z"}
+
+Aurora (AZ-b instance) answering: attempts=2 submitted=2
+Requests served throughout; time from failure to verified service: 72s (RPO: 0 lost autosaves)
+
+==> 4. RECOVERY: terraform apply rebuilds AZ A from code
+aws_nat_gateway.main[0]: Creation complete after 0s [id=nat-5e54da8588d9a5941]
+aws_lambda_function.fn["notifier"]: Modifications complete after 0s [id=exams-floci-notifier]
+aws_lambda_function.fn["api"]: Modifications complete after 6s [id=exams-floci-api]
+aws_lambda_function.fn["marker"]: Modifications complete after 7s [id=exams-floci-marker]
+aws_rds_cluster_instance.main[0]: Creation complete after 30s [id=exams-floci-aurora-a]
+Apply complete! Resources: 2 added, 24 changed, 0 destroyed.
+AZ A restored in 92s (RTO target: 3600s)
+---------------------------------------------------------------------
+|                          DescribeSubnets                          |
++------------+------------------+---------------+-------------------+
+|  us-east-1a|  10.20.0.0/24    |  public       |  subnet-e61c0536  |
+|  us-east-1b|  10.20.1.0/24    |  public       |  subnet-c61555b1  |
+|  us-east-1a|  10.20.16.0/20   |  private-app  |  subnet-e121509d  |
+|  us-east-1a|  10.20.200.0/24  |  private-data |  subnet-d339a8d8  |
+|  us-east-1b|  10.20.201.0/24  |  private-data |  subnet-177de688  |
+|  us-east-1b|  10.20.32.0/20   |  private-app  |  subnet-b684c73d  |
++------------+------------------+---------------+-------------------+
+NAT  nat-5e54da8588d9a5941	subnet-e61c0536	available
+NAT  nat-15e8ec890d58341f5	subnet-c61555b1	available
+Aurora members: exams-floci-aurora-b	exams-floci-aurora-a
+[exit 0]

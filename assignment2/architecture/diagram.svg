@@ -1,0 +1,267 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1240" viewBox="0 0 1700 1240" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif">
+<defs><marker id="w1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1565C0"/></marker><marker id="w2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D84315"/></marker><marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6e7781"/></marker></defs>
+<rect width="1700" height="1240" fill="#ffffff"/>
+<text x="30" y="40" font-size="22" font-weight="bold" fill="#1b1f24" text-anchor="start">Online Exams &amp; Submissions Platform - production architecture (us-east-1, two Availability Zones)</text>
+<text x="30" y="64" font-size="13" font-weight="normal" fill="#57606a" text-anchor="start">Blue = Walkthrough 1 (open exam, autosave every 30 s, submit, auto-mark).  Orange = Walkthrough 2 (40 MB upload, tutor notified).  Grey dashed = supporting.</text>
+<rect x="30" y="140" width="160" height="54" rx="8" fill="#ffffff" stroke="#232F3E" stroke-width="2"/>
+<rect x="30" y="140" width="8" height="54" rx="3" fill="#232F3E"/>
+<text x="46" y="162" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">Students / Tutors</text>
+<text x="46" y="180" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">browser (8,000 + 400)</text>
+<rect x="220" y="90" width="1450" height="120" rx="10" fill="#f6f0ff" stroke="#8C4FFF" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="232" y="112" font-size="14" font-weight="bold" fill="#8C4FFF" text-anchor="start">Edge (global)</text>
+<rect x="240" y="130" width="170" height="54" rx="8" fill="#ffffff" stroke="#8C4FFF" stroke-width="2"/>
+<rect x="240" y="130" width="8" height="54" rx="3" fill="#8C4FFF"/>
+<text x="256" y="152" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">Route 53</text>
+<text x="256" y="170" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">alias exams.example-univ…</text>
+<rect x="450" y="130" width="170" height="54" rx="8" fill="#ffffff" stroke="#8C4FFF" stroke-width="2"/>
+<rect x="450" y="130" width="8" height="54" rx="3" fill="#8C4FFF"/>
+<text x="466" y="152" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">CloudFront</text>
+<text x="466" y="170" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">SPA + /api/* · TLS 1.2</text>
+<rect x="660" y="130" width="170" height="54" rx="8" fill="#ffffff" stroke="#DD344C" stroke-width="2"/>
+<rect x="660" y="130" width="8" height="54" rx="3" fill="#DD344C"/>
+<text x="676" y="152" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">AWS WAF</text>
+<text x="676" y="170" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">CRS · bad inputs · rate</text>
+<rect x="870" y="130" width="120" height="54" rx="8" fill="#ffffff" stroke="#DD344C" stroke-width="2"/>
+<rect x="870" y="130" width="8" height="54" rx="3" fill="#DD344C"/>
+<text x="886" y="152" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">ACM</text>
+<text x="886" y="170" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">TLS certificate</text>
+<rect x="1010" y="130" width="140" height="54" rx="8" fill="#ffffff" stroke="#7AA116" stroke-width="2"/>
+<rect x="1010" y="130" width="8" height="54" rx="3" fill="#7AA116"/>
+<text x="1026" y="152" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">S3 frontend</text>
+<text x="1026" y="170" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">OAC, private</text>
+<rect x="220" y="230" width="1450" height="860" rx="10" fill="#fbfbfc" stroke="#232F3E" stroke-width="2"/>
+<text x="232" y="252" font-size="14" font-weight="bold" fill="#232F3E" text-anchor="start">AWS Region us-east-1</text>
+<rect x="240" y="270" width="200" height="54" rx="8" fill="#ffffff" stroke="#8C4FFF" stroke-width="2"/>
+<rect x="240" y="270" width="8" height="54" rx="3" fill="#8C4FFF"/>
+<text x="256" y="292" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">API Gateway HTTP API</text>
+<text x="256" y="310" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">JWT authorizer · throttle 5k</text>
+<rect x="460" y="270" width="190" height="54" rx="8" fill="#ffffff" stroke="#DD344C" stroke-width="2"/>
+<rect x="460" y="270" width="8" height="54" rx="3" fill="#DD344C"/>
+<text x="476" y="292" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">Cognito user pool</text>
+<text x="476" y="310" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">students / tutors / admins</text>
+<rect x="240" y="345" width="860" height="720" rx="10" fill="#f3faf0" stroke="#3F8624" stroke-width="2"/>
+<text x="252" y="367" font-size="14" font-weight="bold" fill="#3F8624" text-anchor="start">VPC 10.20.0.0/16</text>
+<rect x="260" y="380" width="400" height="670" rx="10" fill="#ffffff" stroke="#147EBA" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="272" y="402" font-size="14" font-weight="bold" fill="#147EBA" text-anchor="start">Availability Zone us-east-1a</text>
+<rect x="275" y="415" width="370" height="90" rx="10" fill="#eef8ea" stroke="#3F8624" stroke-width="2"/>
+<text x="287" y="437" font-size="14" font-weight="bold" fill="#3F8624" text-anchor="start">Public subnet 10.20.0.0/24</text>
+<rect x="275" y="520" width="370" height="250" rx="10" fill="#eef5fb" stroke="#147EBA" stroke-width="2"/>
+<text x="287" y="542" font-size="14" font-weight="bold" fill="#147EBA" text-anchor="start">Private app subnet 10.20.16.0/20</text>
+<rect x="275" y="785" width="370" height="140" rx="10" fill="#eef5fb" stroke="#147EBA" stroke-width="2"/>
+<text x="287" y="807" font-size="14" font-weight="bold" fill="#147EBA" text-anchor="start">Private data subnet 10.20.200.0/24</text>
+<rect x="680" y="380" width="400" height="670" rx="10" fill="#ffffff" stroke="#147EBA" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="692" y="402" font-size="14" font-weight="bold" fill="#147EBA" text-anchor="start">Availability Zone us-east-1b</text>
+<rect x="695" y="415" width="370" height="90" rx="10" fill="#eef8ea" stroke="#3F8624" stroke-width="2"/>
+<text x="707" y="437" font-size="14" font-weight="bold" fill="#3F8624" text-anchor="start">Public subnet 10.20.1.0/24</text>
+<rect x="695" y="520" width="370" height="250" rx="10" fill="#eef5fb" stroke="#147EBA" stroke-width="2"/>
+<text x="707" y="542" font-size="14" font-weight="bold" fill="#147EBA" text-anchor="start">Private app subnet 10.20.32.0/20</text>
+<rect x="695" y="785" width="370" height="140" rx="10" fill="#eef5fb" stroke="#147EBA" stroke-width="2"/>
+<text x="707" y="807" font-size="14" font-weight="bold" fill="#147EBA" text-anchor="start">Private data subnet 10.20.201.0/24</text>
+<rect x="450" y="445" width="170" height="54" rx="8" fill="#ffffff" stroke="#8C4FFF" stroke-width="2"/>
+<rect x="450" y="445" width="8" height="54" rx="3" fill="#8C4FFF"/>
+<text x="466" y="467" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">NAT gateway A</text>
+<text x="466" y="485" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">EIP, own route table</text>
+<rect x="870" y="445" width="170" height="54" rx="8" fill="#ffffff" stroke="#8C4FFF" stroke-width="2"/>
+<rect x="870" y="445" width="8" height="54" rx="3" fill="#8C4FFF"/>
+<text x="886" y="467" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">NAT gateway B</text>
+<text x="886" y="485" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">EIP, own route table</text>
+<rect x="290" y="560" width="150" height="54" rx="8" fill="#ffffff" stroke="#ED7100" stroke-width="2"/>
+<rect x="290" y="560" width="8" height="54" rx="3" fill="#ED7100"/>
+<text x="306" y="582" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">api Lambda</text>
+<text x="306" y="600" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">ENI in AZ-a</text>
+<rect x="710" y="560" width="150" height="54" rx="8" fill="#ffffff" stroke="#ED7100" stroke-width="2"/>
+<rect x="710" y="560" width="8" height="54" rx="3" fill="#ED7100"/>
+<text x="726" y="582" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">api Lambda</text>
+<text x="726" y="600" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">ENI in AZ-b</text>
+<rect x="470" y="560" width="150" height="54" rx="8" fill="#ffffff" stroke="#ED7100" stroke-width="2"/>
+<rect x="470" y="560" width="8" height="54" rx="3" fill="#ED7100"/>
+<text x="486" y="582" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">marker Lambda</text>
+<text x="486" y="600" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">ENI in AZ-a</text>
+<rect x="890" y="560" width="150" height="54" rx="8" fill="#ffffff" stroke="#ED7100" stroke-width="2"/>
+<rect x="890" y="560" width="8" height="54" rx="3" fill="#ED7100"/>
+<text x="906" y="582" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">marker Lambda</text>
+<text x="906" y="600" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">ENI in AZ-b</text>
+<text x="290" y="650" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">lambda-sg: egress 443 + 5432 only</text>
+<text x="710" y="650" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">lambda-sg: egress 443 + 5432 only</text>
+<rect x="560" y="690" width="200" height="54" rx="8" fill="#ffffff" stroke="#8C4FFF" stroke-width="2"/>
+<rect x="560" y="690" width="8" height="54" rx="3" fill="#8C4FFF"/>
+<text x="576" y="712" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">Gateway endpoints</text>
+<text x="576" y="730" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">S3 + DynamoDB (both AZs)</text>
+<rect x="290" y="830" width="200" height="54" rx="8" fill="#ffffff" stroke="#C925D1" stroke-width="2"/>
+<rect x="290" y="830" width="8" height="54" rx="3" fill="#C925D1"/>
+<text x="306" y="852" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">Aurora PG writer</text>
+<text x="306" y="870" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">db-sg · KMS · PITR 35 d</text>
+<rect x="710" y="830" width="200" height="54" rx="8" fill="#ffffff" stroke="#C925D1" stroke-width="2"/>
+<rect x="710" y="830" width="8" height="54" rx="3" fill="#C925D1"/>
+<text x="726" y="852" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">Aurora PG reader</text>
+<text x="726" y="870" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">failover target</text>
+<path d="M490,857 L710,857" fill="none" stroke="#6e7781" stroke-width="2.2" stroke-dasharray="5 4" marker-end="url(#g)"/>
+<text x="510" y="822" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">sync storage, 6 copies / 3 AZs</text>
+<text x="260" y="1080" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">Data subnets have no route to the Internet. Each AZ's app route table uses its own NAT gateway.</text>
+<rect x="1130" y="280" width="230" height="54" rx="8" fill="#ffffff" stroke="#C925D1" stroke-width="2"/>
+<rect x="1130" y="280" width="8" height="54" rx="3" fill="#C925D1"/>
+<text x="1146" y="302" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">DynamoDB attempts</text>
+<text x="1146" y="320" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">on-demand · PITR · KMS</text>
+<rect x="1400" y="280" width="240" height="54" rx="8" fill="#ffffff" stroke="#E7157B" stroke-width="2"/>
+<rect x="1400" y="280" width="8" height="54" rx="3" fill="#E7157B"/>
+<text x="1416" y="302" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">SQS marking + DLQ</text>
+<text x="1416" y="320" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">batch 10 → marker</text>
+<rect x="1130" y="400" width="230" height="54" rx="8" fill="#ffffff" stroke="#7AA116" stroke-width="2"/>
+<rect x="1130" y="400" width="8" height="54" rx="3" fill="#7AA116"/>
+<text x="1146" y="422" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">S3 submissions</text>
+<text x="1146" y="440" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">SSE-KMS · versioned · lifecycle</text>
+<rect x="1400" y="400" width="240" height="54" rx="8" fill="#ffffff" stroke="#E7157B" stroke-width="2"/>
+<rect x="1400" y="400" width="8" height="54" rx="3" fill="#E7157B"/>
+<text x="1416" y="422" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">SQS uploads + DLQ</text>
+<text x="1416" y="440" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">ObjectCreated events</text>
+<rect x="1130" y="520" width="230" height="54" rx="8" fill="#ffffff" stroke="#C925D1" stroke-width="2"/>
+<rect x="1130" y="520" width="8" height="54" rx="3" fill="#C925D1"/>
+<text x="1146" y="542" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">DynamoDB submissions</text>
+<text x="1146" y="560" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">GSI byCourse</text>
+<rect x="1400" y="520" width="240" height="54" rx="8" fill="#ffffff" stroke="#ED7100" stroke-width="2"/>
+<rect x="1400" y="520" width="8" height="54" rx="3" fill="#ED7100"/>
+<text x="1416" y="542" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">notifier Lambda</text>
+<text x="1416" y="560" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">outside VPC (no NAT dep.)</text>
+<rect x="1400" y="640" width="240" height="54" rx="8" fill="#ffffff" stroke="#E7157B" stroke-width="2"/>
+<rect x="1400" y="640" width="8" height="54" rx="3" fill="#E7157B"/>
+<text x="1416" y="662" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">SQS notify + DLQ</text>
+<text x="1416" y="680" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">results released</text>
+<rect x="1400" y="760" width="240" height="54" rx="8" fill="#ffffff" stroke="#E7157B" stroke-width="2"/>
+<rect x="1400" y="760" width="8" height="54" rx="3" fill="#E7157B"/>
+<text x="1416" y="782" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">Amazon SES</text>
+<text x="1416" y="800" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">email tutors / students</text>
+<rect x="1130" y="640" width="230" height="54" rx="8" fill="#ffffff" stroke="#DD344C" stroke-width="2"/>
+<rect x="1130" y="640" width="8" height="54" rx="3" fill="#DD344C"/>
+<text x="1146" y="662" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">Secrets Manager</text>
+<text x="1146" y="680" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">DB credentials</text>
+<rect x="1130" y="760" width="230" height="54" rx="8" fill="#ffffff" stroke="#DD344C" stroke-width="2"/>
+<rect x="1130" y="760" width="8" height="54" rx="3" fill="#DD344C"/>
+<text x="1146" y="782" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">KMS CMK</text>
+<text x="1146" y="800" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">rotation on</text>
+<rect x="1130" y="880" width="230" height="54" rx="8" fill="#ffffff" stroke="#E7157B" stroke-width="2"/>
+<rect x="1130" y="880" width="8" height="54" rx="3" fill="#E7157B"/>
+<text x="1146" y="902" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">CloudWatch</text>
+<text x="1146" y="920" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">logs · alarms · dashboard</text>
+<rect x="1400" y="880" width="240" height="54" rx="8" fill="#ffffff" stroke="#E7157B" stroke-width="2"/>
+<rect x="1400" y="880" width="8" height="54" rx="3" fill="#E7157B"/>
+<text x="1416" y="902" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">SNS ops alarms</text>
+<text x="1416" y="920" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">email on-call</text>
+<rect x="1130" y="1000" width="230" height="54" rx="8" fill="#ffffff" stroke="#E7157B" stroke-width="2"/>
+<rect x="1130" y="1000" width="8" height="54" rx="3" fill="#E7157B"/>
+<text x="1146" y="1022" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">CloudTrail</text>
+<text x="1146" y="1040" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">audit, validated</text>
+<rect x="1400" y="1000" width="240" height="54" rx="8" fill="#ffffff" stroke="#7AA116" stroke-width="2"/>
+<rect x="1400" y="1000" width="8" height="54" rx="3" fill="#7AA116"/>
+<text x="1416" y="1022" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">AWS Backup</text>
+<text x="1416" y="1040" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">35 d daily · 5 y monthly</text>
+<text x="1130" y="395" font-size="10.5" font-weight="normal" fill="#57606a" text-anchor="start">lifecycle: IA 30 d → Glacier IR 180 d → Deep Archive 365 d → delete 5 y</text>
+<rect x="30" y="1110" width="1640" height="110" rx="10" fill="#f2f8ee" stroke="#3F8624" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="42" y="1132" font-size="14" font-weight="bold" fill="#3F8624" text-anchor="start">CI/CD (push to main redeploys)</text>
+<rect x="50" y="1145" width="160" height="54" rx="8" fill="#ffffff" stroke="#3F8624" stroke-width="2"/>
+<rect x="50" y="1145" width="8" height="54" rx="3" fill="#3F8624"/>
+<text x="66" y="1167" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">GitHub repo</text>
+<text x="66" y="1185" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">infra/ app/ scripts/</text>
+<rect x="260" y="1145" width="200" height="54" rx="8" fill="#ffffff" stroke="#3F8624" stroke-width="2"/>
+<rect x="260" y="1145" width="8" height="54" rx="3" fill="#3F8624"/>
+<text x="276" y="1167" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">GitHub Actions</text>
+<text x="276" y="1185" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">fmt · validate · Floci test</text>
+<rect x="510" y="1145" width="180" height="54" rx="8" fill="#ffffff" stroke="#DD344C" stroke-width="2"/>
+<rect x="510" y="1145" width="8" height="54" rx="3" fill="#DD344C"/>
+<text x="526" y="1167" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">IAM OIDC role</text>
+<text x="526" y="1185" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">main branch only</text>
+<rect x="740" y="1145" width="220" height="54" rx="8" fill="#ffffff" stroke="#3F8624" stroke-width="2"/>
+<rect x="740" y="1145" width="8" height="54" rx="3" fill="#3F8624"/>
+<text x="756" y="1167" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">terraform plan → apply</text>
+<text x="756" y="1185" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">env: production</text>
+<rect x="1010" y="1145" width="240" height="54" rx="8" fill="#ffffff" stroke="#7AA116" stroke-width="2"/>
+<rect x="1010" y="1145" width="8" height="54" rx="3" fill="#7AA116"/>
+<text x="1026" y="1167" font-size="13" font-weight="bold" fill="#1b1f24" text-anchor="start">S3 state + DynamoDB lock</text>
+<text x="1026" y="1185" font-size="11" font-weight="normal" fill="#57606a" text-anchor="start">versioned</text>
+<path d="M210,1172 L260,1172" fill="none" stroke="#6e7781" stroke-width="2.2" marker-end="url(#g)"/>
+<path d="M460,1172 L510,1172" fill="none" stroke="#6e7781" stroke-width="2.2" marker-end="url(#g)"/>
+<path d="M690,1172 L740,1172" fill="none" stroke="#6e7781" stroke-width="2.2" marker-end="url(#g)"/>
+<path d="M960,1172 L1010,1172" fill="none" stroke="#6e7781" stroke-width="2.2" marker-end="url(#g)"/>
+<text x="1270" y="1170" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">post-apply: DB migration Lambda</text>
+<text x="1270" y="1188" font-size="12" font-weight="normal" fill="#57606a" text-anchor="start">invoke + /health smoke test</text>
+<path d="M110,140 L110,120 L225,120 L225,157 L240,157" fill="none" stroke="#1565C0" stroke-width="2.2" marker-end="url(#w1)"/>
+<circle cx="168" cy="120" r="11" fill="#1565C0"/>
+<text x="167.5" y="124.5" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">1</text>
+<path d="M410,157 L450,157" fill="none" stroke="#1565C0" stroke-width="2.2" marker-end="url(#w1)"/>
+<circle cx="430" cy="157" r="11" fill="#1565C0"/>
+<text x="430.0" y="161.5" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">2</text>
+<path d="M620,157 L660,157" fill="none" stroke="#1565C0" stroke-width="2.2" marker-end="url(#w1)"/>
+<circle cx="640" cy="157" r="11" fill="#1565C0"/>
+<text x="640.0" y="161.5" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">3</text>
+<path d="M745,184 L745,225 L340,225 L340,270" fill="none" stroke="#1565C0" stroke-width="2.2" marker-end="url(#w1)"/>
+<circle cx="542" cy="225" r="11" fill="#1565C0"/>
+<text x="542.5" y="229.5" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">4</text>
+<path d="M440,297 L460,297" fill="none" stroke="#6e7781" stroke-width="2.2" stroke-dasharray="5 4" marker-end="url(#g)"/>
+<path d="M300,324 L300,400 L365,400 L365,560" fill="none" stroke="#1565C0" stroke-width="2.2" marker-end="url(#w1)"/>
+<circle cx="332" cy="400" r="11" fill="#1565C0"/>
+<text x="332.5" y="404.5" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">5</text>
+<path d="M400,324 L400,370 L785,370 L785,560" fill="none" stroke="#1565C0" stroke-width="2.2" marker-end="url(#w1)"/>
+<circle cx="592" cy="370" r="11" fill="#1565C0"/>
+<text x="592.5" y="374.5" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">5</text>
+<path d="M365,614 L365,760 L390,760 L390,830" fill="none" stroke="#1565C0" stroke-width="2.2" marker-end="url(#w1)"/>
+<circle cx="365" cy="687" r="11" fill="#1565C0"/>
+<text x="365.0" y="691.5" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">6</text>
+<path d="M860,587 L875,610 L875,717 L760,717" fill="none" stroke="#1565C0" stroke-width="2.2" marker-end="url(#w1)"/>
+<circle cx="875" cy="664" r="11" fill="#1565C0"/>
+<text x="875.0" y="668.0" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">7</text>
+<path d="M660,690 L660,670 L1110,670 L1110,307 L1130,307" fill="none" stroke="#1565C0" stroke-width="2.2" marker-end="url(#w1)"/>
+<circle cx="1110" cy="488" r="11" fill="#1565C0"/>
+<text x="1110.0" y="493.0" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">7</text>
+<path d="M440,600 L450,600 L450,520 L1115,520 L1115,258 L1520,258 L1520,280" fill="none" stroke="#1565C0" stroke-width="2.2" marker-end="url(#w1)"/>
+<circle cx="1115" cy="389" r="11" fill="#1565C0"/>
+<text x="1115.0" y="393.5" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">8</text>
+<path d="M1520,334 L1520,360 L1095,360 L1095,587 L1040,587" fill="none" stroke="#1565C0" stroke-width="2.2" marker-end="url(#w1)"/>
+<circle cx="1308" cy="360" r="11" fill="#1565C0"/>
+<text x="1307.5" y="364.5" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">9</text>
+<path d="M965,614 L965,760 L810,760 L810,830" fill="none" stroke="#1565C0" stroke-width="2.2" marker-end="url(#w1)"/>
+<circle cx="888" cy="760" r="11" fill="#1565C0"/>
+<text x="887.5" y="764.5" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">10</text>
+<text x="980" y="822" font-size="10.5" font-weight="normal" fill="#1565C0" text-anchor="start">writes go to writer</text>
+<path d="M110,194 L80,300 L240,297" fill="none" stroke="#D84315" stroke-width="2.2" marker-end="url(#w2)"/>
+<circle cx="160" cy="298" r="11" fill="#D84315"/>
+<text x="160.0" y="303.0" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">1</text>
+<path d="M190,167 L205,167 L205,1100 L1245,1100 L1245,470 L1245,454" fill="none" stroke="#D84315" stroke-width="2.2" marker-end="url(#w2)"/>
+<circle cx="725" cy="1100" r="11" fill="#D84315"/>
+<text x="725.0" y="1104.5" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">2</text>
+<path d="M1360,427 L1400,427" fill="none" stroke="#D84315" stroke-width="2.2" marker-end="url(#w2)"/>
+<circle cx="1380" cy="427" r="11" fill="#D84315"/>
+<text x="1380.0" y="431.5" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">3</text>
+<path d="M1520,454 L1520,520" fill="none" stroke="#D84315" stroke-width="2.2" marker-end="url(#w2)"/>
+<circle cx="1520" cy="487" r="11" fill="#D84315"/>
+<text x="1520.0" y="491.5" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">4</text>
+<path d="M1400,547 L1360,547" fill="none" stroke="#D84315" stroke-width="2.2" marker-end="url(#w2)"/>
+<circle cx="1380" cy="547" r="11" fill="#D84315"/>
+<text x="1380.0" y="551.5" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">5</text>
+<path d="M1640,547 L1660,547 L1660,787 L1640,787" fill="none" stroke="#D84315" stroke-width="2.2" marker-end="url(#w2)"/>
+<circle cx="1660" cy="667" r="11" fill="#D84315"/>
+<text x="1660.0" y="671.5" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">6</text>
+<path d="M1520,640 L1520,574" fill="none" stroke="#6e7781" stroke-width="2.2" stroke-dasharray="5 4" marker-end="url(#g)"/>
+<path d="M1360,907 L1400,907" fill="none" stroke="#6e7781" stroke-width="2.2" stroke-dasharray="5 4" marker-end="url(#g)"/>
+<rect x="30" y="360" width="180" height="520" rx="10" fill="#ffffff" stroke="#d0d7de" stroke-width="2"/>
+<text x="40" y="382" font-size="13" font-weight="bold" fill="#1565C0" text-anchor="start">Walkthrough 1</text>
+<text x="40" y="404" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">1 DNS lookup</text>
+<text x="40" y="422" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">2 HTTPS to edge</text>
+<text x="40" y="440" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">3 WAF inspects</text>
+<text x="40" y="458" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">4 /api/* → HTTP API</text>
+<text x="40" y="476" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">   (JWT checked)</text>
+<text x="40" y="494" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">5 Lambda, any AZ</text>
+<text x="40" y="512" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">6 read exam (Data API)</text>
+<text x="40" y="530" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">7 autosave → DynamoDB</text>
+<text x="40" y="548" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">   via gateway endpoint</text>
+<text x="40" y="566" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">8 submit → SQS</text>
+<text x="40" y="584" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">9 marker polls</text>
+<text x="40" y="602" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">10 MCQ marks → Aurora</text>
+<text x="40" y="640" font-size="13" font-weight="bold" fill="#D84315" text-anchor="start">Walkthrough 2</text>
+<text x="40" y="662" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">1 POST /uploads →</text>
+<text x="40" y="680" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">   presigned PUT URL</text>
+<text x="40" y="698" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">2 browser PUTs 40 MB</text>
+<text x="40" y="716" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">   straight to S3</text>
+<text x="40" y="734" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">3 ObjectCreated → SQS</text>
+<text x="40" y="752" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">4 notifier polls</text>
+<text x="40" y="770" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">5 record submission</text>
+<text x="40" y="788" font-size="11.5" font-weight="normal" fill="#1b1f24" text-anchor="start">6 SES email to tutor</text>
+</svg>

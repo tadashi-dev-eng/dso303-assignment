@@ -1,0 +1,54 @@
+$ ./scripts/walkthrough-2-upload-notify.sh
+
+==> 1. Student's 40 MB PDF
+41943040 bytes  /tmp/tmp.CsNORqGR3J/A2-report-stu-0001.pdf
+
+==> 2. Upload rules enforced before any bytes move
+60 MB zip  -> {"error":"file must be 1 byte - 52428800 bytes"}
+.exe file  -> {"error":"only PDF or ZIP files are accepted"}
+
+==> 3. POST /uploads -> presigned S3 PUT URL (size + content-type are signed)
+key:     submissions/DSO303/A2/stu-0001/d99c54ef-fe71-4e2b-bf81-2e3d0ac8062f-A2-report-stu-0001.pdf
+url:     http://floci:4566/exams-floci-submissions-90e5fe/submissions/DSO303/A2/stu-0001/d99c54ef-fe71-4e2b-bf81-2e3d0ac8062f-A2-report-stu-0001.pdf?X-Amz-Algorithm=...&X-Amz-Expires=900&X-Amz-Signature=...
+
+==> 4. Browser PUTs the file directly to S3 (API Lambda never sees the 40 MB)
+HTTP 200  uploaded 41943040 bytes in 8.563151s
+-------------------------------------------------------------------------
+|                              HeadObject                               |
++----------+-------------------+----------------------------------------+
+|   Size   |       Type        |               VersionId                |
++----------+-------------------+----------------------------------------+
+|  41943040|  application/pdf  |  7bf1927d-d484-4351-a445-fc471dee3a02  |
++----------+-------------------+----------------------------------------+
+
+==> 5. S3 ObjectCreated -> SQS uploads queue -> notifier Lambda -> DynamoDB + SES email to tutor
+{
+    "level": "info",
+    "event": "submission-recorded",
+    "submissionId": "d99c54ef-fe71-4e2b-bf81-2e3d0ac8062f",
+    "courseId": "DSO303",
+    "assignmentId": "A2",
+    "studentId": "stu-0001",
+    "sizeMB": 40,
+    "tutorEmail": "tutor0001@staff.example-university.edu",
+    "sesMessageId": "6e5d5a80-1288-42d5-b6ba-103feab6b9ed"
+}
+Tutor's inbox (Floci SES mailbox):
+  To:      tutor0001@staff.example-university.edu
+  From:    no-reply@exams.example-university.edu
+  Subject: [DSO303] New submission for A2
+  Body:    stu-0001 submitted A2-report-stu-0001.pdf (40.0 MB) for A2 in Cloud Native Solution Design.
+
+==> 6. Tutor view: GET /courses/DSO303/submissions
+submissions: 1
+  stu-0001  A2-report-stu-0001.pdf        40.0 MB  2026-11-15T09:37:41.868Z
+Student calling the tutor-only route:
+{"error":"requires tutors"}
+
+==> 7. Bucket controls: default encryption + lifecycle
+default encryption: aws:kms
+  after   30 days -> STANDARD_IA
+  after  180 days -> GLACIER_IR
+  after  365 days -> DEEP_ARCHIVE
+  expire after 1855 days (5 years + 30-day grace)
+[exit 0]

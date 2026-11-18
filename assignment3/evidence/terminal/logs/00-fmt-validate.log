@@ -1,0 +1,12 @@
+$ terraform -chdir=infra fmt -check -recursive && terraform -chdir=infra validate && for f in app/*/*.mjs scripts/load-test.mjs infra/failure-tests/exam-traffic.mjs; do node --check $f && echo "node --check $f: ok"; done && bash -n scripts/*.sh infra/failure-tests/*.sh && echo "bash -n: ok"
+Success! The configuration is valid.
+
+node --check app/api/index.mjs: ok
+node --check app/api/schema.mjs: ok
+node --check app/marker/index.mjs: ok
+node --check app/notifier/index.mjs: ok
+node --check app/shared/db.mjs: ok
+node --check scripts/load-test.mjs: ok
+node --check infra/failure-tests/exam-traffic.mjs: ok
+bash -n: ok
+[exit 0]

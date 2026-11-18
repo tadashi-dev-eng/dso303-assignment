@@ -1,0 +1,11 @@
+# Terraform
+infra/.terraform/
+infra/.build/
+infra/*.tfstate*
+infra/tfplan
+infra/bootstrap/.terraform/
+infra/bootstrap/*.tfstate*
+# Local
+node_modules/
+*.log
+!evidence/terminal/logs/*.log
